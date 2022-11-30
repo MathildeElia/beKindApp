@@ -20,6 +20,22 @@ fun Navigation() {
             KindLogin(navController = navController)
         }
         composable(
+            route = Screen.KindSignUp.route){
+            KindSignUp(navController = navController)
+        }
+
+        composable(
+            route = Screen.KindStart.route + "/{username}", arguments = listOf(
+                navArgument("username"){
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )
+        ){entry ->
+            KindStart(username = entry.arguments?.getString("username"), navController = navController)
+        }
+        composable(
             route = Screen.KindStart.route + "/{username}", arguments = listOf(
                 navArgument("username"){
                     type = NavType.StringType

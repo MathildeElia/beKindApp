@@ -47,12 +47,16 @@ fun KindFront(modifier: Modifier = Modifier,navController: NavController) {
             Text(stringResource(R.string.log))
             //Color(R.color.darkgreen)
         }
-        Button(onClick = {/*TODO*/},
+        Button(onClick = {
+                         navController.navigate(Screen.KindSignUp.route)
+                         },
             colors = ButtonDefaults.buttonColors
                 (backgroundColor =  Color(R.color.darkgreen))){
             Text(stringResource(R.string.sign))
         }
-        Button(onClick = {/*TODO*/},
+        Button(onClick = {
+                         navController.navigate(Screen.KindStart.withArgs("Guest"))
+                         },
             colors = ButtonDefaults.buttonColors
                 (backgroundColor =  Color(R.color.darkgreen)) ){
             Text(stringResource(R.string.senere))
