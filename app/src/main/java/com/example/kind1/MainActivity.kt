@@ -37,50 +37,5 @@ val text1 = "Begynd at byg dit personlige portefølje af velgørenhed i dag!"
     (showBackground = true)
 @Composable
 fun KindApp() {
-    KindLogIn(modifier = Modifier
-        .fillMaxSize()
-        .wrapContentSize(Alignment.Center))
-}
-@Composable
-fun KindLogIn(modifier: Modifier = Modifier) {
-    Column (
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
-
-    ) {
-        Image(
-            painter = painterResource(R.drawable.bekindtitel),
-            contentDescription = "titel"
-        )
-        Text(
-            text = text1,
-            fontSize = 24.sp,
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentWidth(Alignment.Start)
-        )
-
-        Image(
-            painter = painterResource(R.drawable.bekindforside),
-            contentDescription = "forside billede"
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Button(onClick = {/*TODO*/},
-            colors = ButtonDefaults.buttonColors
-                (backgroundColor =  Color(R.color.darkgreen))){
-            Text(stringResource(R.string.log))
-            //Color(R.color.darkgreen)
-        }
-        Button(onClick = {/*TODO*/},
-            colors = ButtonDefaults.buttonColors
-                (backgroundColor =  Color(R.color.darkgreen))){
-            Text(stringResource(R.string.sign))
-        }
-        Button(onClick = {/*TODO*/},
-            colors = ButtonDefaults.buttonColors
-                (backgroundColor =  Color(R.color.darkgreen)) ){
-            Text(stringResource(R.string.senere))
-        }
-    }
+    Navigation()
 }
