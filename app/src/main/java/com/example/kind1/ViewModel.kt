@@ -13,7 +13,7 @@ class Viewmodel: ViewModel() {
 
 
     fun validInput(user : String, pass : String): Boolean{
-        if(user == "" && pass == ""){
+        if(user == "" || pass == ""){
             return false
         }
         return true
