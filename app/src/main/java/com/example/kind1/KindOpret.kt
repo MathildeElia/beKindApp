@@ -50,7 +50,7 @@ fun KindSignUp(navController: NavController) {
                 .align(Alignment.CenterHorizontally)
         )
         Text(
-            text = "Sign Up :)",
+            text = "Opret Bruger",
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
         Spacer(
@@ -84,7 +84,7 @@ fun KindSignUp(navController: NavController) {
             value = pass, onValueChange = { pass = it },
             modifier = Modifier
                 .align(Alignment.CenterHorizontally),
-            label = { Text("Password") }
+            label = { Text("Kodeord") }
         )
 
 
@@ -93,14 +93,14 @@ fun KindSignUp(navController: NavController) {
                 if (viewmodel.validInputSign(user, pass,email)) {
                     navController.navigate(Screen.KindStart.withArgs(user))
                 }
-                wrong = "Remember to input both an username, password and a correct email :)"
+                wrong = "Husk at fylde både Brugernavn, Kodeord og Email korrekt"
 
             },
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(vertical = 10.dp),
         ) {
-            Text(text = "Login")
+            Text(text = "Opret Bruger")
         }
         Text(
             text = wrong,
