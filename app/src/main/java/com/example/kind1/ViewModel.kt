@@ -20,7 +20,7 @@ class Viewmodel: ViewModel() {
     }
 
     fun validInputSign(user : String, pass : String,email : String): Boolean{
-        if(user == "" || pass == "" || !(email.contains("@") && email.contains(".dk") || email.contains(".com"))){
+        if(user == "" || pass == "" || !(email.contains("@gmail.com") || email.contains("@gmail.dk"))){
             return false
         }
         return true
