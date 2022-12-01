@@ -26,7 +26,7 @@ fun KindStart(username : String?,navController: NavController) {
                 .size(width = 50.dp, height = 30.dp)
         )
         Spacer(modifier = Modifier.height(10.dp))
-        Text(text = "Hello $username!",
+        Text(text = "Hej $username!",
         modifier = Modifier
             .align(CenterHorizontally))
     }
