@@ -1,6 +1,7 @@
 package com.example.kind1
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -34,6 +35,14 @@ fun KindSignUp(navController: NavController) {
         Modifier.fillMaxSize()
     )
     {
+        Spacer(modifier = Modifier.height(10.dp))
+        Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
+        modifier = Modifier
+            .clickable {
+                navController.navigate(Screen.KindFront.route)
+            }
+            .size(width = 50.dp, height = 30.dp)
+        )
         Image(
             painter = painterResource(id = R.drawable.bekindforside), contentDescription = null,
             modifier = Modifier
@@ -52,7 +61,7 @@ fun KindSignUp(navController: NavController) {
             value = user, onValueChange = { user = it },
             modifier = Modifier
                 .align(Alignment.CenterHorizontally),
-            label = { Text("Username") }
+            label = { Text("Brugernavn") }
 
         )
         Spacer(
