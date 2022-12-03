@@ -51,7 +51,7 @@ fun Navigation() {
             composable(
                 route = Screen.Confirmation.route
             ) {
-                //ConfirmationScreen(navController = navController)
+                ConfirmationScreen(navController = navController)
             }
 
             composable(
@@ -82,8 +82,6 @@ fun Navigation() {
                     navController = navController
                 )
             }
-
-
         }
     }
 }
