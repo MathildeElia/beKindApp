@@ -43,27 +43,16 @@ fun Navigation() {
             ) {
                 KindSignUp(navController = navController)
             }
-    NavHost(navController = navController,
-        startDestination = Screen.KindFront.route){
-        composable(route = Screen.KindFront.route){
-            KindFront(navController = navController)
-        }
-        composable(
-            route = Screen.KindLogin.route){
-            KindLogin(navController = navController)
-        }
-        composable(
-            route = Screen.KindSignUp.route){
-            KindSignUp(navController = navController)
-        }
-        composable(
-            route = Screen.MakeDonatinon.route){
-            //MakeDonationScreen(navController = navController)
-        }
-        composable(
-            route = Screen.Confirmation.route){
-            //ConfirmationScreen(navController = navController)
-        }
+            composable(
+                route = Screen.MakeDonatinon.route
+            ) {
+                //MakeDonationScreen(navController = navController)
+            }
+            composable(
+                route = Screen.Confirmation.route
+            ) {
+                //ConfirmationScreen(navController = navController)
+            }
 
             composable(
                 route = Screen.KindStart.route + "/{username}", arguments = listOf(
