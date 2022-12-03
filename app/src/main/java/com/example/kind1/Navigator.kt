@@ -23,6 +23,14 @@ fun Navigation() {
             route = Screen.KindSignUp.route){
             KindSignUp(navController = navController)
         }
+        composable(
+            route = Screen.MakeDonatinon.route){
+            //MakeDonationScreen(navController = navController)
+        }
+        composable(
+            route = Screen.Confirmation.route){
+            //ConfirmationScreen(navController = navController)
+        }
 
         composable(
             route = Screen.KindStart.route + "/{username}", arguments = listOf(
