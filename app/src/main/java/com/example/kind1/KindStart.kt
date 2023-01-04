@@ -5,10 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.Center
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
-import androidx.compose.ui.Alignment.Companion.TopStart
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -19,7 +15,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun KindStart(username : String?,navController: NavController) {
+fun KindStart(username: String, navController: NavController) {
     Column {
         Spacer(modifier = Modifier.height(10.dp))
         Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
@@ -67,6 +63,16 @@ fun KindStart(username : String?,navController: NavController) {
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
             color = Color.White)
+
+        Button(
+            onClick = {
+                navController.navigate(Screen.MakeDonatinon.withArgs(username))},
+            colors = ButtonDefaults.buttonColors
+                (backgroundColor =  Color(R.color.darkgreen))
+        )
+        {
+            Text(text = "Donér nu!")
+        }
 
 
     }

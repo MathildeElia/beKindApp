@@ -6,11 +6,14 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement.Start
+import androidx.compose.foundation.layout.Arrangement.Top
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.Start
+import androidx.compose.ui.Alignment.Companion.TopStart
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -24,33 +27,33 @@ import org.intellij.lang.annotations.JdkConstants
 
 
 @Composable
-fun MakeDonationScreen() {
-
+fun MakeDonationScreen(navController: NavController,username : String?) {
+    Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
+        modifier = Modifier
+            .clickable{
+                //navController.navigate(Screen.KindFront.route)
+            }
+            .size(width = 50.dp, height = 30.dp)
+    )
     Column(
         Modifier
             .fillMaxSize()
             .wrapContentSize(Alignment.TopCenter)) {
         Row(Modifier.align(Alignment.Start)){
-            Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
-                modifier = Modifier
-                    .clickable {
-                        //navController.navigate(Screen.KindFront.route)
-                    }
-                    .size(width = 50.dp, height = 30.dp)
-            )
+
         }
         Spacer(modifier = Modifier.height(40.dp))
 
-        Text("Opret donation til [navn]", fontSize = 20.sp, textAlign = TextAlign.Center)
+        Text("Opret donation til $username", fontSize = 20.sp, textAlign = TextAlign.Center)
         Spacer(modifier = Modifier.height(40.dp))
         Text("Vælg beløb", fontSize = 15.sp, textAlign = TextAlign.Center)
 
         AmountTextField()
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(13.dp))
         Row(Modifier.align(Alignment.CenterHorizontally)) {
             CirleButton()
-            Spacer(modifier = Modifier.width(60.dp))
+            Spacer(modifier = Modifier.width(80.dp))
             CirleButton()
         }
         Row(Modifier.align(Alignment.CenterHorizontally)) {
@@ -68,6 +71,8 @@ fun MakeDonationScreen() {
         SupportButton()
     }
 }
+
+
 
 @Composable
 fun SupportButton() {
@@ -138,5 +143,5 @@ fun CirleButton() {
     (showBackground = true)
 @Composable
 fun DonationPreview() {
-    MakeDonationScreen()
+
 }

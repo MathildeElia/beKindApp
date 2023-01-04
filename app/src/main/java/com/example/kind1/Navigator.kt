@@ -64,7 +64,7 @@ fun Navigation() {
                 )
             ) { entry ->
                 KindStart(
-                    username = entry.arguments?.getString("username"),
+                    username = entry.arguments?.getString("username").toString(),
                     navController = navController
                 )
             }
@@ -77,10 +77,27 @@ fun Navigation() {
                     }
                 )
             ) { entry ->
-                KindStart(
+                entry.arguments?.getString("username")?.let {
+                    KindStart(
+                        username = it,
+                        navController = navController
+                    )
+                }
+            }
+            composable(
+                route = Screen.MakeDonatinon.route + "/{username}", arguments = listOf(
+                    navArgument("username"){
+                        type = NavType.StringType
+                        defaultValue = "Seby"
+                        nullable = true
+                    }
+                )
+            ){ entry ->
+                MakeDonationScreen(
                     username = entry.arguments?.getString("username"),
                     navController = navController
                 )
+
             }
         }
     }
