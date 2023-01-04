@@ -27,15 +27,20 @@ class MainActivity : ComponentActivity() {
         setContent {
             Kind1Theme {
                 KindApp()
+
             }
         }
     }
 }
 val text1 = "Begynd at byg dit personlige portefølje af velgørenhed i dag!"
+val text2= "Min Konto"
+val text3 = "Nick Tahmasebi" //midlertidig løsning - skal selvfølgelig være den bruger der logger på
+
 @Preview
 
     (showBackground = true)
 @Composable
 fun KindApp() {
-    Navigation()
-}
+   Navigation()
+    }
+

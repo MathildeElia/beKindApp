@@ -3,5 +3,14 @@
     <string name="log">Log ind</string>
     <string name="sign">Opret bruger</string>
     <string name="senere">måske senere</string>
+    <string name ="kommende">Mine kommende donationer</string>
+    <string name ="tidligere">Mine tidligere donationer</string>
+    <string name ="oplysninger">Mine oplysninger</string>
+    <string name ="notifikationer">Notifikationer og lyde</string>
+    <string name ="sikkerhed">Sikkerhed</string>
+    <string name ="hjælp">Hjælp</string>
+    <string name ="problem">Rapportér teknisk problem</string>
+    <string name ="logaf">Log af</string>
+
 
 </resources>

@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun ConfirmationScreen(){
+fun ConfirmationScreen(navController: NavController){
     Column(
         Modifier.fillMaxSize()
             .wrapContentSize(Alignment.TopCenter)
@@ -52,11 +52,4 @@ fun ConfirmationScreen(){
         Spacer(modifier = Modifier.height(30.dp))
         Text("-> se din portefølje", textAlign = TextAlign.Center)
     }
-}
-
-@Preview
-    (showBackground = true)
-@Composable
-fun ConfirmationPreview() {
-    ConfirmationScreen()
 }
