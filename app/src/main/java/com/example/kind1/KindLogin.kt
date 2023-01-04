@@ -16,12 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 
-
-
-
 @Composable
 fun KindLogin(navController: NavController) {
-
 
     val viewmodel = Viewmodel()
     var user by remember {
@@ -99,10 +95,5 @@ fun KindLogin(navController: NavController) {
             modifier = Modifier
                 .align(CenterHorizontally)
         )
-
-
     }
-
-
 }
-
