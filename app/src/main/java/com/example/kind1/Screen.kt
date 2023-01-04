@@ -10,7 +10,7 @@ sealed class Screen(val route : String) {
     object Confirmation : Screen("confirmation")
 
 
-    fun withArgs(vararg args : String): String{
+    fun withArgs(vararg args: String): String{
 
         return buildString {
             append(route)

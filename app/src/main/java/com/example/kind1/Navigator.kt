@@ -48,11 +48,6 @@ fun Navigation() {
             ) {
                 //MakeDonationScreen(navController = navController)
             }
-            composable(
-                route = Screen.Confirmation.route
-            ) {
-                ConfirmationScreen(navController = navController)
-            }
 
             composable(
                 route = Screen.KindStart.route + "/{username}", arguments = listOf(
@@ -93,12 +88,36 @@ fun Navigation() {
                     }
                 )
             ){ entry ->
-                MakeDonationScreen(
-                    username = entry.arguments?.getString("username"),
-                    navController = navController
-                )
-
+                entry.arguments?.getString("username")?.let {
+                    MakeDonationScreen(
+                        username = it,
+                        navController = navController
+                    )
+                }
             }
+            composable(
+                route = Screen.Confirmation.route + "/{value}/{username}", arguments = listOf(
+                    navArgument("value"){
+                        type = NavType.StringType
+                        defaultValue = "Seby"
+                    },
+                    navArgument("username"){
+                        type = NavType.StringType
+                        defaultValue = "Seby"
+                    }
+                )
+            ){ entry ->
+                entry.arguments?.getString("username")?.let {
+                    ConfirmationScreen(
+                        value = entry.arguments?.getString("value"),
+                        username = it,
+                        navController = navController
+                    )
+                }
+            }
+
+
+
         }
     }
 }
