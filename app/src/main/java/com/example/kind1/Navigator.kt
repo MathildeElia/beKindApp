@@ -18,14 +18,6 @@ import androidx.navigation.navArgument
 fun Navigation() {
     val navController = rememberNavController()
 
-    Card(elevation = 2.dp) {
-        Image(
-            contentScale = ContentScale.FillBounds,
-            painter = painterResource(id = R.drawable.bekindbackground),
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize()
-        )
-
         NavHost(
             navController = navController,
             startDestination = Screen.KindFront.route
@@ -95,5 +87,4 @@ fun Navigation() {
                 )
             }
         }
-    }
 }

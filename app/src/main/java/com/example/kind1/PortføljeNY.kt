@@ -8,12 +8,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -26,6 +28,13 @@ fun PortføljeNy(navController: NavController) {
     var themes = 4
     var charities = 6
     var percentage = 25
+    Card(elevation = 2.dp) {
+        Image(
+            contentScale = ContentScale.FillBounds,
+            painter = painterResource(id = R.drawable.bekindbackground),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize()
+        )
     Column {
         val shape = RoundedCornerShape(12.dp)
         Spacer(modifier = Modifier.height(10.dp))
@@ -40,13 +49,22 @@ fun PortføljeNy(navController: NavController) {
         Spacer(modifier = Modifier.height(6.dp))
         Column(modifier = Modifier.padding(10.dp)) {
 
-            Text("\t\tPortfølje", fontSize = 30.sp, fontWeight = FontWeight.Bold, color = Color(0xFF315C36))
+            Text(
+                "\t\tPortfølje",
+                fontSize = 30.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF315C36)
+            )
             Spacer(modifier = Modifier.height(10.dp))
             Text("Indtil videre støtter du:", fontSize = 18.sp, color = Color(0xFF315C36))
             Spacer(modifier = Modifier.height(2.dp))
-            Text("\t\t- $themes temaer", fontSize = 18.sp , color = Color(0xFF315C36))
+            Text("\t\t- $themes temaer", fontSize = 18.sp, color = Color(0xFF315C36))
             Spacer(modifier = Modifier.height(2.dp))
-            Text("\t\t- $charities velgørenheds-organisationer", fontSize = 18.sp , color = Color(0xFF315C36))
+            Text(
+                "\t\t- $charities velgørenheds-organisationer",
+                fontSize = 18.sp,
+                color = Color(0xFF315C36)
+            )
             Spacer(modifier = Modifier.height(50.dp))
         }
 
@@ -140,6 +158,7 @@ fun PortføljeNy(navController: NavController) {
 
 
         }
+    }
     }
 }
 
