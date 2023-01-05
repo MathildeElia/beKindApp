@@ -41,7 +41,7 @@ fun MakeDonationScreen(navController: NavController,username : String) {
         Text("Opret donation til $username", fontSize = 20.sp, textAlign = TextAlign.Center)
         Spacer(modifier = Modifier.height(40.dp))
         Text("Vælg beløb", fontSize = 15.sp, textAlign = TextAlign.Center)
-        val ok = AmountTextField()
+        val amount = AmountTextField()
         Spacer(modifier = Modifier.height(13.dp))
         Row(Modifier.align(Alignment.CenterHorizontally)) {
             CirleButton()
@@ -61,14 +61,14 @@ fun MakeDonationScreen(navController: NavController,username : String) {
 
         Spacer(modifier = Modifier.height(40.dp))
 
-        SupportButton(navController, ok,username.toString())
+        SupportButton(navController, amount, username)
     }
 }
 
 
 
 @Composable
-fun SupportButton(navController: NavController,value: String,username: String) {
+fun SupportButton(navController: NavController, value: String,  username: String) {
     Button(onClick = {
         println(value)
         navController.navigate(Screen.Confirmation.withArgs(value,username))
