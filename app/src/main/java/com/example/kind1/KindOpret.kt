@@ -12,9 +12,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.functions.FirebaseFunctions
+import com.google.firebase.ktx.Firebase
 
 @Composable
 fun KindSignUp(navController: NavController) {
+    var fb: FirebaseDatabase
+    var reference: DatabaseReference
     val viewmodel = Viewmodel()
     var user by remember {
         mutableStateOf("")
@@ -91,6 +98,12 @@ fun KindSignUp(navController: NavController) {
         Button(
             onClick = {
                 if (viewmodel.validInputSign(user, pass,email)) {
+                    fb = FirebaseDatabase.getInstance()
+                    reference = fb.getReference("users")
+
+                    val newUser = User(user,email,pass)
+                    reference.setValue(newUser)
+
                     navController.navigate(Screen.KindStart.withArgs(user))
                 }
                 wrong = "Husk at fylde både Brugernavn, Kodeord og Email korrekt"
@@ -107,8 +120,5 @@ fun KindSignUp(navController: NavController) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
         )
-
-
     }
-
 }

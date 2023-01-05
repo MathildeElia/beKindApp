@@ -99,8 +99,6 @@ fun KindLogin(navController: NavController) {
             modifier = Modifier
                 .align(CenterHorizontally)
         )
-
-
     }
 
 
