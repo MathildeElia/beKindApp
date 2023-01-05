@@ -129,7 +129,7 @@ fun PortføljeScreen() {
 
 
             }
-            Spacer(modifier = Modifier.height(120.dp))
+            Spacer(modifier = Modifier.height(100.dp))
             StøtMereButton()
 
 
@@ -143,10 +143,10 @@ fun StøtMereButton() {
         //navController.navigate(Screen.KindMakeDonation.route)
     },
         colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green),
-        modifier = Modifier
+        modifier = Modifier.padding(60.dp)
             .wrapContentSize()
-            .height(50.dp)
-            .width(480.dp)) {
+            .height(80.dp)
+            .width(200.dp)) {
         Text(text = "Støt mere", textAlign = TextAlign.Center,
             color = Color.White,fontWeight = FontWeight.Bold, fontSize = 25.sp
         )
