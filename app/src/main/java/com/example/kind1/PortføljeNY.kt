@@ -1,5 +1,5 @@
 package com.example.kind1
-//Nu tester viii
+//Nu testes der
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
