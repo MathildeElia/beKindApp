@@ -8,6 +8,7 @@ sealed class Screen(val route : String) {
     object KindSignUp: Screen("kind_signup")
     object MakeDonatinon : Screen("make_donation")
     object Confirmation : Screen("confirmation")
+    object MinKonto : Screen ("MinKonto")
     object Template : Screen("template")
     object Portfølje : Screen("portfølje")
 
