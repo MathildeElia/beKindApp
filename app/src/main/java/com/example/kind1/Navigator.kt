@@ -53,6 +53,9 @@ fun Navigation() {
             ) {
                 ConfirmationScreen(navController = navController)
             }
+            composable(route = Screen.Template.route) {
+                TemplateScreen(navController = navController)
+            }
 
             composable(
                 route = Screen.KindStart.route + "/{username}", arguments = listOf(

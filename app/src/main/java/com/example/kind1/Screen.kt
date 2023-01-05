@@ -8,6 +8,7 @@ sealed class Screen(val route : String) {
     object KindSignUp: Screen("kind_signup")
     object MakeDonatinon : Screen("make_donation")
     object Confirmation : Screen("confirmation")
+    object Template : Screen("template")
 
 
     fun withArgs(vararg args : String): String{

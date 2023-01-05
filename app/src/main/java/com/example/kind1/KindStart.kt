@@ -41,7 +41,7 @@ fun KindStart(username: String?, navController: NavController) {
         Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
             modifier = Modifier
                 .clickable {
-                  navController.navigate(Screen.KindFront.route)
+                    navController.navigate(Screen.KindFront.route)
                 }
                 .size(width = 50.dp, height = 30.dp)
         )
@@ -103,14 +103,15 @@ fun KindStart(username: String?, navController: NavController) {
                     ,contentDescription = null,
                     modifier = Modifier
                         .size(width = 130.dp, height = 70.dp)
-                        .padding(20.dp,0.dp,0.dp,10.dp)
+                        .padding(20.dp, 0.dp, 0.dp, 10.dp)
                 )
 
                 Spacer(modifier = Modifier.height(50.dp))
 
                 Text(text = "\t\tDin Portfølje →",
-                    modifier = Modifier.
-                    padding(10.dp,55.dp,0.dp,0.dp),
+                    modifier = Modifier
+                        .padding(10.dp, 55.dp, 0.dp, 0.dp)
+                        .clickable {navController.navigate(Screen.Template.route)},
                     fontSize = 17.sp,
                     color = Color(0xFF315C36))
 
@@ -138,8 +139,9 @@ fun KindStart(username: String?, navController: NavController) {
             {
                 Spacer(modifier = Modifier.requiredHeight(32.dp))
                 Text(text = "Velgørenheds Nyheder",
-                    modifier = Modifier.align(Alignment.TopCenter)
-                        .padding(0.dp,10.dp,0.dp,0.dp),
+                    modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .padding(0.dp, 10.dp, 0.dp, 0.dp),
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     color = Color(0xFF315C36))
