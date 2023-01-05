@@ -56,6 +56,9 @@ fun Navigation() {
             composable(route = Screen.Template.route) {
                 TemplateScreen(navController = navController)
             }
+            composable(route = Screen.Portfølje.route) {
+                PortføljeNy(navController = navController)
+            }
 
             composable(
                 route = Screen.KindStart.route + "/{username}", arguments = listOf(

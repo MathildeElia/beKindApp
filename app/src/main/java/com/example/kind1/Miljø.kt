@@ -34,35 +34,37 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.draw.clip
 
 @Composable
-fun KindStart(username: String?, navController: NavController) {
+fun Miljø() {
     Column {
         val shape = RoundedCornerShape(12.dp)
         Spacer(modifier = Modifier.height(10.dp))
         Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
             modifier = Modifier
                 .clickable {
-                    navController.navigate(Screen.KindFront.route)
+                    //navController.navigate(Screen.KindFront.route)
                 }
                 .size(width = 50.dp, height = 30.dp)
         )
+    Column() {
+//HER ZLAT
         Spacer(modifier = Modifier.height(10.dp))
-        Text(text = "\t\tHej $username!",
+        Text(text = "\t\t\t\t\t\t\t\t\t\t              Miljø",
         modifier = Modifier,
             fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Left,
+            textAlign = TextAlign.Center,
             fontSize = 25.sp,
-            color = Color.White
-        )
+            color = Color(0xFF315C36)
+        )}
 
         Spacer(modifier = Modifier.height(15.dp))
 
-        Text(text = "\t\tDit abonnenement er på plads og ",
+        Text(text = "\t\t\tStøt organisationer som gør ",
             modifier = Modifier,
             fontSize = 25.sp,
             //color = Color(0xFF034A0B),
             color = Color(0xFF315C36)
         )
-        Text(text = "\t\tdu er on track til at donere 100 kr.",
+        Text(text = "\t\t\tsamfundet mere bæredygtigt.",
             modifier = Modifier,
             fontSize = 25.sp,
             color = Color(0xFF315C36)
@@ -110,8 +112,8 @@ fun KindStart(username: String?, navController: NavController) {
 
                 Text(text = "\t\tDin Portfølje →",
                     modifier = Modifier
-                        .padding(10.dp, 55.dp, 0.dp, 0.dp)
-                        .clickable {navController.navigate(Screen.Portfølje.route)},
+                        .padding(10.dp, 55.dp, 0.dp, 0.dp),
+                        //.clickable {navController.navigate(Screen.Template.route)},
                     fontSize = 17.sp,
                     color = Color(0xFF315C36))
 
@@ -150,4 +152,10 @@ fun KindStart(username: String?, navController: NavController) {
 
     }
 
+}
+@Preview
+    (showBackground = true)
+@Composable
+fun MiljøPreview() {
+    Miljø()
 }
