@@ -1,5 +1,5 @@
 package com.example.kind1
-//Nu tester vii
+//Nu tester viii
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
