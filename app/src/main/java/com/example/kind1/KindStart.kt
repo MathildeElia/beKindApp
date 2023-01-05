@@ -32,122 +32,142 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 
 @Composable
 fun KindStart(username: String?, navController: NavController) {
-    Column {
-        val shape = RoundedCornerShape(12.dp)
-        Spacer(modifier = Modifier.height(10.dp))
-        Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
-            modifier = Modifier
-                .clickable {
-                    navController.navigate(Screen.KindFront.route)
-                }
-                .size(width = 50.dp, height = 30.dp)
+    Card(elevation = 2.dp) {
+        Image(
+            contentScale = ContentScale.FillBounds,
+            painter = painterResource(id = R.drawable.bekindbackground),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize()
         )
-        Spacer(modifier = Modifier.height(10.dp))
-        Text(text = "\t\tHej $username!",
-        modifier = Modifier,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Left,
-            fontSize = 25.sp,
-            color = Color.White
-        )
-
-        Spacer(modifier = Modifier.height(15.dp))
-
-        Text(text = "\t\tDit abonnenement er på plads og ",
-            modifier = Modifier,
-            fontSize = 25.sp,
-            //color = Color(0xFF034A0B),
-            color = Color(0xFF315C36)
-        )
-        Text(text = "\t\tdu er on track til at donere 100 kr.",
-            modifier = Modifier,
-            fontSize = 25.sp,
-            color = Color(0xFF315C36)
-
-        )
-
-        Spacer(modifier = Modifier.height(15.dp))
-
-        Text(text = "\t\tDu er blandt top 1% af donerer denne",
-            modifier = Modifier,
-            fontWeight = FontWeight.Bold,
-            fontSize = 20.sp,
-            color = Color.White)
-
-
-        Text(text = "\t\tmåned. Godt gået!",
-            modifier = Modifier,
-            fontWeight = FontWeight.Bold,
-            fontSize = 20.sp,
-            color = Color.White)
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        //The first White - TextBox
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentSize(Alignment.Center)
-        ) {
-            Box(
+        Column {
+            val shape = RoundedCornerShape(12.dp)
+            Spacer(modifier = Modifier.height(10.dp))
+            Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
                 modifier = Modifier
-                    .size(275.dp, 200.dp)
-                    .clip(shape)
-                    .background(Color.White)
+                    .clickable {
+                        navController.navigate(Screen.KindFront.route)
+                    }
+                    .size(width = 50.dp, height = 30.dp)
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(
+                text = "\t\tHej $username!",
+                modifier = Modifier,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Left,
+                fontSize = 25.sp,
+                color = Color.White
+            )
+
+            Spacer(modifier = Modifier.height(15.dp))
+
+            Text(
+                text = "\t\tDit abonnenement er på plads og ",
+                modifier = Modifier,
+                fontSize = 25.sp,
+                //color = Color(0xFF034A0B),
+                color = Color(0xFF315C36)
+            )
+            Text(
+                text = "\t\tdu er on track til at donere 100 kr.",
+                modifier = Modifier,
+                fontSize = 25.sp,
+                color = Color(0xFF315C36)
+
+            )
+
+            Spacer(modifier = Modifier.height(15.dp))
+
+            Text(
+                text = "\t\tDu er blandt top 1% af donerer denne",
+                modifier = Modifier,
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                color = Color.White
+            )
+
+
+            Text(
+                text = "\t\tmåned. Godt gået!",
+                modifier = Modifier,
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                color = Color.White
+            )
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            //The first White - TextBox
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentSize(Alignment.Center)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(275.dp, 200.dp)
+                        .clip(shape)
+                        .background(Color.White)
+                )
+                {
+                    Image(
+                        painter = painterResource(id = R.drawable.bekinglogos),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(width = 130.dp, height = 70.dp)
+                            .padding(20.dp, 0.dp, 0.dp, 10.dp)
+                    )
+
+                    Spacer(modifier = Modifier.height(50.dp))
+
+                    Text(
+                        text = "\t\tDin Portfølje →",
+                        modifier = Modifier
+                            .padding(10.dp, 55.dp, 0.dp, 0.dp)
+                            .clickable { navController.navigate(Screen.Portfølje.route) },
+                        fontSize = 17.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                }
+            }
+
+
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            //The second White - TextBox
+            Column(
+
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentSize(Alignment.Center)
             )
             {
-                Image(painter = painterResource(id = R.drawable.bekinglogos)
-                    ,contentDescription = null,
+                Box(
                     modifier = Modifier
-                        .size(width = 130.dp, height = 70.dp)
-                        .padding(20.dp, 0.dp, 0.dp, 10.dp)
+                        .size(275.dp, 350.dp)
+                        .clip(shape)
+                        .background(Color.White)
                 )
-
-                Spacer(modifier = Modifier.height(50.dp))
-
-                Text(text = "\t\tDin Portfølje →",
-                    modifier = Modifier
-                        .padding(10.dp, 55.dp, 0.dp, 0.dp)
-                        .clickable {navController.navigate(Screen.Template.route)},
-                    fontSize = 17.sp,
-                    color = Color(0xFF315C36))
-
+                {
+                    Spacer(modifier = Modifier.requiredHeight(32.dp))
+                    Text(
+                        text = "Velgørenheds Nyheder",
+                        modifier = Modifier
+                            .align(Alignment.TopCenter)
+                            .padding(0.dp, 10.dp, 0.dp, 0.dp),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = Color(0xFF315C36)
+                    )
+                }
             }
+
         }
-
-
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        //The second White - TextBox
-        Column(
-
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentSize(Alignment.Center)
-        )
-        {
-            Box(
-                modifier = Modifier
-                    .size(275.dp, 350.dp)
-                    .clip(shape)
-                    .background(Color.White)
-                )
-            {
-                Spacer(modifier = Modifier.requiredHeight(32.dp))
-                Text(text = "Velgørenheds Nyheder",
-                    modifier = Modifier
-                        .align(Alignment.TopCenter)
-                        .padding(0.dp, 10.dp, 0.dp, 0.dp),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp,
-                    color = Color(0xFF315C36))
-            }
-        }
-
     }
-
 }
