@@ -59,6 +59,12 @@ fun Navigation() {
             composable(route = Screen.Portfølje.route) {
                 PortføljeNy(navController = navController)
             }
+            composable(
+                route = Screen.MinKonto.route
+            ) {
+              MinKonto(navController = navController)
+            }
+
 
             composable(
                 route = Screen.KindStart.route + "/{username}", arguments = listOf(
