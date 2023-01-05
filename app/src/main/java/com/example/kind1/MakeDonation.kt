@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Start
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -25,47 +26,55 @@ import org.intellij.lang.annotations.JdkConstants
 
 @Composable
 fun MakeDonationScreen() {
+    Card(elevation = 2.dp) {
+        Image(
+            contentScale = ContentScale.FillBounds,
+            painter = painterResource(id = R.drawable.bekindbackground2),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize()
+        )
 
-    Column(
-        Modifier
-            .fillMaxSize()
-            .wrapContentSize(Alignment.TopCenter)) {
-        Row(Modifier.align(Alignment.Start)){
-            Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
-                modifier = Modifier
-                    .clickable {
-                        //navController.navigate(Screen.KindFront.route)
-                    }
-                    .size(width = 50.dp, height = 30.dp)
-            )
+        Column(
+            Modifier
+                .fillMaxSize()
+                .wrapContentSize(Alignment.TopCenter)) {
+            Row(Modifier.align(Alignment.Start)){
+                Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
+                    modifier = Modifier
+                        .clickable {
+                            //navController.navigate(Screen.KindFront.route)
+                        }
+                        .size(width = 50.dp, height = 30.dp)
+                )
+            }
+            Spacer(modifier = Modifier.height(40.dp))
+
+            Text("Opret donation til [navn]", fontSize = 20.sp, textAlign = TextAlign.Center)
+            Spacer(modifier = Modifier.height(40.dp))
+            Text("Vælg beløb", fontSize = 15.sp, textAlign = TextAlign.Center)
+
+            AmountTextField()
+
+            Spacer(modifier = Modifier.height(40.dp))
+            Row(Modifier.align(Alignment.CenterHorizontally)) {
+                CirleButton()
+                Spacer(modifier = Modifier.width(60.dp))
+                CirleButton()
+            }
+            Row(Modifier.align(Alignment.CenterHorizontally)) {
+                Text(text = "Støt månedligt")
+                Spacer(modifier = Modifier.width(60.dp))
+                Text("Støt én gang")
+            }
+
+            Spacer(modifier = Modifier.height(40.dp))
+            NameTextField()
+            Spacer(modifier = Modifier.height(10.dp))
+            EmailTextField()
+
+            Spacer(modifier = Modifier.height(40.dp))
+            SupportButton()
         }
-        Spacer(modifier = Modifier.height(40.dp))
-
-        Text("Opret donation til [navn]", fontSize = 20.sp, textAlign = TextAlign.Center)
-        Spacer(modifier = Modifier.height(40.dp))
-        Text("Vælg beløb", fontSize = 15.sp, textAlign = TextAlign.Center)
-
-        AmountTextField()
-
-        Spacer(modifier = Modifier.height(40.dp))
-        Row(Modifier.align(Alignment.CenterHorizontally)) {
-            CirleButton()
-            Spacer(modifier = Modifier.width(60.dp))
-            CirleButton()
-        }
-        Row(Modifier.align(Alignment.CenterHorizontally)) {
-            Text(text = "Støt månedligt")
-            Spacer(modifier = Modifier.width(60.dp))
-            Text("Støt én gang")
-        }
-
-        Spacer(modifier = Modifier.height(40.dp))
-        NameTextField()
-        Spacer(modifier = Modifier.height(10.dp))
-        EmailTextField()
-
-        Spacer(modifier = Modifier.height(40.dp))
-        SupportButton()
     }
 }
 
