@@ -1,4 +1,5 @@
 package com.example.kind1
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
@@ -15,11 +16,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun KindFront(modifier: Modifier = Modifier,navController: NavController) {
-    Column (
+fun KindFront(modifier: Modifier = Modifier, navController: NavController) {
+    Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
-
     ) {
         Image(
             painter = painterResource(R.drawable.bekindtitel),
@@ -39,26 +39,32 @@ fun KindFront(modifier: Modifier = Modifier,navController: NavController) {
         )
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = {
-            navController.navigate(Screen.KindLogin.route)
-        },
+        Button(
+            onClick = {
+                navController.navigate(Screen.KindLogin.route)
+            },
             colors = ButtonDefaults.buttonColors
-                (backgroundColor =  Color(R.color.darkgreen))){
+                (backgroundColor = Color(R.color.darkgreen))
+        ) {
             Text(stringResource(R.string.log))
             //Color(R.color.darkgreen)
         }
-        Button(onClick = {
-                         navController.navigate(Screen.KindSignUp.route)
-                         },
+        Button(
+            onClick = {
+                navController.navigate(Screen.KindSignUp.route)
+            },
             colors = ButtonDefaults.buttonColors
-                (backgroundColor =  Color(R.color.darkgreen))){
+                (backgroundColor = Color(R.color.darkgreen))
+        ) {
             Text(stringResource(R.string.sign))
         }
-        Button(onClick = {
-                         navController.navigate(Screen.KindStart.withArgs("Gæst"))
-                         },
+        Button(
+            onClick = {
+                navController.navigate(Screen.KindStart.withArgs("Gæst"))
+            },
             colors = ButtonDefaults.buttonColors
-                (backgroundColor =  Color(R.color.darkgreen)) ){
+                (backgroundColor = Color(R.color.darkgreen))
+        ) {
             Text(stringResource(R.string.senere))
         }
     }
