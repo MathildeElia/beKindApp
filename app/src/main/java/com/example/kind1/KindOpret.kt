@@ -1,5 +1,7 @@
 package com.example.kind1
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -15,13 +17,17 @@ import androidx.navigation.NavController
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.ktx.Firebase
 
 @Composable
 fun KindSignUp(navController: NavController) {
-    var fb: FirebaseDatabase
-    var reference: DatabaseReference
+    //var fb: FirebaseDatabase
+    //var reference: DatabaseReference
+    //reference = Firebase.database.reference
+    val fb = Firebase.firestore
+
     val viewmodel = Viewmodel()
     var user by remember {
         mutableStateOf("")
@@ -98,12 +104,22 @@ fun KindSignUp(navController: NavController) {
         Button(
             onClick = {
                 if (viewmodel.validInputSign(user, pass,email)) {
-                    fb = FirebaseDatabase.getInstance()
+                    val newUser = User(user,email,pass)
+                    fb.collection("users")
+                        .add(newUser)
+                        .addOnSuccessListener { documentReference ->
+                            Log.d(TAG,"DocumentSnapshot added with ID: ${documentReference.id}")
+                        }
+                        .addOnFailureListener{ e ->
+                            Log.w(TAG, "Error adding document", e)
+                        }
+                    /*fb = FirebaseDatabase.getInstance()
                     reference = fb.getReference("users")
 
                     val newUser = User(user,email,pass)
-                    reference.setValue(newUser)
-
+                    //reference.setValue(newUser)
+                    reference.child("users").child(user).setValue(newUser)
+*/
                     navController.navigate(Screen.KindStart.withArgs(user))
                 }
                 wrong = "Husk at fylde både Brugernavn, Kodeord og Email korrekt"
