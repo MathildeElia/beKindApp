@@ -46,7 +46,7 @@ fun PortføljeNy(navController: NavController) {
                 .size(width = 50.dp, height = 30.dp)
         )
 
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         Column(modifier = Modifier.padding(10.dp)) {
 
             Text(
@@ -154,7 +154,7 @@ fun PortføljeNy(navController: NavController) {
 
             }
             Spacer(modifier = Modifier.height(20.dp))
-            StøtMereButton()
+            StøtMereButton(navController)
 
 
         }
@@ -163,9 +163,9 @@ fun PortføljeNy(navController: NavController) {
 }
 
 @Composable
-fun StøtMereButton() {
+fun StøtMereButton(navController:NavController) {
     Button(onClick = {
-        //navController.navigate(Screen.KindMakeDonation.route)
+        navController.navigate(Screen.BygPortfølje.route)
     },
         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
         modifier = Modifier.padding(60.dp)

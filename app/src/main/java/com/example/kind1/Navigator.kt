@@ -51,6 +51,9 @@ fun Navigation() {
             composable(route = Screen.Portfølje.route) {
                 PortføljeNy(navController = navController)
             }
+            composable(route = Screen.BygPortfølje.route) {
+                BygPortfølje(navController = navController)
+            }
             composable(
                 route = Screen.MinKonto.route
             ) {
