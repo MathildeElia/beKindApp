@@ -1,5 +1,6 @@
 package com.example.kind1
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Card
@@ -14,6 +15,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
