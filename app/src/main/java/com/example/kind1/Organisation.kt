@@ -26,4 +26,11 @@ fun Organisation(navController: NavController){
                 .size(width = 50.dp, height = 30.dp)
         )
     }
+    val name = "etellerandet"
+    /*
+    val logo
+    val picture
+    val oneliner
+    val information
+    */
 }
