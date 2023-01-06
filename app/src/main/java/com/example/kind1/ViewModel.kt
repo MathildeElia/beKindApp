@@ -34,16 +34,23 @@ class Viewmodel: ViewModel() {
 
 
     fun addToDatabase(user: String, pass: String, email: String) {
-        viewModelScope.launch {
+
             val db = Firebase.firestore
+
+            val newUser2 = User(user,pass,email)
 
             val newUser = hashMapOf(
                 "username" to user,
                 "password" to pass,
                 "email" to email
             )
+            //db.document().set(newUser2)
             db.collection("users")
                 .add(newUser)
+               /*
+            db.collection("users")
+                .add(newUser)
+
                 .addOnSuccessListener { documentReference ->
                     Log.d(
                         ContentValues.TAG,
@@ -56,7 +63,8 @@ class Viewmodel: ViewModel() {
                 .addOnCompleteListener {
                     Log.d("Test", "Is success: ${it.isSuccessful}")
                 }
-        }
+                     */
+
     }
 
 }
