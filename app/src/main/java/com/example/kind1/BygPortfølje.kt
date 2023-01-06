@@ -1,8 +1,6 @@
 package com.example.kind1
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -42,6 +40,9 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
                         navController.navigate(Screen.Portfølje.route)
                     }
                     .size(width = 50.dp, height = 30.dp)
+                    .verticalScroll(rememberScrollState())
+                    .weight(weight =1f, fill = false)
+
             )
             Spacer(modifier = Modifier.height(10.dp))
             Text(
@@ -211,6 +212,77 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
                     Spacer(modifier = Modifier.requiredHeight(32.dp))
                     Text(
                         text = "Miljø",
+                        modifier = Modifier
+                            .padding(15.dp, 15.dp, 0.dp, 0.dp),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Text(
+                        text = "Hjælp med at give vores",
+                        modifier = Modifier
+                            .padding(15.dp, 50.dp, 0.dp, 0.dp),
+                        fontSize = 15.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Text(
+                        text = "natur en gave",
+                        modifier = Modifier
+                            .padding(15.dp, 70.dp, 0.dp, 0.dp),
+                        fontSize = 15.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Button(
+                        onClick = {
+                            navController.navigate(Screen.Template.route)
+                        },
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
+                        modifier = Modifier
+                            .padding(15.dp, 100.dp, 0.dp, 0.dp)
+                            .wrapContentSize()
+                    )
+                    {
+                        Text(
+                            "Tilføj Tema",
+                            textAlign = TextAlign.Center,
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                    }
+
+                    Button(
+                        onClick = {
+                            navController.navigate(Screen.Template.route)
+                        },
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
+                        modifier = Modifier
+                            .padding(150.dp, 100.dp, 0.dp, 0.dp)
+                            .wrapContentSize()
+                    )
+                    {
+                        Text(
+                            " Læs mere ",
+                            textAlign = TextAlign.Center,
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.height(40.dp))
+                //Forth White Box
+                Box(
+                    modifier = Modifier
+                        .size(275.dp, 165.dp)
+                        .clip(shape)
+                        .background(Color.White)
+                )
+                {
+                    Spacer(modifier = Modifier.requiredHeight(32.dp))
+                    Text(
+                        text = "Dyrevelfærd",
                         modifier = Modifier
                             .padding(15.dp, 15.dp, 0.dp, 0.dp),
                         fontWeight = FontWeight.Bold,
