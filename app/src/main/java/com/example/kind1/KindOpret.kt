@@ -44,11 +44,11 @@ fun KindSignUp(navController: NavController) {
     {
         Spacer(modifier = Modifier.height(10.dp))
         Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
-        modifier = Modifier
-            .clickable {
-                navController.navigate(Screen.KindFront.route)
-            }
-            .size(width = 50.dp, height = 30.dp)
+            modifier = Modifier
+                .clickable {
+                    navController.navigate(Screen.KindFront.route)
+                }
+                .size(width = 50.dp, height = 30.dp)
         )
         Image(
             painter = painterResource(id = R.drawable.bekindforside), contentDescription = null,
@@ -98,10 +98,10 @@ fun KindSignUp(navController: NavController) {
         Button(
             onClick = {
 
-                if (viewmodel.validInputSign(user, pass,email)) {
-                viewmodel.addToDatabase(user,pass,email)
+                if (viewmodel.validInputSign(user, pass, email)) {
+                    viewmodel.addToDatabase(user, pass, email)
+                    navController.navigate(Screen.KindStart.withArgs(user))
                 }
-                navController.navigate(Screen.KindStart.withArgs(user))
                 wrong = "Husk at fylde både Brugernavn, Kodeord og Email korrekt"
 
             },
