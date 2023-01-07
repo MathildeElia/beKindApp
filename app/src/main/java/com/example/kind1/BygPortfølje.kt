@@ -31,7 +31,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
             contentDescription = null,
             modifier = Modifier.fillMaxSize()
         )
-        Column {
+        Column (modifier = Modifier.verticalScroll(rememberScrollState())){
             val shape = RoundedCornerShape(12.dp)
             Spacer(modifier = Modifier.height(10.dp))
             Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
@@ -41,7 +41,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
                     }
                     .size(width = 50.dp, height = 30.dp)
                     .verticalScroll(rememberScrollState())
-                    .weight(weight =1f, fill = false)
+                    .weight(weight = 1f, fill = false)
 
             )
             Spacer(modifier = Modifier.height(10.dp))
@@ -344,6 +344,14 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
                 }
 
             }
+            Spacer(modifier = Modifier.height(200.dp))
+            Text(
+                " Læs mere ",
+                textAlign = TextAlign.Center,
+                color = Color.White,
+                fontSize = 12.sp
+            )
+
         }
     }
 }
