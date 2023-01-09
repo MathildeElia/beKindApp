@@ -1,4 +1,4 @@
-package com.example.kind1;
+package com.example.kind1.data;
 
 public class User {
     String name, email, password;
