@@ -1,14 +1,7 @@
 package com.example.kind1
 
-import android.graphics.Color
-import android.view.Surface
-import android.widget.Toast
-import androidx.compose.material.*
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.graphics.Color.Companion.White
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.style.TextAlign
 import androidx.lifecycle.ViewModel
 import com.example.kind1.data.Organisation
 import com.example.kind1.data.User
