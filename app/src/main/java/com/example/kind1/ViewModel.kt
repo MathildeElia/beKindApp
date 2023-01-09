@@ -37,27 +37,16 @@ class Viewmodel: ViewModel() {
 
 
     fun addToDatabase(user: String, pass: String, email: String) {
-            val db = Firebase.firestore.collection("users")
-            //val db = Firebase.database
-            val ref = FirebaseFirestore.getInstance().document("users")
-            val newUser2 = hashMapOf(
-                "username" to "user",
-                "password" to "pass",
-                "email" to "email"
-            )
+            val db = Firebase.firestore
+
             val newUser = hashMapOf(
                 "username" to user,
                 "password" to pass,
                 "email" to email
             )
-            //db.document().set(newUser2)
-            //db.document("users").set(newUser)
-
-            //db.document("users").set(newUser2)
 
 
-            ref.set(newUser)
-        /*
+
      db.collection("users")
          .add(newUser)
 
@@ -73,7 +62,7 @@ class Viewmodel: ViewModel() {
          .addOnCompleteListener {
              Log.d("Test", "Is success: ${it.isSuccessful}")
          }
-              */
+
 
     }
 
