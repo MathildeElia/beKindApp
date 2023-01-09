@@ -8,6 +8,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
@@ -33,37 +35,45 @@ class Viewmodel: ViewModel() {
     }
 
 
+
     fun addToDatabase(user: String, pass: String, email: String) {
-
-            val db = Firebase.firestore
-
-            val newUser2 = User(user,pass,email)
-
+            val db = Firebase.firestore.collection("users")
+            //val db = Firebase.database
+            val ref = FirebaseFirestore.getInstance().document("users")
+            val newUser2 = hashMapOf(
+                "username" to "user",
+                "password" to "pass",
+                "email" to "email"
+            )
             val newUser = hashMapOf(
                 "username" to user,
                 "password" to pass,
                 "email" to email
             )
             //db.document().set(newUser2)
-            db.collection("users")
-                .add(newUser)
-               /*
-            db.collection("users")
-                .add(newUser)
+            //db.document("users").set(newUser)
 
-                .addOnSuccessListener { documentReference ->
-                    Log.d(
-                        ContentValues.TAG,
-                        "DocumentSnapshot added with ID: ${documentReference.id}"
-                    )
-                }
-                .addOnFailureListener { e ->
-                    Log.w(ContentValues.TAG, "Error adding document", e)
-                }
-                .addOnCompleteListener {
-                    Log.d("Test", "Is success: ${it.isSuccessful}")
-                }
-                     */
+            //db.document("users").set(newUser2)
+
+
+            ref.set(newUser)
+        /*
+     db.collection("users")
+         .add(newUser)
+
+         .addOnSuccessListener { documentReference ->
+             Log.d(
+                 ContentValues.TAG,
+                 "DocumentSnapshot added with ID: ${documentReference.id}"
+             )
+         }
+         .addOnFailureListener { e ->
+             Log.w(ContentValues.TAG, "Error adding document", e)
+         }
+         .addOnCompleteListener {
+             Log.d("Test", "Is success: ${it.isSuccessful}")
+         }
+              */
 
     }
 
