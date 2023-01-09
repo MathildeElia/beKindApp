@@ -50,7 +50,7 @@ fun PortføljeNy(navController: NavController) {
         Column(modifier = Modifier.padding(10.dp)) {
 
             Text(
-                "\t\tPortfølje",
+                "\t\tPortefølje",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF315C36)
