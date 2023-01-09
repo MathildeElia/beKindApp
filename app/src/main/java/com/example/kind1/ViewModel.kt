@@ -2,50 +2,49 @@ package com.example.kind1
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.kind1.data.Organisation
-import com.example.kind1.data.User
+import androidx.lifecycle.viewModelScope
+import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.lang.reflect.Modifier
 
-class Viewmodel : ViewModel() {
+class Viewmodel: ViewModel() {
 
     var username = mutableStateOf("")
     var working = mutableStateOf("")
 
 
-    fun validInput(user: String, pass: String): Boolean {
-        if (user == "" || pass == "") {
+    fun validInput(user : String, pass : String): Boolean{
+        if(user == "" || pass == ""){
             return false
         }
         return true
     }
 
-    fun validInputSign(user: String, pass: String, email: String): Boolean {
-        if (user == "" || pass == "" || !(email.contains("@gmail.com") || email.contains("@gmail.dk"))) {
+    fun validInputSign(user : String, pass : String,email : String): Boolean{
+        if(user == "" || pass == "" || !(email.contains("@gmail.com") || email.contains("@gmail.dk"))){
             return false
         }
         return true
     }
+
 
 
     fun addToDatabase(user: String, pass: String, email: String) {
+            val db = Firebase.firestore
 
-        val db = Firebase.firestore
+            val newUser = hashMapOf(
+                "username" to user,
+                "password" to pass,
+                "email" to email
+            )
 
-        val newUser2 = User(user, pass, email)
 
-        val newUser = hashMapOf(
-            "username" to user,
-            "password" to pass,
-            "email" to email
-        )
-        //db.document().set(newUser2)
-        db.collection("users")
-            .add(newUser)
-        /*
+
      db.collection("users")
          .add(newUser)
 
@@ -61,7 +60,7 @@ class Viewmodel : ViewModel() {
          .addOnCompleteListener {
              Log.d("Test", "Is success: ${it.isSuccessful}")
          }
-              */
+
 
     }
 

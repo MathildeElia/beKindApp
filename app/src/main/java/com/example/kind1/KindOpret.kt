@@ -1,5 +1,6 @@
 package com.example.kind1
 
+import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.compose.foundation.Image
@@ -98,10 +99,15 @@ fun KindSignUp(navController: NavController) {
         Button(
             onClick = {
 
+
+
+
                 if (viewmodel.validInputSign(user, pass, email)) {
                     viewmodel.addToDatabase(user, pass, email)
                     navController.navigate(Screen.KindStart.withArgs(user))
                 }
+
+
                 wrong = "Husk at fylde både Brugernavn, Kodeord og Email korrekt"
 
             },
