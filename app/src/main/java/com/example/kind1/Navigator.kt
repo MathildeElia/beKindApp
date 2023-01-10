@@ -38,7 +38,7 @@ fun Navigation() {
                 KindSignUp(navController = navController)
             }
             composable(
-                route = Screen.MakeDonatinon.route
+                route = Screen.MakeDonation.route
             ) {
                 //MakeDonationScreen(navController = navController)
             }
@@ -66,6 +66,9 @@ fun Navigation() {
             }
             composable(route = Screen.Sikkerhed.route) {
                 Menu(navController = navController)
+            }
+            composable(route = Screen.Miljo.route) {
+                Miljø(navController = navController)
             }
 
 

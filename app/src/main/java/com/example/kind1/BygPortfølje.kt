@@ -253,7 +253,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Template.route)
+                            navController.navigate(Screen.Miljo.route)
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
