@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun Miljø (modifier: Modifier = Modifier, navController: NavController) {
+fun Sundhed (modifier: Modifier = Modifier, navController: NavController) {
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -42,7 +42,7 @@ fun Miljø (modifier: Modifier = Modifier, navController: NavController) {
 
             Spacer(modifier = Modifier.height(10.dp))
             Text(
-                text = "\t\tMiljø",
+                text = "\t\tSundhed",
                 modifier = Modifier,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
@@ -53,7 +53,7 @@ fun Miljø (modifier: Modifier = Modifier, navController: NavController) {
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
-                text = "\t\tStøt organisationer som gør ",
+                text = "\t\t2 Linjers Random Text ",
                 modifier = Modifier,
                 fontSize = 18.sp,
                 //color = Color(0xFF034A0B),
@@ -61,7 +61,7 @@ fun Miljø (modifier: Modifier = Modifier, navController: NavController) {
             )
 
             Text(
-                text = "\t\tsamfundet mere bæredygtigt.",
+                text = "\t\t2 Linjers Random Text.",
                 modifier = Modifier,
                 fontSize = 18.sp,
                 color = Color(0xFF315C36)
