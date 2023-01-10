@@ -35,10 +35,10 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
                 .clickable {
                     navController.navigate(Screen.KindFront.route)
                 }
-                .size(width = 40.dp, height = 20.dp)
+                .size(width = 50.dp, height = 30.dp)
         )
 
-        Spacer(modifier = Modifier.width(290.dp))
+        Spacer(modifier = Modifier.width(298.dp))
     Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
         modifier = Modifier.size(width = 40.dp, height = 20.dp)
             .clickable {
