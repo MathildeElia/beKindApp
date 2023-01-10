@@ -45,6 +45,8 @@ fun KindStart(username: String?, navController: NavController) {
         )
         Column {
             val shape = RoundedCornerShape(12.dp)
+            Spacer(modifier = Modifier.height(5.dp))
+            Row{
             Spacer(modifier = Modifier.height(10.dp))
             Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
                 modifier = Modifier
@@ -53,6 +55,18 @@ fun KindStart(username: String?, navController: NavController) {
                     }
                     .size(width = 50.dp, height = 30.dp)
             )
+            Spacer(modifier = Modifier.width(290.dp))
+            Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
+                modifier = Modifier
+                    .clickable {
+                        navController.navigate(Screen.Menu.route)
+                    }
+                    .size(width = 40.dp, height = 20.dp)
+                    .wrapContentSize(Alignment.TopEnd)
+            )
+            }
+
+
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = "\t\tHej $username!",
@@ -169,5 +183,7 @@ fun KindStart(username: String?, navController: NavController) {
             }
 
         }
-    }
 }
+    }
+
+

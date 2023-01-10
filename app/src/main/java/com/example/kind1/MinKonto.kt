@@ -1,8 +1,6 @@
 package com.example.kind1
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -10,24 +8,21 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.kind1.ui.theme.DarkGreen
 
 @Composable
 fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
     Image(
         contentScale = ContentScale.FillBounds,
-        painter = painterResource(id = R.drawable.img),
+        painter = painterResource(id = R.drawable.bekindbackground3),
         contentDescription = null,
         modifier = Modifier.fillMaxSize()
     )
@@ -48,7 +43,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
             Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate(Screen.KindFront.route)
+                        navController.navigate(Screen.Menu.route)
                     }
                     .size(width = 40.dp, height = 20.dp)
                     .wrapContentSize(Alignment.TopEnd)
@@ -82,7 +77,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
                 onClick = {
                     navController.navigate(Screen.KindLogin.route)
 
-                }, modifier = Modifier.fillMaxWidth(), elevation = null,
+                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
                 colors = ButtonDefaults.buttonColors
                     (backgroundColor = Color.Transparent)
             ) {
@@ -104,7 +99,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
             Button(
                 onClick = {
                     navController.navigate(Screen.KindSignUp.route)
-                }, modifier = Modifier.fillMaxWidth(), elevation = null,
+                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
                 colors = ButtonDefaults.buttonColors
                     (backgroundColor = Color.Transparent)
             ) {
@@ -114,7 +109,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
                         contentDescription = "ikon2",
                         modifier = Modifier
                             .size(width = 50.dp, height = 30.dp)
-                            .wrapContentWidth(Alignment.Start)
+                           // .wrapContentWidth(Alignment.Start)
                     )
                     Text(
                         stringResource(R.string.tidligere),
@@ -127,7 +122,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
             Button(
                 onClick = {
                     navController.navigate(Screen.KindStart.withArgs("Gæst"))
-                }, modifier = Modifier.fillMaxWidth(), elevation = null,
+                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
                 colors = ButtonDefaults.buttonColors
                     (backgroundColor = Color.Transparent)
             ) {
@@ -146,7 +141,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
             Button(
                 onClick = {
                     navController.navigate(Screen.KindStart.withArgs("Gæst"))
-                }, modifier = Modifier.fillMaxWidth(), elevation = null,
+                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
                 colors = ButtonDefaults.buttonColors
                     (backgroundColor = Color.Transparent)
             ) {
@@ -166,7 +161,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
             Button(
                 onClick = {
                     navController.navigate(Screen.KindStart.withArgs("Gæst"))
-                }, modifier = Modifier.fillMaxWidth(), elevation = null,
+                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
                 colors = ButtonDefaults.buttonColors
                     (backgroundColor = Color.Transparent)
             ) {
@@ -185,7 +180,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
             Button(
                 onClick = {
                     navController.navigate(Screen.KindStart.withArgs("Gæst"))
-                }, modifier = Modifier.fillMaxWidth(), elevation = null,
+                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
                 colors = ButtonDefaults.buttonColors
                     (backgroundColor = Color.Transparent)
             ) {
@@ -204,7 +199,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
             Button(
                 onClick = {
                     navController.navigate(Screen.KindStart.withArgs("Gæst"))
-                }, modifier = Modifier.fillMaxWidth(), elevation = null,
+                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
                 colors = ButtonDefaults.buttonColors
                     (backgroundColor = Color.Transparent)
             ) {

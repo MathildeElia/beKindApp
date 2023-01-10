@@ -12,6 +12,7 @@ sealed class Screen(val route : String) {
     object Template : Screen("template")
     object Portfølje : Screen("portfølje")
     object BygPortfølje : Screen("BygPortfølje")
+    object Menu : Screen("Menu")
 
 
     fun withArgs(vararg args : String): String{

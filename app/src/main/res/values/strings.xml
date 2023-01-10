@@ -11,6 +11,14 @@
     <string name ="hjælp">Hjælp</string>
     <string name ="problem">Rapportér teknisk problem</string>
     <string name ="logaf">Log af</string>
+    <string name ="dinportefølje">- Din Portefølje</string>
+    <string name ="bygportefølje">- Byg din portefølje</string>
+    <string name ="socialtudsat">- Socialt udsatte</string>
+    <string name ="miljø">- Miljø</string>
+    <string name ="sundhed">- Sundhed</string>
+    <string name ="dyrevelfærd">- Dyrevelfærd</string>
+    <string name ="minkonto">- Min konto</string>
+    <string name ="omos">- Om os</string>
 
 
 </resources>
