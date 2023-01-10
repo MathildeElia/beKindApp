@@ -118,7 +118,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Template.route)
+                            navController.navigate(Screen.SocialtUdsatte.route)
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
@@ -169,7 +169,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Sundhed.route)
+                            navController.navigate(Screen.Template.route)
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
@@ -184,7 +184,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Template.route)
+                            navController.navigate(Screen.Sundhed.route)
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
@@ -324,7 +324,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Template.route)
+                            navController.navigate(Screen.Dyrevelfærd.route)
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
