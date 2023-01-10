@@ -35,7 +35,7 @@ fun Miljø (modifier: Modifier = Modifier, navController: NavController) {
             Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate(Screen.KindFront.route)
+                        navController.navigate(Screen.BygPortfølje.route)
                     }
                     .size(width = 50.dp, height = 30.dp)
             )
