@@ -1,11 +1,14 @@
 package com.example.kind1
 
+import android.content.ContentValues
+import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.kind1.data.Organisation
 import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -68,13 +71,13 @@ class Viewmodel: ViewModel() {
         // A surface container using the 'background' color from the theme
 
         // on below line creating variable for list of data.
-        var courseList = mutableStateListOf<Organisation?>()
+        var organisationList = mutableStateListOf<Organisation?>()
         // on below line creating variable for freebase database
         // and database reference.
         var db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
         // on below line getting data from our database
-        db.collection("Courses").get()
+        db.collection("Organisation").get()
             .addOnSuccessListener { queryDocumentSnapshots ->
                 // after getting the data we are calling
                 // on success method
@@ -92,8 +95,7 @@ class Viewmodel: ViewModel() {
                         val c: Organisation? = d.toObject(Organisation::class.java)
                         // and we will pass this object class inside
                         // our arraylist which we have created for list view.
-                        courseList.add(c)
-
+                        organisationList.add(c)
                     }
                 } /* else {
                     // if the snapshot is empty we are displaying

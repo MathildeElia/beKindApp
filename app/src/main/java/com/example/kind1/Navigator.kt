@@ -18,73 +18,76 @@ import androidx.navigation.navArgument
 fun Navigation() {
     val navController = rememberNavController()
 
-        NavHost(
-            navController = navController,
-            startDestination = Screen.KindFront.route
-        ) {
-            composable(route = Screen.KindFront.route) {
-                KindFront(navController = navController)
-            }
-            composable(
-                route = Screen.KindLogin.route
-            ) {
-                KindLogin(navController = navController)
-            }
-            composable(
-                route = Screen.KindSignUp.route
-            ) {
-                KindSignUp(navController = navController)
-            }
-            composable(
-                route = Screen.MakeDonatinon.route
-            ) {
-                //MakeDonationScreen(navController = navController)
-            }
-            composable(
-                route = Screen.Confirmation.route
-            ) {
-                ConfirmationScreen(navController = navController)
-            }
-            composable(route = Screen.Template.route) {
-                TemplateScreen(navController = navController)
-            }
-            composable(route = Screen.Portfølje.route) {
-                PortføljeNy(navController = navController)
-            }
-            composable(
-                route = Screen.MinKonto.route
-            ) {
-              MinKonto(navController = navController)
-            }
-
-
-            composable(
-                route = Screen.KindStart.route + "/{username}", arguments = listOf(
-                    navArgument("username") {
-                        type = NavType.StringType
-                        defaultValue = "Seby"
-                        nullable = true
-                    }
-                )
-            ) { entry ->
-                KindStart(
-                    username = entry.arguments?.getString("username"),
-                    navController = navController
-                )
-            }
-            composable(
-                route = Screen.KindStart.route + "/{username}", arguments = listOf(
-                    navArgument("username") {
-                        type = NavType.StringType
-                        defaultValue = "Seby"
-                        nullable = true
-                    }
-                )
-            ) { entry ->
-                KindStart(
-                    username = entry.arguments?.getString("username"),
-                    navController = navController
-                )
-            }
+    NavHost(
+        navController = navController,
+        startDestination = Screen.KindFront.route
+    ) {
+        composable(route = Screen.KindFront.route) {
+            KindFront(navController = navController)
         }
+        composable(
+            route = Screen.KindLogin.route
+        ) {
+            KindLogin(navController = navController)
+        }
+        composable(
+            route = Screen.KindSignUp.route
+        ) {
+            KindSignUp(navController = navController)
+        }
+        composable(
+            route = Screen.MakeDonatinon.route
+        ) {
+            //MakeDonationScreen(navController = navController)
+        }
+        composable(
+            route = Screen.Confirmation.route
+        ) {
+            ConfirmationScreen(navController = navController)
+        }
+        composable(route = Screen.Template.route) {
+            TemplateScreen(navController = navController)
+        }
+        composable(route = Screen.Portfølje.route) {
+            PortføljeNy(navController = navController)
+        }
+        composable(route = Screen.Organisation.route) {
+            Organisation(navController = navController)
+        }
+        composable(
+            route = Screen.MinKonto.route
+        ) {
+            MinKonto(navController = navController)
+        }
+
+
+        composable(
+            route = Screen.KindStart.route + "/{username}", arguments = listOf(
+                navArgument("username") {
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )
+        ) { entry ->
+            KindStart(
+                username = entry.arguments?.getString("username"),
+                navController = navController
+            )
+        }
+        composable(
+            route = Screen.KindStart.route + "/{username}", arguments = listOf(
+                navArgument("username") {
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )
+        ) { entry ->
+            KindStart(
+                username = entry.arguments?.getString("username"),
+                navController = navController
+            )
+        }
+    }
 }

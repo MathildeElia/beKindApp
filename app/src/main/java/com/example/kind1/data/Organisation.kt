@@ -4,4 +4,5 @@ data class Organisation(
     // on below line creating variables.
     var name: String? = "",
     var description: String? = "",
+    var theme: String? = "",
 )

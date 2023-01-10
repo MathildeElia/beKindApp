@@ -14,6 +14,7 @@ sealed class Screen(val route : String) {
     object MinKonto : Screen ("MinKonto")
     object Template : Screen("template")
     object Portfølje : Screen("portfølje")
+    object Organisation : Screen("organisation")
 
 
     fun withArgs(vararg args : String): String{
