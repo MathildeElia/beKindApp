@@ -31,16 +31,17 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
             contentDescription = null,
             modifier = Modifier.fillMaxSize()
         )
-        Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
-            modifier = Modifier
-                .clickable {
-                    navController.navigate(Screen.Portfølje.route)
-                }
-                .size(width = 50.dp, height = 30.dp)
-        )
+
         Column (modifier = Modifier.verticalScroll(rememberScrollState())){
             val shape = RoundedCornerShape(12.dp)
             Spacer(modifier = Modifier.height(10.dp))
+            Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
+                modifier = Modifier
+                    .clickable {
+                        navController.navigate(Screen.Portfølje.route)
+                    }
+                    .size(width = 50.dp, height = 30.dp)
+            )
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = "\t\tByg din Portfølje",
