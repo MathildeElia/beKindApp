@@ -35,12 +35,14 @@ fun KindFront(modifier: Modifier = Modifier,navController: NavController) {
                 painter = painterResource(R.drawable.bekindtitel),
                 contentDescription = "titel"
             )
+            Spacer(modifier = Modifier.height(5.dp))
             Text(
                 text = text1,
                 fontSize = 24.sp,
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentWidth(Alignment.CenterHorizontally)
+
             )
 
             Image(

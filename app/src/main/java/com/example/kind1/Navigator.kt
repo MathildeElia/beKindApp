@@ -65,7 +65,7 @@ fun Navigation() {
                 Menu(navController = navController)
             }
             composable(route = Screen.Sikkerhed.route) {
-                Menu(navController = navController)
+                Sikkerhed(navController = navController)
             }
             composable(route = Screen.Miljo.route) {
                 Miljø(navController = navController)

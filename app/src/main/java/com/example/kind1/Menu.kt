@@ -28,7 +28,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         modifier = Modifier.fillMaxSize()
     )
     Column {
-        Spacer(modifier = Modifier.height(5.dp).width(5.dp))
+        Spacer(modifier = Modifier.height(5.dp).width(300.dp))
     Row {
         Image(painter = painterResource(id = R.drawable.bekindtitel), contentDescription = null,
             modifier = Modifier
@@ -37,7 +37,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
                 }
                 .size(width = 50.dp, height = 30.dp)
         )
-
+/*
         Spacer(modifier = Modifier.width(298.dp))
     Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
         modifier = Modifier.size(width = 40.dp, height = 20.dp)
@@ -46,6 +46,8 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
             }
             .size(width = 40.dp, height = 20.dp)
     )
+
+ */
 }
         Text(
             text = "Menu",
@@ -116,7 +118,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         }
         Button(
             onClick = {
-            //    navController.navigate(Screen.Portfølje.route)
+                //navController.navigate(Screen.miljø.route)
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)

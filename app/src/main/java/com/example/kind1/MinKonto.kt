@@ -1,6 +1,7 @@
 package com.example.kind1
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,36 +21,39 @@ import androidx.navigation.NavController
 
 @Composable
 fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
-    Image(
-        contentScale = ContentScale.FillBounds,
-        painter = painterResource(id = R.drawable.bekindbackground3),
-        contentDescription = null,
-        modifier = Modifier.fillMaxSize()
-    )
+    Card(elevation = 2.dp) {
+        Image(
+            contentScale = ContentScale.FillBounds,
+            painter = painterResource(id = R.drawable.forside),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize()
+        )
 
-    Column {
-        Spacer(modifier = Modifier.height(5.dp))
-        Row {
-            val shape = RoundedCornerShape(12.dp)
-            Spacer(modifier = Modifier.height(10.dp))
-            Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
-                modifier = Modifier
-                    .clickable {
-                        navController.navigate(Screen.KindFront.route)
-                    }
-                    .size(width = 50.dp, height = 30.dp)
-            )
-            Spacer(modifier = Modifier.width(290.dp))
-            Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
-                modifier = Modifier
-                    .clickable {
-                        navController.navigate(Screen.Menu.route)
-                    }
-                    .size(width = 40.dp, height = 20.dp)
-                    .wrapContentSize(Alignment.TopEnd)
-            )
-        }
-        //Min konto og brugernavn
+        Column {
+            Spacer(modifier = Modifier.height(5.dp))
+            Row {
+                val shape = RoundedCornerShape(12.dp)
+                Spacer(modifier = Modifier.height(10.dp))
+                Image(painter = painterResource(id = R.drawable.backbutton),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .clickable {
+                            navController.navigate(Screen.Menu.route)
+                        }
+                        .size(width = 50.dp, height = 30.dp)
+                )
+                Spacer(modifier = Modifier.width(290.dp))
+                Image(painter = painterResource(id = R.drawable.menuicon),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .clickable {
+                            navController.navigate(Screen.Menu.route)
+                        }
+                        .size(width = 40.dp, height = 20.dp)
+                        .wrapContentSize(Alignment.TopEnd)
+                )
+            }
+            //Min konto og brugernavn
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = text2,
@@ -71,35 +75,53 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
                     .wrapContentWidth(Alignment.Start)
             )
 
-        //listen af muligheder ved min konto
+            //listen af muligheder ved min konto
             Spacer(modifier = Modifier.height(50.dp))
-            Button(
-                onClick = {
-                    navController.navigate(Screen.MakeDonation.route)
-
-                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
-                colors = ButtonDefaults.buttonColors
-                    (backgroundColor = Color.Transparent)
+            Box(
+                modifier = Modifier
+                    .size(width = 400.dp, height = 60.dp)
+                    //.clip(shape = RoundedCornerShape(15.dp))
+                    .background(Color.White)
+                    .padding(horizontal = 10.dp)
             ) {
-                Image(
-                    painter = painterResource(R.drawable.ikon1),
-                    contentDescription = "ikon1",
-                    modifier = Modifier.size(width = 50.dp, height = 30.dp)
-                )
+                Button(
+                    onClick = {
+                        navController.navigate(Screen.MakeDonation.route)
 
-                Text(
-                    stringResource(R.string.kommende),
-                    textAlign = TextAlign.Left,
-                    fontSize = 18.sp,
-                    fontFamily = FontFamily.Serif
-                )
+                    },
+                    modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
+                    elevation = null,
+                    colors = ButtonDefaults.buttonColors
+                        (backgroundColor = Color.Transparent)
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.ikon1),
+                        contentDescription = "ikon1",
+                        modifier = Modifier.size(width = 50.dp, height = 30.dp)
+                    )
 
+                    Text(
+                        stringResource(R.string.kommende),
+                        textAlign = TextAlign.Left,
+                        fontSize = 18.sp,
+                        fontFamily = FontFamily.Serif
+                    )
+
+                }
             }
-
+            Box(
+                modifier = Modifier
+                    .size(width = 400.dp, height = 60.dp)
+                    //.clip(shape = RoundedCornerShape(15.dp))
+                    .background(Color.White)
+                    .padding(horizontal = 10.dp)
+            ){
             Button(
                 onClick = {
                     navController.navigate(Screen.KindSignUp.route)
-                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
+                },
+                modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
+                elevation = null,
                 colors = ButtonDefaults.buttonColors
                     (backgroundColor = Color.Transparent)
             ) {
@@ -109,7 +131,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
                         contentDescription = "ikon2",
                         modifier = Modifier
                             .size(width = 50.dp, height = 30.dp)
-                           // .wrapContentWidth(Alignment.Start)
+                        // .wrapContentWidth(Alignment.Start)
                     )
                     Text(
                         stringResource(R.string.tidligere),
@@ -118,121 +140,177 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
                     )
                 }
             }
+            }
             Spacer(modifier = Modifier.height(15.dp))
-            Button(
-                onClick = {
-                    navController.navigate(Screen.KindStart.withArgs("Gæst"))
-                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
-                colors = ButtonDefaults.buttonColors
-                    (backgroundColor = Color.Transparent)
+            Box(
+                modifier = Modifier
+                    .size(width = 400.dp, height = 60.dp)
+                    //.clip(shape = RoundedCornerShape(15.dp))
+                    .background(Color.White)
+                    .padding(horizontal = 10.dp)
             ) {
-                Image(
-                    painter = painterResource(R.drawable.ikon3),
-                    contentDescription = "ikon3",
-                    modifier = Modifier.size(width = 50.dp, height = 30.dp)
-                )
-                Text(
-                    stringResource(R.string.oplysninger),
-                    fontSize = 18.sp,
-                    fontFamily = FontFamily.Serif
-                )
+                Button(
+                    onClick = {
+                        navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                    },
+                    modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
+                    elevation = null,
+                    colors = ButtonDefaults.buttonColors
+                        (backgroundColor = Color.Transparent)
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.ikon3),
+                        contentDescription = "ikon3",
+                        modifier = Modifier.size(width = 50.dp, height = 30.dp)
+                    )
+                    Text(
+                        stringResource(R.string.oplysninger),
+                        fontSize = 18.sp,
+                        fontFamily = FontFamily.Serif
+                    )
+                }
             }
             Spacer(modifier = Modifier.height(14.dp))
-            Button(
-                onClick = {
-                    navController.navigate(Screen.KindStart.withArgs("Gæst"))
-                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
-                colors = ButtonDefaults.buttonColors
-                    (backgroundColor = Color.Transparent)
+            Box(
+                modifier = Modifier
+                    .size(width = 400.dp, height = 60.dp)
+                    //.clip(shape = RoundedCornerShape(15.dp))
+                    .background(Color.White)
+                    .padding(horizontal = 10.dp)
             ) {
-                Image(
-                    painter = painterResource(R.drawable.ikon4),
-                    contentDescription = "ikon4",
-                    modifier = Modifier.size(width = 50.dp, height = 30.dp)
-                )
+                Button(
+                    onClick = {
+                        navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                    },
+                    modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
+                    elevation = null,
+                    colors = ButtonDefaults.buttonColors
+                        (backgroundColor = Color.Transparent)
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.ikon4),
+                        contentDescription = "ikon4",
+                        modifier = Modifier.size(width = 50.dp, height = 30.dp)
+                    )
 
-                Text(
-                    stringResource(R.string.notifikationer),
-                    fontSize = 18.sp,
-                    fontFamily = FontFamily.Serif
-                )
+                    Text(
+                        stringResource(R.string.notifikationer),
+                        fontSize = 18.sp,
+                        fontFamily = FontFamily.Serif
+                    )
+                }
             }
-
-            Button(
-                onClick = {
-                    navController.navigate(Screen.Sikkerhed.route)
-                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
-                colors = ButtonDefaults.buttonColors
-                    (backgroundColor = Color.Transparent)
+            Box(
+                modifier = Modifier
+                    .size(width = 400.dp, height = 60.dp)
+                    //.clip(shape = RoundedCornerShape(15.dp))
+                    .background(Color.White)
+                    .padding(horizontal = 10.dp)
             ) {
-                Image(
-                    painter = painterResource(R.drawable.ikon5),
-                    contentDescription = "ikon5",
-                    modifier = Modifier.size(width = 50.dp, height = 30.dp)
-                )
-                Text(
-                    stringResource(R.string.sikkerhed),
-                    fontSize = 18.sp,
-                    fontFamily = FontFamily.Serif
-                )
+                Button(
+                    onClick = {
+                        navController.navigate(Screen.Sikkerhed.route)
+                    },
+                    modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
+                    elevation = null,
+                    colors = ButtonDefaults.buttonColors
+                        (backgroundColor = Color.Transparent)
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.ikon5),
+                        contentDescription = "ikon5",
+                        modifier = Modifier.size(width = 50.dp, height = 30.dp)
+                    )
+                    Text(
+                        stringResource(R.string.sikkerhed),
+                        fontSize = 18.sp,
+                        fontFamily = FontFamily.Serif
+                    )
+                }
             }
             Spacer(modifier = Modifier.height(20.dp))
-            Button(
-                onClick = {
-                    navController.navigate(Screen.KindStart.withArgs("Gæst"))
-                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
-                colors = ButtonDefaults.buttonColors
-                    (backgroundColor = Color.Transparent)
+            Box(
+                modifier = Modifier
+                    .size(width = 400.dp, height = 60.dp)
+                    //.clip(shape = RoundedCornerShape(15.dp))
+                    .background(Color.White)
+                    .padding(horizontal = 10.dp)
             ) {
-                Image(
-                    painter = painterResource(R.drawable.ikon6),
-                    contentDescription = "ikon6",
-                    modifier = Modifier.size(width = 50.dp, height = 30.dp)
-                )
-                Text(
-                    stringResource(R.string.hjælp),
-                    fontSize = 18.sp,
-                    fontFamily = FontFamily.Serif
-                )
+                Button(
+                    onClick = {
+                        navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                    },
+                    modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
+                    elevation = null,
+                    colors = ButtonDefaults.buttonColors
+                        (backgroundColor = Color.Transparent)
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.ikon6),
+                        contentDescription = "ikon6",
+                        modifier = Modifier.size(width = 50.dp, height = 30.dp)
+                    )
+                    Text(
+                        stringResource(R.string.hjælp),
+                        fontSize = 18.sp,
+                        fontFamily = FontFamily.Serif
+                    )
+                }
             }
-
-            Button(
-                onClick = {
-                    navController.navigate(Screen.KindStart.withArgs("Gæst"))
-                }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
-                colors = ButtonDefaults.buttonColors
-                    (backgroundColor = Color.Transparent)
+            Box(
+                modifier = Modifier
+                    .size(width = 400.dp, height = 60.dp)
+                    //.clip(shape = RoundedCornerShape(15.dp))
+                    .background(Color.White)
+                    .padding(horizontal = 10.dp)
             ) {
-                Image(
-                    painter = painterResource(R.drawable.ikon7),
-                    contentDescription = "ikon7",
-                    modifier = Modifier.size(width = 50.dp, height = 30.dp)
-                )
-                Text(
-                    stringResource(R.string.problem),
-                    fontSize = 18.sp,
-                    fontFamily = FontFamily.Serif
-                )
+                Button(
+                    onClick = {
+                        navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                    },
+                    modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
+                    elevation = null,
+                    colors = ButtonDefaults.buttonColors
+                        (backgroundColor = Color.Transparent)
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.ikon7),
+                        contentDescription = "ikon7",
+                        modifier = Modifier.size(width = 50.dp, height = 30.dp)
+                    )
+                    Text(
+                        stringResource(R.string.problem),
+                        fontSize = 18.sp,
+                        fontFamily = FontFamily.Serif
+                    )
+                }
             }
-
             Spacer(modifier = Modifier.height(35.dp))
-
-            Button(
-                onClick = {
-                    navController.navigate(Screen.KindStart.withArgs("Gæst"))
-                }, modifier = Modifier.fillMaxWidth(), elevation = null,
-                colors = ButtonDefaults.buttonColors
-                    (backgroundColor = Color.Transparent)
+            Box(
+                modifier = Modifier
+                    .size(width = 400.dp, height = 60.dp)
+                    //.clip(shape = RoundedCornerShape(15.dp))
+                    .background(Color.White)
+                    .padding(horizontal = 10.dp)
             ) {
-                Text(
-                    stringResource(R.string.logaf),
-                    textAlign = TextAlign.Left,
-                    fontSize = 18.sp,
-                    fontFamily = FontFamily.Serif
-                )
+                Button(
+                    onClick = {
+                        navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                    }, modifier = Modifier.fillMaxWidth(), elevation = null,
+                    colors = ButtonDefaults.buttonColors
+                        (backgroundColor = Color.Transparent)
+                ) {
+                    Text(
+                        stringResource(R.string.logaf),
+                        textAlign = TextAlign.Left,
+                        fontSize = 18.sp,
+                        fontFamily = FontFamily.Serif
+                    )
+                }
             }
         }
     }
+}
 
 /*
 @Preview
