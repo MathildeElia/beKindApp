@@ -75,7 +75,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
             Spacer(modifier = Modifier.height(50.dp))
             Button(
                 onClick = {
-                    navController.navigate(Screen.KindLogin.route)
+                    navController.navigate(Screen.MakeDonation.route)
 
                 }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
                 colors = ButtonDefaults.buttonColors
@@ -160,7 +160,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
 
             Button(
                 onClick = {
-                    navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                    navController.navigate(Screen.Sikkerhed.route)
                 }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
                 colors = ButtonDefaults.buttonColors
                     (backgroundColor = Color.Transparent)

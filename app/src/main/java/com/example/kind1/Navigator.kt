@@ -64,6 +64,10 @@ fun Navigation() {
             composable(route = Screen.Menu.route) {
                 Menu(navController = navController)
             }
+            composable(route = Screen.Sikkerhed.route) {
+                Menu(navController = navController)
+            }
+
 
             composable(
                 route = Screen.KindStart.route + "/{username}", arguments = listOf(
