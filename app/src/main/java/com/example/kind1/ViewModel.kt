@@ -16,14 +16,20 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import java.lang.reflect.Modifier
 
+data class organisationUiState(
+    var organisation: Organisation = Organisation()
+)
 class Viewmodel : ViewModel() {
 
     var username = mutableStateOf("")
     var working = mutableStateOf("")
+
+    var organisationState = MutableStateFlow(organisationUiState())
 
 
     fun validInput(user: String, pass: String): Boolean {
@@ -123,26 +129,34 @@ class Viewmodel : ViewModel() {
             "Fail to get the data.",
             Toast.LENGTH_SHORT
         ).show() */
-
     }
+
     // on below line we are calling method to display UI
     //firebaseUI(LocalContext.current, courseList)
-    fun getOgFromDatabase(s: String): Organisation {
-        val db = FirebaseFirestore.getInstance()
-        val docRef = db.collection("Organization").document(s)
-        var organisation = Organisation()
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    organisation = document.toObject<Organisation>()!!
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                } else {
-                    Log.d(TAG, "No such document")
-                }
+    fun getOgFromDatabase(s: String) {
+
+        viewModelScope.launch {
+            val db = Firebase.firestore
+
+            val organisation = db.collection("Organization").document(s).get().await().data
+            Log.d(TAG,"Organisation $organisation")
+
+            /*
+            val organisation = Organisation()
+            val db = FirebaseFirestore.getInstance()
+            val docRef = db.collection("Organization").document(s)
+            docRef.get().addOnSuccessListener { documentSnapshot ->
+                organisation.description = documentSnapshot.get("description") as String
+                organisation.subheading = documentSnapshot.get("subheading") as String
+                organisation.name = documentSnapshot.id
+                organisationState.value = organisationState.value.copy(organisation)
+                Log.d(TAG, "Organisation")
+
             }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
+
+             */
+        }
+
         /*
         docRef.get()
             .addOnSuccessListener {  documentSnapshot ->
@@ -152,7 +166,6 @@ class Viewmodel : ViewModel() {
                 Log.d(TAG, "get failed with ", exception)
             }
                 */
-        return organisation
     }
 }
 
