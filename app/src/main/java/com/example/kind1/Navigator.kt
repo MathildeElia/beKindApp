@@ -58,7 +58,7 @@ fun Navigation() {
                 BygPortfølje(navController = navController)
             }
             composable(route = Screen.Organisation.route) {
-                Organisation(navController = navController, "Plant et Træ", viewmodel)
+                Organisation(navController = navController, "World Wildlife Fund", viewmodel)
             }
             composable(
                 route = Screen.MinKonto.route

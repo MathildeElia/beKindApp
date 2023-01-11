@@ -34,18 +34,13 @@ import com.example.kind1.data.Organisation
 import kotlinx.coroutines.flow.collect
 import java.time.format.TextStyle
 
-@Composable
-fun collectOrganisation(navController: NavController, id: String?, viewmodel: Viewmodel) {
-    val organisation = viewmodel.organisationState.collectAsState()
-    //Organisation(navController,id,organisation.value.organisation)
-}
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
 fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel) {
 
     DisposableEffect(key1 = viewmodel) {
-        viewmodel.getOgFromDatabase("WWF")
+        id?.let { viewmodel.getOgFromDatabase(it) }
         onDispose { }
     }
     val organisation = viewmodel.organisationState.collectAsState().value.organisation
