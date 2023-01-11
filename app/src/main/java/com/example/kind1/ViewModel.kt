@@ -2,10 +2,7 @@ package com.example.kind1
 
 import android.content.ContentValues
 import android.util.Log
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.ktx.database
@@ -13,6 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
+import kotlin.system.exitProcess
 
 class Viewmodel: ViewModel() {
 
@@ -28,16 +26,18 @@ class Viewmodel: ViewModel() {
     }
 
     fun validInputSign(user : String, pass : String,email : String): Boolean{
-        if(user == "" || pass == "" || !(email.contains("@gmail.com") || email.contains("@gmail.dk"))){
-            return false
+        if(user == "" || pass == "" || !(email.contains("@") || email.contains("."))){
+           return false
         }
+
         return true
     }
+
+    private val db = Firebase.firestore
 
 
 
     fun addToDatabase(user: String, pass: String, email: String) {
-            val db = Firebase.firestore
 
             val newUser = hashMapOf(
                 "username" to user,
@@ -45,7 +45,11 @@ class Viewmodel: ViewModel() {
                 "email" to email
             )
 
-    db.collection("users").document(user).set(newUser)
+
+
+
+
+        db.collection("users").document(user).set(newUser)
          .addOnSuccessListener { documentReference ->
              Log.d(
                  ContentValues.TAG,
@@ -58,8 +62,6 @@ class Viewmodel: ViewModel() {
          .addOnCompleteListener {
              Log.d("Test", "Is success: ${it.isSuccessful}")
          }
-
-
     }
 
 }
