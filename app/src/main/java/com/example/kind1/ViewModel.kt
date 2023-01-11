@@ -45,11 +45,7 @@ class Viewmodel: ViewModel() {
                 "email" to email
             )
 
-
-
-     db.collection("users")
-         .add(newUser)
-
+    db.collection("users").document(user).set(newUser)
          .addOnSuccessListener { documentReference ->
              Log.d(
                  ContentValues.TAG,
