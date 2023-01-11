@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
@@ -47,35 +48,7 @@ fun KindSignUp(navController: NavController) {
     )
     {
         Spacer(modifier = Modifier.height(10.dp))
-        Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
-            modifier = Modifier
-                .clickable {
-                    navController.navigate(Screen.KindFront.route)
-                }
-                .size(width = 50.dp, height = 30.dp)
-        )
-        Image(
-            painter = painterResource(id = R.drawable.bekindforside), contentDescription = null,
-            modifier = Modifier
-                .padding(vertical = 10.dp)
-                .align(Alignment.CenterHorizontally)
-        )
-        Text(
-            text = "Opret Bruger",
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        )
-        Spacer(
-            modifier = Modifier
-                .height(20.dp)
-        )
-        TextField(
-            value = user, onValueChange = { user = it },
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally),
-            label = { Text("Brugernavn") }
-        Column(
-            Modifier.fillMaxSize()
-        )
+        Column(Modifier.fillMaxSize())
         {
             Spacer(modifier = Modifier.height(10.dp))
             Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
@@ -128,24 +101,10 @@ fun KindSignUp(navController: NavController) {
                     .align(Alignment.CenterHorizontally),
                 label = { Text("Kodeord") }
             )
-
-
-        Button(
-            onClick = {
-
-
-
-
-                if (viewmodel.validInputSign(user, pass, email)) {
-                    viewmodel.addToDatabase(user, pass, email)
-                    navController.navigate(Screen.KindStart.withArgs(user))
-                }
-
-
-                wrong = "Husk at fylde både Brugernavn, Kodeord og Email korrekt"
             Button(
                 onClick = {
                     if (viewmodel.validInputSign(user, pass, email)) {
+                        viewmodel.addToDatabase(user, pass, email)
                         navController.navigate(Screen.KindStart.withArgs(user))
                     }
                     wrong = "Husk at fylde både Brugernavn, Kodeord og Email korrekt"
@@ -162,12 +121,6 @@ fun KindSignUp(navController: NavController) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
         )
-                },
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(vertical = 10.dp),
-            ) {
-                Text(text = "Opret Bruger")
             }
             Text(
                 text = wrong,
