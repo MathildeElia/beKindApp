@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "152968927586",
+    "project_id": "kind2-a3765",
+    "storage_bucket": "kind2-a3765.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152968927586:android:4ce40b712706563832743b",
+        "android_client_info": {
+          "package_name": "com.example.kind1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152968927586-n37i5gmif70h5qrj7jdh9drq3gm2rp7t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kind1",
+            "certificate_hash": "232dd3670df163201edf2bcad706c334e239d24d"
+          }
+        },
+        {
+          "client_id": "152968927586-2bijc92ma1ef2br7ad7j8tgfdlc0g2pn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMS_ZT2Rh4RGFNZIKyd47ZPwxyTK9tXIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "152968927586-2bijc92ma1ef2br7ad7j8tgfdlc0g2pn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
