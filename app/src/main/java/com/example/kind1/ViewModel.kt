@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kind1.data.Organisation
@@ -131,17 +132,12 @@ class Viewmodel : ViewModel() {
         ).show() */
     }
 
+
     // on below line we are calling method to display UI
     //firebaseUI(LocalContext.current, courseList)
     fun getOgFromDatabase(s: String) {
 
         viewModelScope.launch {
-            val db = Firebase.firestore
-
-            val organisation = db.collection("Organization").document(s).get().await().data
-            Log.d(TAG,"Organisation $organisation")
-
-            /*
             val organisation = Organisation()
             val db = FirebaseFirestore.getInstance()
             val docRef = db.collection("Organization").document(s)
@@ -150,11 +146,8 @@ class Viewmodel : ViewModel() {
                 organisation.subheading = documentSnapshot.get("subheading") as String
                 organisation.name = documentSnapshot.id
                 organisationState.value = organisationState.value.copy(organisation)
-                Log.d(TAG, "Organisation")
-
+                Log.d(TAG, "Organisation $organisation")
             }
-
-             */
         }
 
         /*

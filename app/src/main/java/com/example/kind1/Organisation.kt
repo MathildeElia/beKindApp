@@ -34,16 +34,22 @@ import com.example.kind1.data.Organisation
 import kotlinx.coroutines.flow.collect
 import java.time.format.TextStyle
 
+@Composable
+fun collectOrganisation(navController: NavController, id: String?, viewmodel: Viewmodel) {
+    val organisation = viewmodel.organisationState.collectAsState()
+    //Organisation(navController,id,organisation.value.organisation)
+}
+
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun Organisation(navController: NavController, id: String?) {
-    val viewmodel = Viewmodel()
+fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel) {
 
-    DisposableEffect(key1 = viewmodel){
+    DisposableEffect(key1 = viewmodel) {
         viewmodel.getOgFromDatabase("WWF")
-        onDispose {  }
+        onDispose { }
     }
     val organisation = viewmodel.organisationState.collectAsState().value.organisation
+
     val shape = RoundedCornerShape(15.dp)
 
     Card(elevation = 2.dp) {
@@ -63,11 +69,26 @@ fun Organisation(navController: NavController, id: String?) {
         )
         Column(
             modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
+            //horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            organisation?.let { Text(it.name, textAlign = TextAlign.Start, fontSize = 35.sp) }
+
+            organisation?.name?.let {
+                Text(
+                    it,
+                    textAlign = TextAlign.Start,
+                    fontSize = 35.sp,
+                    modifier = Modifier.padding(40.dp, 30.dp, 30.dp, 0.dp)
+                )
+            }
             Spacer(modifier = Modifier.height(10.dp))
-            organisation?.subheading?.let { Text(it, textAlign = TextAlign.Start, fontSize = 25.sp) }
+            organisation?.subheading?.let {
+                Text(
+                    it,
+                    textAlign = TextAlign.Start,
+                    fontSize = 25.sp,
+                    modifier = Modifier.padding(40.dp, 10.dp, 30.dp, 20.dp)
+                )
+            }
             Button(
                 onClick = {
                     //naviger til opretDonation side
