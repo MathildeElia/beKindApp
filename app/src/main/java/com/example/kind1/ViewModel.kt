@@ -149,16 +149,6 @@ class Viewmodel : ViewModel() {
                 Log.d(TAG, "Organisation $organisation")
             }
         }
-
-        /*
-        docRef.get()
-            .addOnSuccessListener {  documentSnapshot ->
-                organisation = documentSnapshot.toObject<Organisation>()!!
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
-                */
     }
 }
 
