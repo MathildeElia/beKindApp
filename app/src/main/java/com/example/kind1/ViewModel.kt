@@ -49,7 +49,7 @@ class Viewmodel: ViewModel() {
          .addOnSuccessListener { documentReference ->
              Log.d(
                  ContentValues.TAG,
-                 "DocumentSnapshot added with ID: ${documentReference.id}"
+                 "DocumentSnapshot added with ID: $documentReference."
              )
          }
          .addOnFailureListener { e ->
