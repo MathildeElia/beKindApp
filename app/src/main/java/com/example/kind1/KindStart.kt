@@ -142,7 +142,10 @@ fun KindStart(username: String?, navController: NavController) {
                         text = "\t\tDin Portfølje →",
                         modifier = Modifier
                             .padding(10.dp, 55.dp, 0.dp, 0.dp)
-                            .clickable { navController.navigate(Screen.Portfølje.route) },
+                            .clickable {
+                                //Er udkommenteret for at teste organisations skærm
+                                //navController.navigate(Screen.Portfølje.route)
+                                       navController.navigate(Screen.Organisation.route)},
                         fontSize = 17.sp,
                         color = Color(0xFF315C36)
                     )

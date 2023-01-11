@@ -19,6 +19,7 @@ import androidx.navigation.navArgument
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
+    val viewmodel = Viewmodel()
 
         NavHost(
             navController = navController,
@@ -55,6 +56,9 @@ fun Navigation() {
             }
             composable(route = Screen.BygPortfølje.route) {
                 BygPortfølje(navController = navController)
+            }
+            composable(route = Screen.Organisation.route) {
+                Organisation(navController = navController, "Plant et Træ", viewmodel)
             }
             composable(
                 route = Screen.MinKonto.route
