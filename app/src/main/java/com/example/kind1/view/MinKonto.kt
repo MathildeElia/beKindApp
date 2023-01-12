@@ -47,6 +47,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController, userna
                 Image(painter = painterResource(id = R.drawable.menuicon),
                     contentDescription = null,
                     modifier = Modifier
+                        .padding(20.dp, 5.dp, 10.dp, 5.dp)
                         .clickable {
                             navController.navigate(Screen.Menu.route)
                         }
@@ -239,7 +240,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController, userna
             ) {
                 Button(
                     onClick = {
-                        navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                        navController.navigate(Screen.Hjælp.route)
                     },
                     modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
                     elevation = null,
@@ -296,7 +297,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController, userna
             ) {
                 Button(
                     onClick = {
-                        navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                        navController.navigate(Screen.KindFront.route)
                     }, modifier = Modifier.fillMaxWidth(), elevation = null,
                     colors = ButtonDefaults.buttonColors
                         (backgroundColor = Color.Transparent)
@@ -312,13 +313,4 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController, userna
         }
     }
 }
-
-/*
-@Preview
-    (showBackground = true)
-@Composable
-fun MinKontoPreview() {
-    MinKonto()
-}
-*/
 

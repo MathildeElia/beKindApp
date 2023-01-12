@@ -20,9 +20,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
-fun MakeDonationScreen() {
+fun MakeDonationScreen(navController: NavController) {
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -39,7 +40,7 @@ fun MakeDonationScreen() {
                 Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            //navController.navigate(Screen.KindFront.route)
+                            navController.navigate(Screen.Organisation.route)
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
@@ -140,9 +141,3 @@ fun CirleButton() {
     }
 }
 
-@Preview
-    (showBackground = true)
-@Composable
-fun DonationPreview() {
-    MakeDonationScreen()
-}

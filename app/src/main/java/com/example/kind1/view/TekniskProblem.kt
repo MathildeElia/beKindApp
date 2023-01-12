@@ -39,7 +39,7 @@ fun TekniskProblem(username: String?, navController: NavHostController) {
                     contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            //navController.navigate(Screen.MinKonto.route)
+                            navController.navigate(Screen.MinKonto.withArgs("Gæst"))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
@@ -47,8 +47,9 @@ fun TekniskProblem(username: String?, navController: NavHostController) {
                 Image(painter = painterResource(id = R.drawable.menuicon),
                     contentDescription = null,
                     modifier = Modifier
+                        .padding(20.dp, 5.dp, 10.dp, 5.dp)
                         .clickable {
-                            //navController.navigate(Screen.Menu.route)
+                            navController.navigate(Screen.Menu.route)
                         }
                         .size(width = 40.dp, height = 20.dp)
                         .wrapContentSize(Alignment.TopEnd)

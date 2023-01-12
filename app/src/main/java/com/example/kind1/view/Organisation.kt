@@ -53,7 +53,7 @@ fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel
         Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
             modifier = Modifier
                 .clickable {
-                    navController.navigate(Screen.KindFront.route)
+                    navController.navigate(Screen.Miljo.route)
                 }
                 .size(width = 50.dp, height = 30.dp)
         )
@@ -81,7 +81,8 @@ fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel
             }
             Button(
                 onClick = {
-                    //naviger til opretDonation side
+                    //naviger til makeDonation side
+                    navController.navigate(Screen.MakeDonation.route)
                 }, modifier = Modifier
                     .fillMaxWidth()
                     .padding(40.dp, 0.dp, 40.dp, 20.dp)

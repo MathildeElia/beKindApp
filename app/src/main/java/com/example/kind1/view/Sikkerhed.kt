@@ -37,7 +37,7 @@ fun Sikkerhed(modifier: Modifier = Modifier, navController: NavController) {
                     contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            navController.navigate(Screen.MinKonto.route)
+                            navController.navigate(Screen.MinKonto.withArgs("Gæst"))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )

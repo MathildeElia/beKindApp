@@ -13,15 +13,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun Hjælp(
-    //modifier: Modifier = Modifier, navController: NavController
-) {
+fun Hjælp(navController: NavController) {
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -38,7 +35,7 @@ fun Hjælp(
                     contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            //navController.navigate(Screen.MinKonto.route)
+                            navController.navigate(Screen.MinKonto.withArgs("Gæst"))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
@@ -47,7 +44,7 @@ fun Hjælp(
                     contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            //navController.navigate(Screen.Menu.route)
+                            navController.navigate(Screen.Menu.route)
                         }
                         .size(width = 40.dp, height = 20.dp)
                         .wrapContentSize(Alignment.TopEnd)
@@ -98,10 +95,4 @@ fun Hjælp(
             }
         }
     }
-}
-@Preview
-    (showBackground = true)
-@Composable
-fun HjælpPreview(){
-    Hjælp()
 }

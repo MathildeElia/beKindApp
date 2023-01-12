@@ -35,7 +35,7 @@ fun Navigation() {
             composable(
                 route = Screen.MakeDonation.route
             ) {
-                //MakeDonationScreen(navController = navController)
+                MakeDonationScreen(navController = navController)
             }
             composable(
                 route = Screen.Confirmation.route
@@ -72,6 +72,12 @@ fun Navigation() {
             composable(route = Screen.Dyrevelfærd.route) {
                 Dyrevelfærd(navController = navController)
             }
+            composable(route = Screen.Hjælp.route) {
+                Hjælp(navController = navController)
+            }
+
+
+
 
 
             composable(
