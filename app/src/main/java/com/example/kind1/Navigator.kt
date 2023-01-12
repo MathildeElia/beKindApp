@@ -1,14 +1,7 @@
 package com.example.kind1
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -19,7 +12,8 @@ import androidx.navigation.navArgument
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
-    val viewmodel = Viewmodel()
+    val orgVM = Viewmodel()
+    val temaVM = VMtema()
 
         NavHost(
             navController = navController,
@@ -58,7 +52,7 @@ fun Navigation() {
                 BygPortfølje(navController = navController)
             }
             composable(route = Screen.Organisation.route) {
-                Organisation(navController = navController, "World Wildlife Fund", viewmodel)
+                Organisation(navController = navController, "World Wildlife Fund", orgVM)
             }
             composable(
                 route = Screen.MinKonto.route
@@ -72,7 +66,8 @@ fun Navigation() {
                 Sikkerhed(navController = navController)
             }
             composable(route = Screen.Miljo.route) {
-                Miljø(navController = navController)
+                //Miljø(navController = navController)
+                Tema("Miljø",navController,temaVM)
             }
             composable(route = Screen.Sundhed.route) {
                 Sundhed(navController = navController)

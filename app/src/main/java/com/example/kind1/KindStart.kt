@@ -46,24 +46,26 @@ fun KindStart(username: String?, navController: NavController) {
         Column {
             val shape = RoundedCornerShape(12.dp)
             Spacer(modifier = Modifier.height(5.dp))
-            Row{
-            Spacer(modifier = Modifier.height(10.dp))
-            Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
-                modifier = Modifier
-                    .clickable {
-                        navController.navigate(Screen.KindFront.route)
-                    }
-                    .size(width = 50.dp, height = 30.dp)
-            )
-            Spacer(modifier = Modifier.width(290.dp))
-            Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
-                modifier = Modifier
-                    .clickable {
-                        navController.navigate(Screen.Menu.route)
-                    }
-                    .size(width = 40.dp, height = 20.dp)
-                    .wrapContentSize(Alignment.TopEnd)
-            )
+            Row {
+                Spacer(modifier = Modifier.height(10.dp))
+                Image(painter = painterResource(id = R.drawable.backbutton),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .clickable {
+                            navController.navigate(Screen.KindFront.route)
+                        }
+                        .size(width = 50.dp, height = 30.dp)
+                )
+                Spacer(modifier = Modifier.width(290.dp))
+                Image(painter = painterResource(id = R.drawable.menuicon),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .clickable {
+                            navController.navigate(Screen.Menu.route)
+                        }
+                        .size(width = 40.dp, height = 20.dp)
+                        .wrapContentSize(Alignment.TopEnd)
+                )
             }
 
 
@@ -143,23 +145,18 @@ fun KindStart(username: String?, navController: NavController) {
                         modifier = Modifier
                             .padding(10.dp, 55.dp, 0.dp, 0.dp)
                             .clickable {
-                                //Er udkommenteret for at teste organisations skærm
-                                //navController.navigate(Screen.Portfølje.route)
-                                       navController.navigate(Screen.Organisation.route)},
+                                navController.navigate(Screen.Portfølje.route)
+                            },
                         fontSize = 17.sp,
                         color = Color(0xFF315C36)
                     )
-
                 }
             }
-
-
 
             Spacer(modifier = Modifier.height(20.dp))
 
             //The second White - TextBox
             Column(
-
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentSize(Alignment.Center)
@@ -184,9 +181,8 @@ fun KindStart(username: String?, navController: NavController) {
                     )
                 }
             }
-
         }
-}
     }
+}
 
 
