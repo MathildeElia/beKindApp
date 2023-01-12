@@ -47,7 +47,7 @@ fun TekniskProblem(username: String?, navController: NavHostController) {
                 Image(painter = painterResource(id = R.drawable.menuicon),
                     contentDescription = null,
                     modifier = Modifier
-                        .padding(20.dp, 5.dp, 10.dp, 5.dp)
+                        .padding(20.dp, 5.dp, 0.dp, 10.dp)
                         .clickable {
                             navController.navigate(Screen.Menu.route)
                         }
