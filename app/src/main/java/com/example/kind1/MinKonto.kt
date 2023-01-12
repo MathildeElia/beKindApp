@@ -20,7 +20,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
+fun MinKonto(modifier: Modifier = Modifier, navController: NavController, username: String?){
+//id:String
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -66,7 +67,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
             )
 
             Text(
-                text = text3,
+                text = username.toString(),
                 fontSize = 20.sp,
                 fontFamily = FontFamily.Serif,
                 color = Color.White,
@@ -76,7 +77,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
             )
 
             //listen af muligheder ved min konto
-            Spacer(modifier = Modifier.height(50.dp))
+            Spacer(modifier = Modifier.height(30.dp))
             Box(
                 modifier = Modifier
                     .size(width = 400.dp, height = 60.dp)
@@ -266,7 +267,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController) {
             ) {
                 Button(
                     onClick = {
-                        navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                        navController.navigate(Screen.TekniskProblem.withArgs(username.toString()))
                     },
                     modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
                     elevation = null,

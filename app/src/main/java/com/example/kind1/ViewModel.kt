@@ -53,6 +53,7 @@ class Viewmodel : ViewModel() {
     private val db = Firebase.firestore
 
 
+
     fun addToDatabase(user: String, pass: String, email: String) {
 
             val newUser = hashMapOf(
@@ -60,7 +61,6 @@ class Viewmodel : ViewModel() {
                 "password" to pass,
                 "email" to email
             )
-
         db.collection("users").document(user).set(newUser)
          .addOnSuccessListener { documentReference ->
              Log.d(
@@ -76,6 +76,19 @@ class Viewmodel : ViewModel() {
          }
     }
 
+
+    fun submitError(error: String, user: String) {
+
+        val newError = hashMapOf(
+            "errorMessage" to error,
+            "user"         to user
+        )
+        db  .collection("errors")
+            .document()
+            .set(newError)
+            .addOnSuccessListener {  }
+            .addOnFailureListener {  }
+    }
     // on below line we are calling method to display UI
     //firebaseUI(LocalContext.current, courseList)
     fun getOgFromDatabase(s: String) {

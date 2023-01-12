@@ -66,8 +66,7 @@ fun Navigation() {
                 Sikkerhed(navController = navController)
             }
             composable(route = Screen.Miljo.route) {
-                //Miljø(navController = navController)
-                Tema("Miljø",navController,temaVM)
+                Miljø(navController = navController)
             }
             composable(route = Screen.Sundhed.route) {
                 Sundhed(navController = navController)
@@ -95,7 +94,7 @@ fun Navigation() {
                 )
             }
             composable(
-                route = Screen.KindStart.route + "/{username}", arguments = listOf(
+                route = Screen.MinKonto.route + "/{username}", arguments = listOf(
                     navArgument("username") {
                         type = NavType.StringType
                         defaultValue = "Seby"
@@ -103,7 +102,21 @@ fun Navigation() {
                     }
                 )
             ) { entry ->
-                KindStart(
+                MinKonto(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+            composable(
+                route = Screen.TekniskProblem.route + "/{username}", arguments = listOf(
+                    navArgument("username") {
+                        type = NavType.StringType
+                        defaultValue = "Seby"
+                        nullable = true
+                    }
+                )
+            ) { entry ->
+                TekniskProblem(
                     username = entry.arguments?.getString("username"),
                     navController = navController
                 )
