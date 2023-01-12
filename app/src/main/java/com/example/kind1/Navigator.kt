@@ -54,11 +54,6 @@ fun Navigation() {
             composable(route = Screen.Organisation.route) {
                 Organisation(navController = navController, "World Wildlife Fund", orgVM)
             }
-            composable(
-                route = Screen.MinKonto.route
-            ) {
-              MinKonto(navController = navController)
-            }
             composable(route = Screen.Menu.route) {
                 Menu(navController = navController)
             }
