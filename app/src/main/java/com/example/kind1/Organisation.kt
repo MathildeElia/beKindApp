@@ -71,7 +71,7 @@ fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel
                 )
             }
             Spacer(modifier = Modifier.height(10.dp))
-            organisation?.subheading?.let {
+            organisation.subheading?.let {
                 Text(
                     it,
                     textAlign = TextAlign.Start,
@@ -100,18 +100,19 @@ fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel
                     .clip(shape)
             ) {
 
-                organisation?.let {
+                organisation.let {
                     Text(
                         it.description,
                         Modifier.padding(15.dp),
                         fontSize = 20.sp
                     )
                 }
-
             }
-            //val organisationList = viewmodel.readOrganization()
-            //FirebaseUI(context = LocalContext.current, organisationList = organisationList)
+
         }
+        //val organisationList = viewmodel.readOrganization()
+        //FirebaseUI(context = LocalContext.current, organisationList = organisationList)
     }
 }
+
 
