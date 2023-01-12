@@ -24,7 +24,9 @@ fun Sikkerhed(modifier: Modifier = Modifier, navController: NavController) {
             contentScale = ContentScale.FillBounds,
             painter = painterResource(id = R.drawable.forside),
             contentDescription = null,
-            modifier = Modifier.fillMaxSize().fillMaxWidth()
+            modifier = Modifier
+                .fillMaxSize()
+                .fillMaxWidth()
         )
 
         Column {
@@ -62,10 +64,9 @@ fun Sikkerhed(modifier: Modifier = Modifier, navController: NavController) {
                     .wrapContentWidth(Alignment.CenterHorizontally)
             )
 
+            Spacer(modifier = Modifier.height(16.dp))
             Box(
                 modifier = Modifier
-                    .size(width = 400.dp, height = 80.dp)
-                    //.clip(shape = RoundedCornerShape(15.dp))
                     .background(Color.White)
                     .padding(horizontal = 10.dp)
             ) {
@@ -74,86 +75,115 @@ fun Sikkerhed(modifier: Modifier = Modifier, navController: NavController) {
                         // navController.navigate(Screen.KindStart.withArgs("Gæst"))
                     },
                     modifier = Modifier
-                    //  .fillMaxWidth()
-                    //  .wrapContentWidth(Alignment.Start),
-                    //, elevation = null,
-                    ,colors = ButtonDefaults.buttonColors
+                        .fillMaxWidth()
+                        .wrapContentWidth(),
+                    colors = ButtonDefaults.buttonColors
                         (backgroundColor = Color.Transparent)
                 ) {
-                    Text(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .wrapContentSize(),
-                        text = "Adgangskode               >",
-                        fontSize = 24.sp,
-                        fontFamily = FontFamily.Serif,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFF315C36)
-                    )
-                    //  Divider(startIndent = 8.dp, thickness = 1.dp, color = Color.Black)
-                }
-            }
-                Box(
-                    modifier = Modifier
-                        .size(width = 400.dp, height = 80.dp)
-                        //.clip(shape = RoundedCornerShape(15.dp))
-                        .background(Color.White)
-                        .padding(horizontal = 10.dp)
-                ) {
-                    Button(
-                        onClick = {
-                            // navController.navigate(Screen.KindStart.withArgs("Gæst"))
-                        },
-                        modifier = Modifier
-                        //  .fillMaxWidth()
-                        //  .wrapContentWidth(Alignment.Start),
-                        //, elevation = null,
-                        ,colors = ButtonDefaults.buttonColors
-                            (backgroundColor = Color.Transparent)
-                    ) {
+                    Column {
                         Text(
                             modifier = Modifier
-                                .fillMaxSize()
-                                .wrapContentSize(),
-                            text = "Totrinsgodkendelse   >",
+                                .wrapContentSize()
+                            .padding(10.dp, 0.dp, 0.dp, 0.dp),
+                            text = "Adgangskode                >",
+                            fontSize = 24.sp,
+                            fontFamily = FontFamily.Serif,
+                            fontWeight = FontWeight.Bold,
+                            color = Color(0xFF315C36)
+
+                        )
+                        Divider(startIndent = 8.dp, thickness = 1.dp, color = Color.Black)
+                        Text(
+                            modifier = Modifier
+                                .wrapContentSize()
+                                .padding(10.dp, 10.dp, 0.dp, 0.dp),
+                            text = "Skift adgangskode",
+                            fontSize = 20.sp,
+                            fontFamily = FontFamily.Serif,
+                            color = Color.Gray
+                        )
+                    }
+                }
+            }
+            Box(
+                modifier = Modifier
+                    .background(Color.White)
+                    .padding(horizontal = 10.dp)
+            ) {
+                Button(
+                    onClick = {
+                        // navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentWidth(),
+                    colors = ButtonDefaults.buttonColors
+                        (backgroundColor = Color.Transparent)
+                ) {
+                    Column {
+                        Text(
+                            modifier = Modifier
+                                .wrapContentSize()
+                                .padding(10.dp, 0.dp, 0.dp, 0.dp),
+                            text = "Totrinsgodkendelse    >",
                             fontSize = 24.sp,
                             fontFamily = FontFamily.Serif,
                             fontWeight = FontWeight.Bold,
                             color = Color(0xFF315C36)
                         )
-                    }
-                }
-                    Box(
-                        modifier = Modifier
-                            .size(width = 400.dp, height = 80.dp)
-                            //.clip(shape = RoundedCornerShape(15.dp))
-                            .background(Color.White)
-                            .padding(horizontal = 10.dp)
-                    ) {
-                        Button(
-                            onClick = {
-                                // navController.navigate(Screen.KindStart.withArgs("Gæst"))
-                            },
+                        Divider(startIndent = 8.dp, thickness = 1.dp, color = Color.Black)
+                        Text(
                             modifier = Modifier
-                            //  .fillMaxWidth()
-                            //  .wrapContentWidth(Alignment.Start),
-                            //, elevation = null,
-                            ,colors = ButtonDefaults.buttonColors
-                                (backgroundColor = Color.Transparent)
-                        ) {
-                            Text(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .wrapContentSize(),
-                                text = "Loginaktivitet            >",
-                                fontSize = 24.sp,
-                                fontFamily = FontFamily.Serif,
-                                fontWeight = FontWeight.Bold,
-                                color = Color(0xFF315C36)
-                            )
-                        }
+                                .wrapContentSize()
+                                .padding(10.dp, 10.dp, 0.dp, 0.dp),
+                            text = "Tilføj ekstra beskyttelse til din konto",
+                            fontSize = 20.sp,
+                            fontFamily = FontFamily.Serif,
+                            color = Color.Gray
+                        )
                     }
-
                 }
             }
+            Box(
+                modifier = Modifier
+                    .background(Color.White)
+                    .padding(horizontal = 10.dp)
+            ) {
+                Button(
+                    onClick = {
+                        // navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentWidth(),
+                    colors = ButtonDefaults.buttonColors
+                        (backgroundColor = Color.Transparent)
+                ) {
+                    Column {
+                        Text(
+                            modifier = Modifier
+                                .wrapContentSize()
+                                .padding(10.dp, 0.dp, 0.dp, 0.dp),
+                            text = "Loginaktivitet              >",
+                            fontSize = 24.sp,
+                            fontFamily = FontFamily.Serif,
+                            fontWeight = FontWeight.Bold,
+                            color = Color(0xFF315C36)
+                        )
+                        Divider(startIndent = 8.dp, thickness = 1.dp, color = Color.Black)
+                        Text(
+                            modifier = Modifier
+                                .wrapContentSize()
+                                .padding(10.dp, 10.dp, 0.dp, 0.dp),
+                            text = "Se hvor du er logget på",
+                            fontSize = 20.sp,
+                            fontFamily = FontFamily.Serif,
+                            color = Color.Gray
+                        )
+                    }
+                }
+            }
+
         }
+    }
+}

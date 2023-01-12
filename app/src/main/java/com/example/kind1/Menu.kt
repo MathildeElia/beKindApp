@@ -101,7 +101,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         }
         Button(
             onClick = {
-                //navController.navigate(Screen.Portfølje.route)
+                navController.navigate(Screen.SocialtUdsatte.route)
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
@@ -118,7 +118,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         }
         Button(
             onClick = {
-                //navController.navigate(Screen.miljø.route)
+                navController.navigate(Screen.Miljo.route)
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
@@ -135,7 +135,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         }
         Button(
             onClick = {
-            //    navController.navigate(Screen.Portfølje.route)
+               navController.navigate(Screen.Sundhed.route)
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
@@ -152,7 +152,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         }
         Button(
             onClick = {
-                //    navController.navigate(Screen.Portfølje.route)
+                    navController.navigate(Screen.Dyrevelfærd.route)
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
@@ -186,7 +186,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         }
         Button(
             onClick = {
-            //    navController.navigate(Screen.Portfølje.route)
+                //navController.navigate(Screen.omos.route)
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
