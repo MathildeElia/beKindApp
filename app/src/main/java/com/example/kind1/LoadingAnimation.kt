@@ -34,7 +34,11 @@ fun LoadingAnimationScreen(){
             Modifier
                 .fillMaxSize()
                 .wrapContentSize(Alignment.Center)) {
+
             LoadingAnimation(modifier = Modifier)
+
+
+
         }
     }
 }
@@ -95,7 +99,6 @@ fun LoadingAnimation(
 
 }
 @Preview
-    (showBackground = true)
 @Composable
 fun LoadingAnimationPreview(){
     LoadingAnimationScreen()
