@@ -97,13 +97,15 @@ fun Tema(theme: String, navController: NavController, viewmodel: VMtema) {
                         .background(Color.White)
                 )
                 */
-                OrgGrids(organisationList = organisations)
+                //OrgGrids(organisationList = organisations)
             }
         }
     }
 }
 
 
+
+/*
 //TODO Husk at skriv hvor koden er fra!
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -201,3 +203,5 @@ fun OrgGrids(organisationList: List<Organisation>) {
         }
     }
 }
+
+ */
