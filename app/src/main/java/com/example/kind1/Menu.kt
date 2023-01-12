@@ -169,7 +169,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         }
         Button(
             onClick = {
-                navController.navigate(Screen.MinKonto.route)
+                navController.navigate(Screen.MinKonto.withArgs("Gæst"))
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)

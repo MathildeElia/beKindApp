@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun MinKonto(modifier: Modifier = Modifier, navController: NavController){
+fun MinKonto(modifier: Modifier = Modifier, navController: NavController, username: String?){
 //id:String
     Card(elevation = 2.dp) {
         Image(
@@ -67,7 +67,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController){
             )
 
             Text(
-                text = text3,
+                text = username.toString(),
                 fontSize = 20.sp,
                 fontFamily = FontFamily.Serif,
                 color = Color.White,
@@ -267,7 +267,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController){
             ) {
                 Button(
                     onClick = {
-                        navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                        navController.navigate(Screen.TekniskProblem.withArgs(username.toString()))
                     },
                     modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
                     elevation = null,

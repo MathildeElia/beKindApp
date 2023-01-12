@@ -13,15 +13,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 
 @Composable
-fun TekniskProblem(
-    //modifier: Modifier = Modifier, navController: NavController
-) {
+fun TekniskProblem(username: String?, navController: NavHostController) {
+    val viewmodel = Viewmodel()
+
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -77,8 +76,15 @@ fun TekniskProblem(
                     .wrapContentSize()
 
             ){
-                RepportTextField()
+                var report by remember {
+                    mutableStateOf("")
+                }
+                TextField(
+                    value = report, onValueChange = { report = it },
+                    modifier = Modifier,
+                    label = { Text("Rapport") }
 
+                )
 
             Box(
                 modifier = Modifier
@@ -86,11 +92,14 @@ fun TekniskProblem(
                     //.clip(shape = RoundedCornerShape(15.dp))
                     .background(Color.White)
                     .padding(horizontal = 10.dp)
+
             ) {
 
                 Button(
                     onClick = {
-                        // navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                            viewmodel.submitError(report,username.toString())
+                            navController.navigate(Screen.MinKonto.withArgs("Gæst"))
+
                     },
                     modifier = Modifier
                     //  .fillMaxWidth()
@@ -117,8 +126,9 @@ fun TekniskProblem(
         }
     }
 }
+
 @Composable
-fun RepportTextField() {
+fun RepportTextField(): String {
     var report by remember {
         mutableStateOf("")
     }
@@ -127,10 +137,13 @@ fun RepportTextField() {
         label = { Text("Forklar kort hvad der skete") }
 
     )
+    return report
 }
+/*
 @Preview
     (showBackground = true)
 @Composable
 fun TekniskProblemPreview(){
     TekniskProblem()
 }
+ */

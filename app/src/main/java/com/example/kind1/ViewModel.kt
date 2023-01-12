@@ -14,10 +14,6 @@ import kotlin.system.exitProcess
 
 class Viewmodel: ViewModel() {
 
-    var username = mutableStateOf("")
-    var working = mutableStateOf("")
-
-
     fun validInput(user : String, pass : String): Boolean{
         if(user == "" || pass == ""){
             return false
@@ -44,11 +40,6 @@ class Viewmodel: ViewModel() {
                 "password" to pass,
                 "email" to email
             )
-
-
-
-
-
         db.collection("users").document(user).set(newUser)
          .addOnSuccessListener { documentReference ->
              Log.d(
@@ -64,4 +55,17 @@ class Viewmodel: ViewModel() {
          }
     }
 
+
+    fun submitError(error: String, user: String) {
+
+        val newError = hashMapOf(
+            "errorMessage" to error,
+            "user"         to user
+        )
+        db  .collection("errors")
+            .document()
+            .set(newError)
+            .addOnSuccessListener {  }
+            .addOnFailureListener {  }
+    }
 }
