@@ -45,7 +45,7 @@ fun KindStart(username: String?, navController: NavController) {
         )
         Column {
             val shape = RoundedCornerShape(12.dp)
-            Spacer(modifier = Modifier.height(5.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             Row{
             Spacer(modifier = Modifier.height(10.dp))
             Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
@@ -55,9 +55,12 @@ fun KindStart(username: String?, navController: NavController) {
                     }
                     .size(width = 50.dp, height = 30.dp)
             )
+
             Spacer(modifier = Modifier.width(290.dp))
+
             Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
                 modifier = Modifier
+                    .padding(20.dp, 5.dp, 0.dp, 10.dp)
                     .clickable {
                         navController.navigate(Screen.Menu.route)
                     }
