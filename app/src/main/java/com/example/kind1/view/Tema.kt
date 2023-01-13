@@ -5,6 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -103,6 +105,40 @@ fun Tema(theme: String, navController: NavController, viewmodel: VMtema) {
     }
 }
 
+@Composable
+@OptIn(ExperimentalMaterialApi::class)
+fun OrgList(organisationList: List<Organisation>) {
+    val orgCards = mutableListOf<Any>()
+    var bool = false
+    for (organisation in organisationList) {
+        val tempOrg: Any = {
+            bool=true
+        }
+        if (bool){
+            bool = false
+            OrgCard(organisation = organisation)
+        }
+        orgCards.add(tempOrg)
+    }
+
+
+    LazyVerticalGrid(GridCells.Fixed(1)) {
+        orgCards.forEachIndexed { index, function ->
+            item {
+                OrgCard(organisation = organisationList.get(index))
+            }
+        }
+    }
+}
+
+@Composable
+fun OrgCard(organisation: Organisation) {
+    Card() {
+        Text(text = organisation.name)
+        Text(text = organisation.subheading)
+        Text(text = organisation.description)
+    }
+}
 
 
 /*
