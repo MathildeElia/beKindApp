@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 //tester om head er resettet....
+//sker der noget...
 @Composable
 fun Sundhed (modifier: Modifier = Modifier, navController: NavController) {
     Card(elevation = 2.dp) {
