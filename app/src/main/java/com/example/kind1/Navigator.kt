@@ -61,7 +61,8 @@ fun Navigation() {
                 Sikkerhed(navController = navController)
             }
             composable(route = Screen.Miljo.route) {
-                Miljø(navController = navController)
+                //Miljø(navController = navController)
+                Tema(theme = "Miljø", navController = navController, viewmodel = temaVM )
             }
             composable(route = Screen.Sundhed.route) {
                 Sundhed(navController = navController)

@@ -101,6 +101,7 @@ fun Tema(theme: String, navController: NavController, viewmodel: VMtema) {
                 */
                 //OrgGrids(organisationList = organisations)
             }
+            OrgList(organisationList = organisations)
         }
     }
 }
@@ -109,18 +110,10 @@ fun Tema(theme: String, navController: NavController, viewmodel: VMtema) {
 @OptIn(ExperimentalMaterialApi::class)
 fun OrgList(organisationList: List<Organisation>) {
     val orgCards = mutableListOf<Any>()
-    var bool = false
-    for (organisation in organisationList) {
-        val tempOrg: Any = {
-            bool=true
-        }
-        if (bool){
-            bool = false
-            OrgCard(organisation = organisation)
-        }
-        orgCards.add(tempOrg)
-    }
 
+    for (organisation in organisationList) {
+        orgCards.add(OrgCard(organisation = organisation))
+    }
 
     LazyVerticalGrid(GridCells.Fixed(1)) {
         orgCards.forEachIndexed { index, function ->
@@ -133,7 +126,7 @@ fun OrgList(organisationList: List<Organisation>) {
 
 @Composable
 fun OrgCard(organisation: Organisation) {
-    Card() {
+    Card(elevation = 2.dp) {
         Text(text = organisation.name)
         Text(text = organisation.subheading)
         Text(text = organisation.description)
