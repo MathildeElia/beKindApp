@@ -69,7 +69,7 @@ fun MakeDonationScreen(
             }
             Spacer(modifier = Modifier.height(40.dp))
 
-            Text("Opret donation til [navn]", fontSize = 20.sp, textAlign = TextAlign.Center)
+            Text("Opret donation til $organisation", fontSize = 20.sp, textAlign = TextAlign.Center)
             Spacer(modifier = Modifier.height(40.dp))
             Text("Vælg beløb", fontSize = 15.sp, textAlign = TextAlign.Center)
 
@@ -113,7 +113,7 @@ fun SupportButton(
 ) {
     Button(
         onClick = {
-            val donation = Donation(amount, org, user,boolean)
+            val donation = Donation(amount, org, user, boolean)
             vm.addDonationToDatabase(donation)
             nav.navigate(Screen.KindBekræftet.route)
         },
@@ -193,7 +193,7 @@ fun RadioButtons(): String {
 
     val isSelectedItem: (String) -> Boolean = { selectedValue.value == it }
     val onChangeState: (String) -> Unit = { selectedValue.value = it }
-    Text(text = "Selected value: ${selectedValue.value.ifEmpty { "NONE" }}")
+    //Text(text = "Selected value: ${selectedValue.value.ifEmpty { "NONE" }}")
 
     Row(Modifier.padding(8.dp)) {
         textToEnableList.forEach { textToEnableState ->
@@ -234,7 +234,8 @@ fun RadioButtons(): String {
                         !textToEnableState.second -> Color.LightGray
                         else -> Color.Black
                     },
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(0.dp, 2.dp, 20.dp, 0.dp)
                 )
             }
         }

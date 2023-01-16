@@ -18,6 +18,10 @@ data class organisationUiState(
 )
 class Viewmodel : ViewModel() {
 
+    init {
+
+    }
+
     var username = mutableStateOf("")
     var working = mutableStateOf("")
 
