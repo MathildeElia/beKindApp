@@ -23,10 +23,10 @@ import androidx.navigation.NavController
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel, username: String?) {
+fun Organisation(navController: NavController, orgName: String?, viewmodel: Viewmodel, username: String?) {
 
     DisposableEffect(key1 = viewmodel) {
-        id?.let { viewmodel.getOgFromDatabase(it) }
+        orgName?.let { viewmodel.getOgFromDatabase(it) }
         onDispose { }
     }
     val organisation = viewmodel.organisationState.collectAsState().value.organisation
@@ -44,7 +44,7 @@ fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel
         Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
             modifier = Modifier
                 .clickable {
-                    navController.navigate(Screen.Miljo.withArgs(username.toString()))
+                    navController.navigate(Screen.Tema.withArgs(username.toString(),organisation.theme))
                 }
                 .size(width = 50.dp, height = 30.dp)
         )
@@ -73,7 +73,7 @@ fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel
             Button(
                 onClick = {
                     //naviger til makeDonation side
-                    navController.navigate(Screen.MakeDonation.withArgs(username.toString()))
+                    navController.navigate(Screen.MakeDonation.withArgs(username.toString(),orgName.toString()))
                 }, modifier = Modifier
                     .fillMaxWidth()
                     .padding(40.dp, 0.dp, 40.dp, 20.dp)

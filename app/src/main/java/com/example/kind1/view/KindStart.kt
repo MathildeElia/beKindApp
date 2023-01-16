@@ -191,12 +191,14 @@ fun KindStart(username: String?, navController: NavController, id: String?, view
                     )
 
                     organisation.let {
-                        Text(
-                            it.news,
-                            textAlign = TextAlign.Start,
-                            fontSize = 15.sp,
-                            modifier = Modifier.padding(20.dp, 45.dp, 20.dp, 0.dp)
-                        )
+                        it.news?.let { it1 ->
+                            Text(
+                                it1,
+                                textAlign = TextAlign.Start,
+                                fontSize = 15.sp,
+                                modifier = Modifier.padding(20.dp, 45.dp, 20.dp, 0.dp)
+                            )
+                        }
                     }
                 }
             }

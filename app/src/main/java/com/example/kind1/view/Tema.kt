@@ -26,7 +26,7 @@ import androidx.navigation.NavController
 import com.example.kind1.data.Organisation
 
 @Composable
-fun Tema(theme: String, navController: NavController, vm: VMtema) {
+fun Tema(username: String?, theme: String, navController: NavController, vm: VMtema) {
 
     DisposableEffect(key1 = vm) {
         theme?.let { vm.getThemeOrg(it) }
@@ -43,7 +43,7 @@ fun Tema(theme: String, navController: NavController, vm: VMtema) {
     Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
         modifier = Modifier
             .clickable {
-                navController.navigate(Screen.BygPortfølje.route)
+                navController.navigate(Screen.BygPortfølje.withArgs(username.toString()))
             }
             .size(width = 50.dp, height = 30.dp)
     )
@@ -66,13 +66,13 @@ fun Tema(theme: String, navController: NavController, vm: VMtema) {
             fontSize = 19.sp,
             color = Color(0xFF315C36)
         )
-        OrgList(organisationList = organisations)
+        OrgList(username, organisations, navController)
 
     }
 }
 
 @Composable
-fun OrgList(organisationList: List<Organisation>) {
+fun OrgList(username: String?, organisationList: List<Organisation>, navController: NavController) {
     val shape = RoundedCornerShape(12.dp)
 
     LazyVerticalGrid(
@@ -105,7 +105,9 @@ fun OrgList(organisationList: List<Organisation>) {
                 Column(modifier = Modifier.align(Alignment.BottomCenter)) {
                     Text(
                         "Læs mere",
-                        modifier = Modifier.clickable { },
+                        modifier = Modifier.clickable {
+                            navController.navigate(Screen.Organisation.withArgs(username.toString(),org.name))
+                        },
                         fontSize = 16.sp,
                         color = Color.Gray
                     )

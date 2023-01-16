@@ -18,8 +18,7 @@ fun Navigation() {
     val donationVM = VMdonation()
 
     NavHost(
-        navController = navController,
-        startDestination = Screen.KindFront.route
+        navController = navController, startDestination = Screen.KindFront.route
     ) {
         composable(route = Screen.KindFront.route) {
             KindFront(navController = navController)
@@ -34,20 +33,16 @@ fun Navigation() {
         ) {
             KindSignUp(navController = navController)
         }
-        composable(
-            route = Screen.MakeDonation.route + "/{username}/{organisation}", arguments = listOf(
-                navArgument("username") {
-                    type = NavType.StringType
-                    defaultValue = "Seby"
-                    nullable = false
-                },
-                navArgument("organisation") {
-                    type = NavType.StringType
-                    defaultValue = "Plant et Træ"
-                    nullable = false
-                }
-            )
-        ) { entry ->
+        composable(route = Screen.MakeDonation.route + "/{username}/{organisation}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Seby"
+                nullable = false
+            }, navArgument("organisation") {
+                type = NavType.StringType
+                defaultValue = "Plant et Træ"
+                nullable = false
+            })) { entry ->
             MakeDonationScreen(
                 username = entry.arguments?.getString("username"),
                 organisation = entry.arguments?.getString("organisation").toString(),
@@ -55,173 +50,142 @@ fun Navigation() {
                 vm = donationVM
             )
         }
-        composable(
-            route = Screen.Confirmation.route + "/{username}", arguments = listOf(
-                navArgument("username") {
-                    type = NavType.StringType
-                    defaultValue = "Seby"
-                    nullable = true
-                }
-            )
-        ) { entry ->
+        composable(route = Screen.Confirmation.route + "/{username}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Seby"
+                nullable = true
+            })) { entry ->
             ConfirmationScreen(
-                username = entry.arguments?.getString("username"),
-                navController = navController
+                username = entry.arguments?.getString("username"), navController = navController
             )
         }
-        composable(route = Screen.Template.route + "/{username}", arguments = listOf(
-            navArgument("username") {
+        composable(route = Screen.Template.route + "/{username}",
+            arguments = listOf(navArgument("username") {
                 type = NavType.StringType
                 defaultValue = "Seby"
                 nullable = true
-            }
-        )
-        ) { entry ->
+            })) { entry ->
             TemplateScreen(
-                username = entry.arguments?.getString("username"),
-                navController = navController
+                username = entry.arguments?.getString("username"), navController = navController
             )
         }
-        composable(route = Screen.Portfølje.route + "/{username}", arguments = listOf(
-            navArgument("username") {
+        composable(route = Screen.Portfølje.route + "/{username}",
+            arguments = listOf(navArgument("username") {
                 type = NavType.StringType
                 defaultValue = "Seby"
                 nullable = true
-            }
-        )
-        ) { entry ->
+            })) { entry ->
             PortføljeNy(
-                username = entry.arguments?.getString("username"),
-                navController = navController
+                username = entry.arguments?.getString("username"), navController = navController
             )
         }
-        composable(route = Screen.BygPortfølje.route + "/{username}", arguments = listOf(
-            navArgument("username") {
+        composable(route = Screen.BygPortfølje.route + "/{username}",
+            arguments = listOf(navArgument("username") {
                 type = NavType.StringType
                 defaultValue = "Seby"
                 nullable = true
-            }
-        )
-        ) { entry ->
+            })) { entry ->
             BygPortfølje(
-                username = entry.arguments?.getString("username"),
-                navController = navController
+                username = entry.arguments?.getString("username"), navController = navController
             )
         }
-        composable(route = Screen.Organisation.route + "/{username}", arguments = listOf(
-            navArgument("username") {
+        composable(route = Screen.Organisation.route + "/{username}/{organisation}",
+            arguments = listOf(
+                navArgument("username") {
                 type = NavType.StringType
                 defaultValue = "Seby"
-                nullable = true
-            }
-        )) { entry ->
+                nullable = false
+            },
+                navArgument("organisation") {
+                type = NavType.StringType
+                defaultValue = "World Wildlife Fund"
+                nullable = false
+            }))
+        { entry ->
             Organisation(
                 navController = navController,
-                "World Wildlife Fund",
+                orgName= entry.arguments?.getString("organisation"),
                 orgVM,
                 username = entry.arguments?.getString("username")
             )
         }
-        composable(route = Screen.Menu.route + "/{username}", arguments = listOf(
-            navArgument("username") {
+        composable(route = Screen.Menu.route + "/{username}",
+            arguments = listOf(navArgument("username") {
                 type = NavType.StringType
                 defaultValue = "Seby"
                 nullable = true
-            }
-        )
-        ) { entry ->
+            })) { entry ->
             Menu(
-                username = entry.arguments?.getString("username"),
-                navController = navController
+                username = entry.arguments?.getString("username"), navController = navController
             )
         }
-        composable(route = Screen.Sikkerhed.route + "/{username}", arguments = listOf(
-            navArgument("username") {
+        composable(route = Screen.Sikkerhed.route + "/{username}",
+            arguments = listOf(navArgument("username") {
                 type = NavType.StringType
                 defaultValue = "Seby"
                 nullable = true
-            }
-        )
-        ) { entry ->
+            })) { entry ->
             Sikkerhed(
-                username = entry.arguments?.getString("username"),
-                navController = navController
+                username = entry.arguments?.getString("username"), navController = navController
             )
         }
-        composable(route = Screen.Miljo.route + "/{username}", arguments = listOf(
-            navArgument("username") {
+        composable(route = Screen.Miljo.route + "/{username}",
+            arguments = listOf(navArgument("username") {
                 type = NavType.StringType
                 defaultValue = "Seby"
                 nullable = true
-            }
-        )
-        ) { entry ->
+            })) { entry ->
             Miljø(
-                username = entry.arguments?.getString("username"),
-                navController = navController
+                username = entry.arguments?.getString("username"), navController = navController
             )
         }
-        composable(route = Screen.Sundhed.route + "/{username}", arguments = listOf(
-            navArgument("username") {
+        composable(route = Screen.Sundhed.route + "/{username}",
+            arguments = listOf(navArgument("username") {
                 type = NavType.StringType
                 defaultValue = "Seby"
                 nullable = true
-            }
-        )
-        ) { entry ->
+            })) { entry ->
             Sundhed(
-                username = entry.arguments?.getString("username"),
-                navController = navController
+                username = entry.arguments?.getString("username"), navController = navController
             )
         }
-        composable(route = Screen.SocialtUdsatte.route + "/{username}", arguments = listOf(
-            navArgument("username") {
+        composable(route = Screen.SocialtUdsatte.route + "/{username}",
+            arguments = listOf(navArgument("username") {
                 type = NavType.StringType
                 defaultValue = "Seby"
                 nullable = true
-            }
-        )
-        ) { entry ->
+            })) { entry ->
             SocialtUdsatte(
-                username = entry.arguments?.getString("username"),
-                navController = navController
+                username = entry.arguments?.getString("username"), navController = navController
             )
         }
-        composable(route = Screen.Dyrevelfærd.route + "/{username}", arguments = listOf(
-            navArgument("username") {
+        composable(route = Screen.Dyrevelfærd.route + "/{username}",
+            arguments = listOf(navArgument("username") {
                 type = NavType.StringType
                 defaultValue = "Seby"
                 nullable = true
-            }
-        )
-        ) { entry ->
+            })) { entry ->
             Dyrevelfærd(
-                username = entry.arguments?.getString("username"),
-                navController = navController
+                username = entry.arguments?.getString("username"), navController = navController
             )
         }
-        composable(route = Screen.Hjælp.route + "/{username}", arguments = listOf(
-            navArgument("username") {
+        composable(route = Screen.Hjælp.route + "/{username}",
+            arguments = listOf(navArgument("username") {
                 type = NavType.StringType
                 defaultValue = "Seby"
                 nullable = true
-            }
-        )
-        ) { entry ->
+            })) { entry ->
             Hjælp(
-                username = entry.arguments?.getString("username"),
-                navController = navController
+                username = entry.arguments?.getString("username"), navController = navController
             )
         }
-        composable(
-            route = Screen.KindStart.route + "/{username}", arguments = listOf(
-                navArgument("username") {
-                    type = NavType.StringType
-                    defaultValue = "Seby"
-                    nullable = true
-                }
-            )
-        ) { entry ->
+        composable(route = Screen.KindStart.route + "/{username}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Seby"
+                nullable = true
+            })) { entry ->
             KindStart(
                 username = entry.arguments?.getString("username"),
                 navController = navController,
@@ -229,54 +193,40 @@ fun Navigation() {
                 orgVM
             )
         }
-        composable(
-            route = Screen.MinKonto.route + "/{username}", arguments = listOf(
-                navArgument("username") {
-                    type = NavType.StringType
-                    defaultValue = "Seby"
-                    nullable = true
-                }
-            )
-        ) { entry ->
+        composable(route = Screen.MinKonto.route + "/{username}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Seby"
+                nullable = true
+            })) { entry ->
             MinKonto(
-                username = entry.arguments?.getString("username"),
-                navController = navController
+                username = entry.arguments?.getString("username"), navController = navController
             )
         }
-        composable(
-            route = Screen.TekniskProblem.route + "/{username}", arguments = listOf(
-                navArgument("username") {
-                    type = NavType.StringType
-                    defaultValue = "Seby"
-                    nullable = true
-                }
-            )
-        ) { entry ->
+        composable(route = Screen.TekniskProblem.route + "/{username}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Seby"
+                nullable = true
+            })) { entry ->
             TekniskProblem(
-                username = entry.arguments?.getString("username"),
-                navController = navController
+                username = entry.arguments?.getString("username"), navController = navController
             )
         }
 
-        composable(
-            route = Screen.Tema.route + "/{username}/{theme}", arguments = listOf(
-                navArgument("username") {
-                    type = NavType.StringType
-                    defaultValue = "Seby"
-                    nullable = false
-                },
-                navArgument("theme") {
-                    type = NavType.StringType
-                    defaultValue = "Miljø"
-                    nullable = false
-                }
-            )
-        ) { entry ->
+        composable(route = Screen.Tema.route + "/{username}/{theme}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Seby"
+                nullable = false
+            }, navArgument("theme") {
+                type = NavType.StringType
+                defaultValue = "Miljø"
+                nullable = false
+            })) { entry ->
             entry.arguments?.getString("theme")?.let {
-                Tema(
-                    theme = it,
-                    navController = navController,
-                    vm = temaVM
+                Tema(username = entry.arguments?.getString("username")!!,
+                    theme = it, navController = navController, vm = temaVM
                 )
             }
         }

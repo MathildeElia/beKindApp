@@ -88,7 +88,8 @@ class Viewmodel : ViewModel() {
             docRef.get().addOnSuccessListener { documentSnapshot ->
                 organisation.description = documentSnapshot.get("description") as String
                 organisation.subheading = documentSnapshot.get("subheading") as String
-                organisation.news = documentSnapshot.get("nyheder") as String
+                organisation.theme = documentSnapshot.get("theme") as String
+                organisation.news = documentSnapshot.get("nyheder") as? String
                 organisation.name = documentSnapshot.id
                 organisationState.value = organisationState.value.copy(organisation)
                 Log.d(TAG, "Organisation $organisation")
