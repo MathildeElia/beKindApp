@@ -54,16 +54,15 @@ fun Navigation() {
             composable(route = Screen.Organisation.route) {
                 Organisation(navController = navController, "World Wildlife Fund", orgVM)
             }
+
             composable(route = Screen.Menu.route) {
                 Menu(navController = navController)
             }
-            composable(route = Screen.Sikkerhed.route) {
-                Sikkerhed(navController = navController)
+            /*
+            composable(route = Screen.Tema.route) {
+                Tema(navController = navController)
             }
-            composable(route = Screen.Miljo.route) {
-                //Miljø(navController = navController)
-                Tema(theme = "Miljø", navController = navController, viewmodel = temaVM )
-            }
+
             composable(route = Screen.Sundhed.route) {
                 Sundhed(navController = navController)
             }
@@ -73,6 +72,7 @@ fun Navigation() {
             composable(route = Screen.Dyrevelfærd.route) {
                 Dyrevelfærd(navController = navController)
             }
+             */
             composable(route = Screen.Hjælp.route) {
                 Hjælp(navController = navController)
             }
@@ -80,7 +80,10 @@ fun Navigation() {
 
 
 
-
+            composable(route = Screen.Tema.route) {
+                //Miljø(navController = navController)
+                Tema(theme = "Miljø", navController = navController, viewmodel = temaVM )
+            }
             composable(
                 route = Screen.KindStart.route + "/{username}", arguments = listOf(
                     navArgument("username") {

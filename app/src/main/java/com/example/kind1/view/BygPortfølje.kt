@@ -134,7 +134,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.SocialtUdsatte.route)
+                            navController.navigate(Screen.Tema.withArgs("Socialt Udsatte"))
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier

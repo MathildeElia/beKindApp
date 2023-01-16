@@ -24,6 +24,7 @@ sealed class Screen(val route : String) {
     object TekniskProblem : Screen("Teknisk")
     object Organisation : Screen("organisation")
     object Hjælp : Screen("Hjælp")
+    object Tema : Screen("tema")
 
 
     fun withArgs(vararg args : String): String{
