@@ -6,6 +6,4 @@ data class Organisation(
     var description: String = "start",
     var theme: String = "start",
     var name: String = "id"
-
-
 )

@@ -62,18 +62,13 @@ class Viewmodel : ViewModel() {
                 "email" to email
             )
         db.collection("users").document(user).set(newUser)
-         .addOnSuccessListener { documentReference ->
-             Log.d(
-                 ContentValues.TAG,
-                 "DocumentSnapshot added with ID: $documentReference."
-             )
-         }
-         .addOnFailureListener { e ->
-             Log.w(ContentValues.TAG, "Error adding document", e)
-         }
-         .addOnCompleteListener {
-             Log.d("Test", "Is success: ${it.isSuccessful}")
-         }
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful){
+                    Log.d("DATABASE status","success")
+                }else {
+                    Log.d("DATABASE status","fail")
+                }
+            }
     }
 
 
