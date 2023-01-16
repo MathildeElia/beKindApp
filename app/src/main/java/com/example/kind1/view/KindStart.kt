@@ -56,7 +56,7 @@ fun KindStart(username: String?, navController: NavController) {
                     .size(width = 50.dp, height = 30.dp)
             )
 
-            Spacer(modifier = Modifier.width(285.dp))
+            Spacer(modifier = Modifier.width(290.dp))
 
             Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
                 modifier = Modifier
