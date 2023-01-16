@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -39,71 +40,40 @@ fun Tema(theme: String, navController: NavController, viewmodel: VMtema) {
     }
     var organisations = viewmodel.temaState.collectAsState().value.orgList
 
-    //val organisations = viewmodel.organisationState.collectAsState().value.organisation
-
-    Card(elevation = 2.dp) {
-        Image(
-            contentScale = ContentScale.FillBounds,
-            painter = painterResource(id = R.drawable.bekindbackground),
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize()
-        )
-        Column {
-            val shape = RoundedCornerShape(12.dp)
-            Spacer(modifier = Modifier.height(10.dp))
-            Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
-                modifier = Modifier
-                    .clickable {
-                        navController.navigate(Screen.BygPortfølje.route)
-                    }
-                    .size(width = 50.dp, height = 30.dp)
-            )
-
-            Spacer(modifier = Modifier.height(10.dp))
-            Text(
-                text = "\t\t" + theme,
-                modifier = Modifier,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
-                fontSize = 30.sp,
-                color = Color(0xFF315C36)
-            )
-
-            Spacer(modifier = Modifier.height(15.dp))
-
-            Text(
-                text = "\t\t2 Linjers Random Text ",
-                modifier = Modifier,
-                fontSize = 18.sp,
-                //color = Color(0xFF034A0B),
-                color = Color(0xFF315C36)
-            )
-
-            Text(
-                text = "\t\t2 Linjers Random Text.",
-                modifier = Modifier,
-                fontSize = 18.sp,
-                color = Color(0xFF315C36)
-            )
-
-            Spacer(modifier = Modifier.height(40.dp))
-
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentSize(Alignment.Center)
-            ) {
-                /*Box(
-                    modifier = Modifier
-                        .size(275.dp, 165.dp)
-                        .clip(shape)
-                        .background(Color.White)
-                )
-                */
-                //OrgGrids(organisationList = organisations)
+    Image(
+        contentScale = ContentScale.FillBounds,
+        painter = painterResource(id = R.drawable.bekindbackground),
+        contentDescription = null,
+        modifier = Modifier.fillMaxSize()
+    )
+    Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
+        modifier = Modifier
+            .clickable {
+                navController.navigate(Screen.BygPortfølje.route)
             }
-            OrgList(organisationList = organisations)
-        }
+            .size(width = 50.dp, height = 30.dp)
+    )
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Spacer(modifier = Modifier.height(60.dp))
+        Text(
+            text = theme,
+            modifier = Modifier,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            fontSize = 35.sp,
+            color = Color(0xFF315C36)
+        )
+
+        Spacer(modifier = Modifier.height(15.dp))
+
+        Text(
+            text = viewmodel.getThemeText(theme),
+            textAlign = TextAlign.Center,
+            fontSize = 19.sp,
+            color = Color(0xFF315C36)
+        )
+        OrgList(organisationList = organisations)
+
     }
 }
 
@@ -111,127 +81,51 @@ fun Tema(theme: String, navController: NavController, viewmodel: VMtema) {
 @OptIn(ExperimentalMaterialApi::class)
 fun OrgList(organisationList: List<Organisation>) {
     val orgCards = mutableListOf<Any>()
-
+    val shape = RoundedCornerShape(12.dp)
+    /*
     for (organisation in organisationList) {
         orgCards.add(OrgCard(organisation = organisation))
     }
+     */
+    LazyVerticalGrid(
+        GridCells.Fixed(1),
+        contentPadding = PaddingValues(55.dp),
+        modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 40.dp),
+        verticalArrangement = Arrangement.spacedBy(40.dp),
 
-    LazyVerticalGrid(GridCells.Fixed(1)) {
+        ) {
         items(organisationList) { org ->
-            OrgCard(organisation = org)
-        }
-    }
-}
+            //Spacer(modifier = Modifier.height(100.dp))
+            Box(
+                modifier = Modifier
+                    .size(275.dp, 165.dp)
+                    .clip(shape)
+                    .background(Color.White)
+                    .padding(20.dp)
+            ) {
+                Column() {
+                    Text(
+                        org.name,
+                        fontSize = 25.sp,
+                        modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 10.dp),
+                        color = Color(0xFF315C36)
+                    )
+                    Text(
+                        org.subheading, fontSize = 16.sp, color = Color(0xFF315C36)
+                    )
 
-@Composable
-fun OrgCard(organisation: Organisation) {
-    Card(elevation = 2.dp) {
-        Column() {
-            Text(text = organisation.name)
-            Text(text = organisation.subheading)
-            Text(text = organisation.description)
-        }
-    }
-}
-
-
-/*
-//TODO Husk at skriv hvor koden er fra!
-
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun OrgGrids(organisationList: List<Organisation>) {
-    // on below line creating a column
-    // to display our retrieved list.
-    Column(
-        // adding modifier for our column
-        modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth()
-            .background(androidx.compose.ui.graphics.Color.White),
-        // on below line adding vertical and
-        // horizontal alignment for column.
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        // on below line we are
-        // calling lazy column
-        // for displaying listview.
-        LazyColumn {
-            // on below line we are setting data
-            // for each item of our listview.
-            itemsIndexed(organisationList) { index, item ->
-                // on below line we are creating
-                // a card for our list view item.
-                Card(
-                    onClick = {
-                    },
-                    // on below line we are adding
-                    // padding from our all sides.
-                    modifier = Modifier.padding(8.dp),
-
-                    // on below line we are adding
-                    // elevation for the card.
-                    elevation = 6.dp
-                ) {
-                    // on below line we are creating
-                    // a row for our list view item.
-                    Column(
-                        // for our row we are adding modifier
-                        // to set padding from all sides.
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .fillMaxWidth()
-                    ) {
-                        // on below line inside row we are adding spacer
-                        Spacer(modifier = Modifier.width(5.dp))
-                        // on below line we are displaying course name.
-                        organisationList[index]?.name?.let {
-                            Text(
-                                // inside the text on below line we are
-                                // setting text as the language name
-                                // from our modal class.
-                                text = it,
-
-                                // on below line we are adding padding
-                                // for our text from all sides.
-                                modifier = Modifier.padding(4.dp),
-
-                                // on below line we are adding
-                                // color for our text
-                                color = Color.White,
-                                textAlign = TextAlign.Center,
-                                style = TextStyle(
-                                    fontSize = 20.sp, fontWeight = FontWeight.Bold
-                                )
-                            )
-                        }
-                        // adding spacer on below line.
-                        Spacer(modifier = Modifier.height(5.dp))
-
-                        // on below line displaying text for course description
-                        organisationList[index]?.description?.let {
-                            Text(
-                                // inside the text on below line we are
-                                // setting text as the language name
-                                // from our modal class.
-                                text = it,
-
-                                // on below line we are adding padding
-                                // for our text from all sides.
-                                modifier = Modifier.padding(4.dp),
-
-                                // on below line we are adding color for our text
-                                color = Color.Black,
-                                textAlign = TextAlign.Center,
-                                style = TextStyle(fontSize = 15.sp)
-                            )
-                        }
-                    }
+                }
+                Column(modifier = Modifier.align(Alignment.BottomCenter)) {
+                    Text(
+                        "Læs mere",
+                        modifier = Modifier.clickable { },
+                        fontSize = 16.sp,
+                        color = Color.Gray
+                    )
                 }
             }
         }
     }
 }
 
- */
+

@@ -17,58 +17,15 @@ class VMtema : ViewModel() {
 
     val temaState = MutableStateFlow(temaUiState())
 
-    fun readOrganization(): SnapshotStateList<Organisation?> {
-        // A surface container using the 'background' color from the theme
-
-        // on below line creating variable for list of data.
-        var organisationList = mutableStateListOf<Organisation?>()
-        // on below line creating variable for freebase database
-        // and database reference.
-        var db: FirebaseFirestore = FirebaseFirestore.getInstance()
-
-        // on below line getting data from our database
-        db.collection("Organisation").get()
-            .addOnSuccessListener { queryDocumentSnapshots ->
-                // after getting the data we are calling
-                // on success method
-                // and inside this method we are checking
-                // if the received query snapshot is empty or not.
-                if (!queryDocumentSnapshots.isEmpty) {
-                    // if the snapshot is not empty we are
-                    // hiding our progress bar and adding
-                    // our data in a list.
-                    // loadingPB.setVisibility(View.GONE)
-                    val list = queryDocumentSnapshots.documents
-                    for (d in list) {
-                        // after getting this list we are passing that
-                        // list to our object class.
-                        val c: Organisation? = d.toObject(Organisation::class.java)
-                        // and we will pass this object class inside
-                        // our arraylist which we have created for list view.
-                        organisationList.add(c)
-                    }
-                } /* else {
-                    // if the snapshot is empty we are displaying
-                    // a toast message.
-                    Toast.makeText(
-                        this@CourseDetailsActivity,
-                        "No data found in Database",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-               */
-            }
-        return organisationList
-        /*
-    // if we don't get any data or any error
-    // we are displaying a toast message
-    // that we do not get any data
-    .addOnFailureListener {
-        Toast.makeText(
-            this@CourseDetailsActivity,
-            "Fail to get the data.",
-            Toast.LENGTH_SHORT
-        ).show() */
+    fun getThemeText(theme: String):String{
+        var s: String = ""
+        when(theme){
+            "Miljø" -> s = "Støt organisationer som gør\nsamfundet mere bæredygtigt."
+            "Sundhed" -> s = "Sundhed tekst."
+            "Dyrevelfærd" -> s = "Dyrevelfærd tekst."
+            "Social udsatte" -> s = "Social udsatte tekst."
+        }
+        return s
     }
 
     fun getThemeOrg(s: String) {
