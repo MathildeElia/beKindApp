@@ -19,7 +19,7 @@ fun Navigation() {
 
         NavHost(
             navController = navController,
-            startDestination = Screen.Organisation.route
+            startDestination = Screen.KindFront.route
         ) {
             composable(route = Screen.KindFront.route) {
                 KindFront(navController = navController)
