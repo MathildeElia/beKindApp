@@ -71,6 +71,9 @@ fun Navigation() {
             composable(route = Screen.Sundhed.route) {
                 Sundhed(navController = navController)
             }
+            composable(route = Screen.LoadingAnimationScreen.route) {
+                LoadingAnimationScreen(navController = navController)
+            }
             composable(route = Screen.SocialtUdsatte.route) {
                 SocialtUdsatte(navController = navController)
             }
