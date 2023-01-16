@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun Miljø (modifier: Modifier = Modifier, navController: NavController) {
+fun Miljø (modifier: Modifier = Modifier, navController: NavController, username: String?) {
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -35,7 +35,7 @@ fun Miljø (modifier: Modifier = Modifier, navController: NavController) {
             Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate(Screen.BygPortfølje.route)
+                        navController.navigate(Screen.BygPortfølje.withArgs(username.toString()))
                     }
                     .size(width = 50.dp, height = 30.dp)
             )

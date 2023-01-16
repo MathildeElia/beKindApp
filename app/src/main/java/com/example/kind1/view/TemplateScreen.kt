@@ -1,23 +1,19 @@
 package com.example.kind1
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun TemplateScreen(navController: NavController){
+fun TemplateScreen(navController: NavController, username: String?){
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -31,7 +27,7 @@ fun TemplateScreen(navController: NavController){
             Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate(Screen.KindFront.route)
+                        navController.navigate(Screen.KindFront.withArgs(username.toString()))
                     }
                     .size(width = 50.dp, height = 30.dp)
             )

@@ -62,7 +62,7 @@ fun KindStart(username: String?, navController: NavController) {
                 modifier = Modifier
                     .padding(20.dp, 5.dp, 0.dp, 10.dp)
                     .clickable {
-                        navController.navigate(Screen.Menu.route)
+                        navController.navigate(Screen.Menu.withArgs(username.toString()))
                     }
                     .size(width = 40.dp, height = 20.dp)
                     .wrapContentSize(Alignment.TopEnd)
@@ -145,7 +145,7 @@ fun KindStart(username: String?, navController: NavController) {
                         text = "\t\tDin Portfølje →",
                         modifier = Modifier
                             .padding(10.dp, 55.dp, 0.dp, 0.dp)
-                            .clickable { navController.navigate(Screen.Portfølje.route) },
+                            .clickable { navController.navigate(Screen.Portfølje.withArgs(username.toString())) },
                         fontSize = 17.sp,
                         color = Color(0xFF315C36)
                     )
