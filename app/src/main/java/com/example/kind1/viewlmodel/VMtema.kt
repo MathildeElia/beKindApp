@@ -75,7 +75,7 @@ class VMtema : ViewModel() {
         val db = FirebaseFirestore.getInstance()
 
         db.collection("Organization")
-            .whereEqualTo("tema", s)
+            .whereEqualTo("theme", s)
             .get()
             .addOnSuccessListener { documents ->
                 val list = documents.map { document ->

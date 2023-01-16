@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -116,10 +117,8 @@ fun OrgList(organisationList: List<Organisation>) {
     }
 
     LazyVerticalGrid(GridCells.Fixed(1)) {
-        orgCards.forEachIndexed { index, function ->
-            item {
-                OrgCard(organisation = organisationList.get(index))
-            }
+        items(organisationList) { org ->
+            OrgCard(organisation = org)
         }
     }
 }
@@ -127,9 +126,11 @@ fun OrgList(organisationList: List<Organisation>) {
 @Composable
 fun OrgCard(organisation: Organisation) {
     Card(elevation = 2.dp) {
-        Text(text = organisation.name)
-        Text(text = organisation.subheading)
-        Text(text = organisation.description)
+        Column() {
+            Text(text = organisation.name)
+            Text(text = organisation.subheading)
+            Text(text = organisation.description)
+        }
     }
 }
 

@@ -17,7 +17,7 @@ fun Navigation() {
 
         NavHost(
             navController = navController,
-            startDestination = Screen.KindFront.route
+            startDestination = Screen.Miljo.route
         ) {
             composable(route = Screen.KindFront.route) {
                 KindFront(navController = navController)
