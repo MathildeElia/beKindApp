@@ -34,14 +34,6 @@ fun Navigation() {
             ) {
                 KindSignUp(navController = navController)
             }
-            /*
-            composable(
-                route = Screen.MakeDonation.route
-            ) {
-                MakeDonationScreen(navController = navController)
-            }
-
-             */
             composable(
                 route = Screen.Confirmation.route
             ) {

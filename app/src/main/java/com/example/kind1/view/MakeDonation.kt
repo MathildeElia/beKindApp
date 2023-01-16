@@ -76,14 +76,11 @@ fun MakeDonationScreen(
             amount = amountTextField()
 
             Spacer(modifier = Modifier.height(40.dp))
-            choice = RadioButtons()
-            /*
-            Row(Modifier.align(Alignment.CenterHorizontally)) {
-                CirleButton()
-                Spacer(modifier = Modifier.width(60.dp))
-                CirleButton()
-            }
 
+            Row(Modifier.align(Alignment.CenterHorizontally)) {
+                choice = RadioButtons()
+            }
+            /*
             Row(Modifier.align(Alignment.CenterHorizontally)) {
                 Text(text = "Støt månedligt")
                 Spacer(modifier = Modifier.width(60.dp))
