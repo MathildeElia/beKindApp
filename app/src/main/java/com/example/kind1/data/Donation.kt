@@ -4,5 +4,6 @@ data class Donation(
     val amount: Int = 0,
     val orgName: String = "",
     val username: String = "",
-    val isMonthly: Boolean = true
+    val isMonthly: Boolean = true,
+    var theme: String = ""
 )

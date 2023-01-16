@@ -41,6 +41,9 @@ fun MakeDonationScreen(
         var amount by remember {
             mutableStateOf(0)
         }
+        var choice by remember {
+            mutableStateOf("")
+        }
 
         Image(
             contentScale = ContentScale.FillBounds,
@@ -73,7 +76,7 @@ fun MakeDonationScreen(
             amount = amountTextField()
 
             Spacer(modifier = Modifier.height(40.dp))
-            RadioButtons()
+            choice = RadioButtons()
             /*
             Row(Modifier.align(Alignment.CenterHorizontally)) {
                 CirleButton()
@@ -95,17 +98,25 @@ fun MakeDonationScreen(
 
             Spacer(modifier = Modifier.height(40.dp))
             if (username != null) {
-                SupportButton(amount, username,organisation,vm,navController)
+                val bool = vm.isMonthly(choice)
+                SupportButton(amount, username, organisation, bool, vm, navController)
             }
         }
     }
 }
 
 @Composable
-fun SupportButton(amount: Int, user: String, org: String, vm: VMdonation, nav: NavController) {
+fun SupportButton(
+    amount: Int,
+    user: String,
+    org: String,
+    boolean: Boolean,
+    vm: VMdonation,
+    nav: NavController
+) {
     Button(
         onClick = {
-            val donation = Donation(amount, org, user)
+            val donation = Donation(amount, org, user,boolean)
             vm.addDonationToDatabase(donation)
             nav.navigate(Screen.KindBekræftet.route)
         },
@@ -131,7 +142,10 @@ fun amountTextField(): Int {
         value = value, onValueChange = { value = it },
         label = { }
     )
-    return value.toInt()
+    if (value.isNotBlank()) {
+        return value.toInt()
+    }
+    return 0
 }
 
 @Composable
@@ -173,8 +187,7 @@ fun CirleButton() {
 }
 
 @Composable
-fun RadioButtons() {
-
+fun RadioButtons(): String {
     val selectedValue = remember { mutableStateOf("") }
     val textToEnableList = listOf(
         "Støt månedligt" to true,
@@ -216,7 +229,6 @@ fun RadioButtons() {
                             .size(45.dp)
                             .align(Center)
                     ) {
-
                     }
                 }
                 Text(
@@ -230,4 +242,5 @@ fun RadioButtons() {
             }
         }
     }
+    return selectedValue.value
 }
