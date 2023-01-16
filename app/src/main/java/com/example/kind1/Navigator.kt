@@ -215,7 +215,9 @@ fun Navigation() {
             ) { entry ->
                 KindStart(
                     username = entry.arguments?.getString("username"),
-                    navController = navController
+                    navController = navController,
+                    "World Wildlife Fund",
+                    orgVM
                 )
             }
             composable(
