@@ -16,8 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-
-
+import com.example.kind1.viewlmodel.LoginViewModel
 
 
 @Composable
@@ -30,7 +29,7 @@ fun KindLogin(navController: NavController) {
             modifier = Modifier.fillMaxSize()
         )
 
-        val viewmodel = Viewmodel()
+        val viewmodel = LoginViewModel()
         var user by remember {
             mutableStateOf("")
         }
@@ -89,11 +88,7 @@ fun KindLogin(navController: NavController) {
 
             Button(
                 onClick = {
-                    if (viewmodel.validInput(user, pass)) {
-                        navController.navigate(Screen.KindStart.withArgs(user))
-                    }
-                    wrong = "Husk at udfyld både Brugernavn og Kodeord"
-
+                    wrong = viewmodel.login(user,pass,navController)
                 },
                 modifier = Modifier
                     .align(CenterHorizontally)

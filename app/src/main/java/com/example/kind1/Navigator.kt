@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.kind1.viewlmodel.VMdonation
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
@@ -14,6 +15,7 @@ fun Navigation() {
     val navController = rememberNavController()
     val orgVM = Viewmodel()
     val temaVM = VMtema()
+    val donationVM = VMdonation()
 
         NavHost(
             navController = navController,
@@ -32,11 +34,14 @@ fun Navigation() {
             ) {
                 KindSignUp(navController = navController)
             }
+            /*
             composable(
                 route = Screen.MakeDonation.route
             ) {
                 MakeDonationScreen(navController = navController)
             }
+
+             */
             composable(
                 route = Screen.Confirmation.route
             ) {
@@ -74,6 +79,9 @@ fun Navigation() {
             }
             composable(route = Screen.Hjælp.route) {
                 Hjælp(navController = navController)
+            }
+            composable(route = Screen.KindBekræftet.route) {
+                KindBekræftet(navController = navController)
             }
 
 
@@ -120,6 +128,28 @@ fun Navigation() {
                 TekniskProblem(
                     username = entry.arguments?.getString("username"),
                     navController = navController
+                )
+            }
+
+            composable(
+                route = Screen.MakeDonation.route + "/{username}/{organisation}", arguments = listOf(
+                    navArgument("username") {
+                        type = NavType.StringType
+                        defaultValue = "Seby"
+                        nullable = false
+                    },
+                    navArgument("organisation") {
+                        type = NavType.StringType
+                        defaultValue = "Plant et Træ"
+                        nullable = false
+                    }
+                )
+            ) { entry ->
+                MakeDonationScreen(
+                    username = entry.arguments?.getString("username"),
+                    organisation = entry.arguments?.getString("organisation").toString(),
+                    navController = navController,
+                    vm = donationVM
                 )
             }
         }
