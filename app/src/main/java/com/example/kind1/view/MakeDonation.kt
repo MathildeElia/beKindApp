@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement.Start
 
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -18,15 +19,29 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.kind1.data.Donation
+import com.example.kind1.data.Organisation
+import com.example.kind1.data.User
+import com.example.kind1.viewlmodel.VMdonation
 
 @Composable
-fun MakeDonationScreen(navController: NavController) {
+fun MakeDonationScreen(
+    username: String?,
+    organisation: String,
+    navController: NavController,
+    vm: VMdonation
+) {
     Card(elevation = 2.dp) {
+        var amount by remember {
+            mutableStateOf(0)
+        }
+
         Image(
             contentScale = ContentScale.FillBounds,
             painter = painterResource(id = R.drawable.bekindbackground2),
@@ -55,7 +70,7 @@ fun MakeDonationScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(40.dp))
             Text("Vælg beløb", fontSize = 15.sp, textAlign = TextAlign.Center)
 
-            AmountTextField()
+            amount = amountTextField()
 
             Spacer(modifier = Modifier.height(40.dp))
             RadioButtons()
@@ -71,7 +86,6 @@ fun MakeDonationScreen(navController: NavController) {
                 Spacer(modifier = Modifier.width(60.dp))
                 Text("Støt én gang")
             }
-
              */
 
             Spacer(modifier = Modifier.height(40.dp))
@@ -80,16 +94,20 @@ fun MakeDonationScreen(navController: NavController) {
             EmailTextField()
 
             Spacer(modifier = Modifier.height(40.dp))
-            SupportButton()
+            if (username != null) {
+                SupportButton(amount, username,organisation,vm,navController)
+            }
         }
     }
 }
 
 @Composable
-fun SupportButton() {
+fun SupportButton(amount: Int, user: String, org: String, vm: VMdonation, nav: NavController) {
     Button(
         onClick = {
-            //navController.navigate(Screen.KindFront.route)
+            val donation = Donation(amount, org, user)
+            vm.addDonationToDatabase(donation)
+            nav.navigate(Screen.KindBekræftet.route)
         },
         colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow),
         modifier = Modifier
@@ -104,14 +122,16 @@ fun SupportButton() {
 }
 
 @Composable
-fun AmountTextField() {
+fun amountTextField(): Int {
     var value by remember {
         mutableStateOf("")
     }
     TextField(
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         value = value, onValueChange = { value = it },
-        label = { Text("") }
+        label = { }
     )
+    return value.toInt()
 }
 
 @Composable
@@ -134,7 +154,6 @@ fun EmailTextField() {
     TextField(
         value = email, onValueChange = { email = it },
         label = { Text("Din e-mail") }
-
     )
 }
 

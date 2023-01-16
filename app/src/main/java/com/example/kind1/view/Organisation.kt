@@ -82,7 +82,7 @@ fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel
             Button(
                 onClick = {
                     //naviger til makeDonation side
-                    navController.navigate(Screen.MakeDonation.route)
+                    navController.navigate(Screen.MakeDonation.withArgs("seb", id.toString()))
                 }, modifier = Modifier
                     .fillMaxWidth()
                     .padding(40.dp, 0.dp, 40.dp, 20.dp)

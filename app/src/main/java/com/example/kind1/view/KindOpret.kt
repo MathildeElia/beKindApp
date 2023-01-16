@@ -106,8 +106,9 @@ fun KindSignUp(navController: NavController) {
                         viewmodel.addToDatabase(user, pass, email)
                         navController.navigate(Screen.KindStart.withArgs(user))
                     }
-                    wrong = "Husk at fylde både Brugernavn, Kodeord og Email korrekt"
-
+                    else {
+                        wrong = "Husk at fylde både Brugernavn, Kodeord og Email korrekt"
+                    }
             },
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)

@@ -1,7 +1,10 @@
 package com.example.kind1.data;
 
+import java.util.List;
+
 public class User {
     String name, email, password;
+    List<Donation> donations;
     //Portfolio portfolio;
 
     public User(String name, String email, String password) {
