@@ -26,13 +26,13 @@ import androidx.navigation.NavController
 import com.example.kind1.data.Organisation
 
 @Composable
-fun Tema(theme: String, navController: NavController, viewmodel: VMtema) {
+fun Tema(theme: String, navController: NavController, vm: VMtema) {
 
-    DisposableEffect(key1 = viewmodel) {
-        theme?.let { viewmodel.getThemeOrg(it) }
+    DisposableEffect(key1 = vm) {
+        theme?.let { vm.getThemeOrg(it) }
         onDispose { }
     }
-    var organisations = viewmodel.temaState.collectAsState().value.orgList
+    var organisations = vm.temaState.collectAsState().value.orgList
 
     Image(
         contentScale = ContentScale.FillBounds,
@@ -61,7 +61,7 @@ fun Tema(theme: String, navController: NavController, viewmodel: VMtema) {
         Spacer(modifier = Modifier.height(15.dp))
 
         Text(
-            text = viewmodel.getThemeText(theme),
+            text = vm.getThemeText(theme),
             textAlign = TextAlign.Center,
             fontSize = 19.sp,
             color = Color(0xFF315C36)
