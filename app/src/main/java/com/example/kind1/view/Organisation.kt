@@ -50,7 +50,6 @@ fun Organisation(navController: NavController, orgName: String?, viewmodel: View
         )
         Column(
             modifier = Modifier.fillMaxSize(),
-            //horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             organisation?.name?.let {
@@ -100,10 +99,7 @@ fun Organisation(navController: NavController, orgName: String?, viewmodel: View
                     )
                 }
             }
-
         }
-        //val organisationList = viewmodel.readOrganization()
-        //FirebaseUI(context = LocalContext.current, organisationList = organisationList)
     }
 }
 
