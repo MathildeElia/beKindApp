@@ -23,7 +23,7 @@ class VMtema : ViewModel() {
             "Miljø" -> s = "Støt organisationer som gør\nsamfundet mere bæredygtigt."
             "Sundhed" -> s = "Sundhed tekst."
             "Dyrevelfærd" -> s = "Dyrevelfærd tekst."
-            "Social udsatte" -> s = "Social udsatte tekst."
+            "Socialt Udsatte" -> s = "Social udsatte tekst."
         }
         return s
     }

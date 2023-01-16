@@ -133,7 +133,8 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController, 
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.SocialtUdsatte.withArgs(username.toString()))
+                            navController.
+                            navigate(Screen.Tema.withArgs(username.toString(),"Socialt Udsatte"))
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
@@ -199,8 +200,8 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController, 
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Sundhed.withArgs(username.toString()))
-                        },
+                            navController.
+                            navigate(Screen.Tema.withArgs(username.toString(),"Sundhed"))                        },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
                             .padding(150.dp, 100.dp, 0.dp, 0.dp)
@@ -268,8 +269,8 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController, 
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Miljo.withArgs(username.toString()))
-                        },
+                            navController.
+                            navigate(Screen.Tema.withArgs(username.toString(),"Miljø"))                        },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
                             .padding(150.dp, 100.dp, 0.dp, 0.dp)
@@ -339,8 +340,8 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController, 
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Dyrevelfærd.withArgs(username.toString()))
-                        },
+                            navController.
+                            navigate(Screen.Tema.withArgs(username.toString(),"Dyrevelfærd"))                        },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
                             .padding(150.dp, 100.dp, 0.dp, 0.dp)
