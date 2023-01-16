@@ -36,11 +36,12 @@ class VMtema : ViewModel() {
             .get()
             .addOnSuccessListener { documents ->
                 val list = documents.map { document ->
-
                     val organisation = Organisation()
+
                     organisation.description = document.get("description") as String
                     organisation.subheading = document.get("subheading") as String
                     organisation.name = document.id
+
                     Log.w(TAG, "Organisations $organisation")
 
                     organisation

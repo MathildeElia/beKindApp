@@ -14,7 +14,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-
+import com.example.kind1.viewlmodel.SignUpViewModel
 
 
 @Composable
@@ -27,6 +27,7 @@ fun KindSignUp(navController: NavController) {
             modifier = Modifier.fillMaxSize()
         )
         val viewmodel = Viewmodel()
+        val viewmodel2 = SignUpViewModel()
         var user by remember {
             mutableStateOf("")
         }
@@ -104,10 +105,13 @@ fun KindSignUp(navController: NavController) {
                 onClick = {
                     if (viewmodel.validInputSign(user, pass, email)) {
                         viewmodel.addToDatabase(user, pass, email)
+                        viewmodel2.signUp(email,pass)
+
                         navController.navigate(Screen.KindStart.withArgs(user))
                     }
-                    wrong = "Husk at fylde både Brugernavn, Kodeord og Email korrekt"
-
+                    else {
+                        wrong = "Husk at fylde både Brugernavn, Kodeord og Email korrekt"
+                    }
             },
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)

@@ -39,7 +39,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController, userna
                     contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            navController.navigate(Screen.Menu.route)
+                            navController.navigate(Screen.Menu.withArgs(username.toString()))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
@@ -49,7 +49,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController, userna
                     modifier = Modifier
                         .padding(20.dp, 5.dp, 0.dp, 10.dp)
                         .clickable {
-                            navController.navigate(Screen.Menu.route)
+                            navController.navigate(Screen.Menu.withArgs(username.toString()))
                         }
                         .size(width = 40.dp, height = 20.dp)
                         .wrapContentSize(Alignment.TopEnd)
@@ -88,7 +88,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController, userna
             ) {
                 Button(
                     onClick = {
-                        navController.navigate(Screen.MakeDonation.route)
+                        navController.navigate(Screen.MakeDonation.withArgs(username.toString()))
 
                     },
                     modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
@@ -153,7 +153,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController, userna
             ) {
                 Button(
                     onClick = {
-                        navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                        navController.navigate(Screen.KindStart.withArgs(username.toString()))
                     },
                     modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
                     elevation = null,
@@ -182,7 +182,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController, userna
             ) {
                 Button(
                     onClick = {
-                        navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                        navController.navigate(Screen.KindStart.withArgs(username.toString()))
                     },
                     modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
                     elevation = null,
@@ -211,7 +211,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController, userna
             ) {
                 Button(
                     onClick = {
-                        navController.navigate(Screen.Sikkerhed.route)
+                        navController.navigate(Screen.Sikkerhed.withArgs(username.toString()))
                     },
                     modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
                     elevation = null,
@@ -240,7 +240,7 @@ fun MinKonto(modifier: Modifier = Modifier, navController: NavController, userna
             ) {
                 Button(
                     onClick = {
-                        navController.navigate(Screen.Hjælp.route)
+                        navController.navigate(Screen.Hjælp.withArgs(username.toString()))
                     },
                     modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start),
                     elevation = null,

@@ -15,133 +15,266 @@ fun Navigation() {
     val orgVM = Viewmodel()
     val temaVM = VMtema()
 
-    NavHost(
-        navController = navController,
-        startDestination = Screen.Miljo.route
-    ) {
-        composable(route = Screen.KindFront.route) {
-            KindFront(navController = navController)
-        }
-        composable(
-            route = Screen.KindLogin.route
+        NavHost(
+            navController = navController,
+            startDestination = Screen.KindFront.route
         ) {
-            KindLogin(navController = navController)
-        }
-        composable(
-            route = Screen.KindSignUp.route
-        ) {
-            KindSignUp(navController = navController)
-        }
-        composable(
-            route = Screen.MakeDonation.route
-        ) {
-            MakeDonationScreen(navController = navController)
-        }
-        composable(
-            route = Screen.Confirmation.route
-        ) {
-            ConfirmationScreen(navController = navController)
-        }
-        composable(route = Screen.Template.route) {
-            TemplateScreen(navController = navController)
-        }
-        composable(route = Screen.Portfølje.route) {
-            PortføljeNy(navController = navController)
-        }
-        composable(route = Screen.BygPortfølje.route) {
-            BygPortfølje(navController = navController)
-        }
-        composable(route = Screen.Organisation.route) {
-            Organisation(navController = navController, "World Wildlife Fund", orgVM)
-        }
-
-        composable(route = Screen.Menu.route) {
-            Menu(navController = navController)
-        }
-        /*
-        composable(route = Screen.Tema.route) {
-            Tema(navController = navController)
-        }
-
-        composable(route = Screen.Sundhed.route) {
-            Sundhed(navController = navController)
-        }
-        composable(route = Screen.SocialtUdsatte.route) {
-            SocialtUdsatte(navController = navController)
-        }
-        composable(route = Screen.Dyrevelfærd.route) {
-            Dyrevelfærd(navController = navController)
-        }
-         */
-        composable(route = Screen.Hjælp.route) {
-            Hjælp(navController = navController)
-        }
-
-
-
-        composable(
-            route = Screen.KindStart.route + "/{username}", arguments = listOf(
-                navArgument("username") {
-                    type = NavType.StringType
-                    defaultValue = "Seby"
-                    nullable = true
-                }
-            )
-        ) { entry ->
-            KindStart(
-                username = entry.arguments?.getString("username"),
-                navController = navController
-            )
-        }
-        composable(
-            route = Screen.MinKonto.route + "/{username}", arguments = listOf(
-                navArgument("username") {
-                    type = NavType.StringType
-                    defaultValue = "Seby"
-                    nullable = true
-                }
-            )
-        ) { entry ->
-            MinKonto(
-                username = entry.arguments?.getString("username"),
-                navController = navController
-            )
-        }
-        composable(
-            route = Screen.TekniskProblem.route + "/{username}", arguments = listOf(
-                navArgument("username") {
-                    type = NavType.StringType
-                    defaultValue = "Seby"
-                    nullable = true
-                }
-            )
-        ) { entry ->
-            TekniskProblem(
-                username = entry.arguments?.getString("username"),
-                navController = navController
-            )
-        }
-        composable(
-            route = Screen.Tema.route + "/{username}/{theme}", arguments = listOf(
-                navArgument("username") {
-                    type = NavType.StringType
-                    defaultValue = "Seby"
-                    nullable = false
-                },
-                navArgument("theme") {
-                    type = NavType.StringType
-                    defaultValue = "Miljø"
-                    nullable = false
-                }
-            )
-        ) { entry ->
-            entry.arguments?.getString("theme")?.let {
-                Tema(
-                    theme = it,
-                    navController = navController,
-                    vm = temaVM
+            composable(route = Screen.KindFront.route) {
+                KindFront(navController = navController)
+            }
+            composable(
+                route = Screen.KindLogin.route
+            ) {
+                KindLogin(navController = navController)
+            }
+            composable(
+                route = Screen.KindSignUp.route
+            ) {
+                KindSignUp(navController = navController)
+            }
+            composable(
+                route = Screen.MakeDonation.route+ "/{username}", arguments = listOf(
+                    navArgument("username") {
+                        type = NavType.StringType
+                        defaultValue = "Seby"
+                        nullable = true
+                    }
+                )
+            ) { entry ->
+                MakeDonationScreen(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
                 )
             }
+            composable(
+                route = Screen.Confirmation.route+ "/{username}", arguments = listOf(
+                    navArgument("username") {
+                        type = NavType.StringType
+                        defaultValue = "Seby"
+                        nullable = true
+                    }
+                )
+            ) { entry ->
+                ConfirmationScreen(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+            composable(route = Screen.Template.route+ "/{username}", arguments = listOf(
+                navArgument("username") {
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )
+            ) { entry ->
+                TemplateScreen(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+            composable(route = Screen.Portfølje.route+ "/{username}", arguments = listOf(
+                navArgument("username") {
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )
+            ) { entry ->
+                PortføljeNy(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+            composable(route = Screen.BygPortfølje.route+ "/{username}", arguments = listOf(
+                navArgument("username") {
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )
+            ) { entry ->
+                BygPortfølje(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+            composable(route = Screen.Organisation.route+ "/{username}", arguments = listOf(
+                navArgument("username") {
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )) { entry ->
+                Organisation(
+                    navController = navController,
+                    "World Wildlife Fund",
+                    orgVM,
+                    username = entry.arguments?.getString("username")
+                )
+            }
+            composable(route = Screen.Menu.route+ "/{username}", arguments = listOf(
+                navArgument("username") {
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )
+            ) { entry ->
+                Menu(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+            composable(route = Screen.Sikkerhed.route+ "/{username}", arguments = listOf(
+                navArgument("username") {
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )
+            ) { entry ->
+                Sikkerhed(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+            composable(route = Screen.Miljo.route+ "/{username}", arguments = listOf(
+                navArgument("username") {
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )
+            ) { entry ->
+                Miljø(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+            composable(route = Screen.Sundhed.route+ "/{username}", arguments = listOf(
+                navArgument("username") {
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )
+            ) { entry ->
+                Sundhed(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+            composable(route = Screen.SocialtUdsatte.route+ "/{username}", arguments = listOf(
+                navArgument("username") {
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )
+            ) { entry ->
+                SocialtUdsatte(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+            composable(route = Screen.Dyrevelfærd.route+ "/{username}", arguments = listOf(
+                navArgument("username") {
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )
+            ) { entry ->
+                Dyrevelfærd(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+            composable(route = Screen.Hjælp.route+ "/{username}", arguments = listOf(
+                navArgument("username") {
+                    type = NavType.StringType
+                    defaultValue = "Seby"
+                    nullable = true
+                }
+            )
+            ) { entry ->
+                Hjælp(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+            composable(
+                route = Screen.KindStart.route + "/{username}", arguments = listOf(
+                    navArgument("username") {
+                        type = NavType.StringType
+                        defaultValue = "Seby"
+                        nullable = true
+                    }
+                )
+            ) { entry ->
+                KindStart(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController,
+                    "World Wildlife Fund",
+                    orgVM
+                )
+            }
+            composable(
+                route = Screen.MinKonto.route + "/{username}", arguments = listOf(
+                    navArgument("username") {
+                        type = NavType.StringType
+                        defaultValue = "Seby"
+                        nullable = true
+                    }
+                )
+            ) { entry ->
+                MinKonto(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+            composable(
+                route = Screen.TekniskProblem.route + "/{username}", arguments = listOf(
+                    navArgument("username") {
+                        type = NavType.StringType
+                        defaultValue = "Seby"
+                        nullable = true
+                    }
+                )
+            ) { entry ->
+                TekniskProblem(
+                    username = entry.arguments?.getString("username"),
+                    navController = navController
+                )
+            }
+
+            composable(
+                route = Screen.Tema.route + "/{username}/{theme}", arguments = listOf(
+                    navArgument("username") {
+                        type = NavType.StringType
+                        defaultValue = "Seby"
+                        nullable = false
+                    },
+                    navArgument("theme") {
+                        type = NavType.StringType
+                        defaultValue = "Miljø"
+                        nullable = false
+                    }
+                )
+            ) { entry ->
+                entry.arguments?.getString("theme")?.let {
+                    Tema(
+                        theme = it,
+                        navController = navController,
+                        vm = temaVM
+                    )
+                }
+            }
+
+
+
+
+
         }
-    }
 }

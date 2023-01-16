@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun MakeDonationScreen(navController: NavController) {
+fun MakeDonationScreen(navController: NavController, username: String?) {
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -40,7 +40,7 @@ fun MakeDonationScreen(navController: NavController) {
                 Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            navController.navigate(Screen.Organisation.route)
+                            navController.navigate(Screen.Organisation.withArgs(username.toString()))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )

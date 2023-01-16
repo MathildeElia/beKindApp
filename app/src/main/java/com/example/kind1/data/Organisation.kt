@@ -5,7 +5,8 @@ data class Organisation(
     var subheading: String = "start",
     var description: String = "start",
     var theme: String = "start",
-    var name: String = "id"
-
+    var name: String = "id",
+    var news : String = "news",
+    var donations: List<Donation>? = null
 
 )

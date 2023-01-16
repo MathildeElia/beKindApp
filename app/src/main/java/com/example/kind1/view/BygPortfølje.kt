@@ -14,7 +14,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -23,7 +22,7 @@ import androidx.navigation.NavController
 
 
 @Composable
-fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
+fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController, username: String?){
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -40,7 +39,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
                 Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            navController.navigate(Screen.KindFront.route)
+                            navController.navigate(Screen.Portfølje.withArgs(username.toString()))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
@@ -51,7 +50,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
                     modifier = Modifier
                         .padding(20.dp, 5.dp, 0.dp, 10.dp)
                         .clickable {
-                            navController.navigate(Screen.Menu.route)
+                            navController.navigate(Screen.Menu.withArgs(username.toString()))
                         }
                         .size(width = 40.dp, height = 20.dp)
                         .wrapContentSize(Alignment.TopEnd)
@@ -134,7 +133,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Tema.withArgs("Socialt Udsatte"))
+                            navController.navigate(Screen.SocialtUdsatte.withArgs(username.toString()))
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
@@ -185,7 +184,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Template.route)
+                            navController.navigate(Screen.Template.withArgs(username.toString()))
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
@@ -200,7 +199,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Sundhed.route)
+                            navController.navigate(Screen.Sundhed.withArgs(username.toString()))
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
@@ -251,7 +250,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Template.route)
+                            navController.navigate(Screen.Template.withArgs(username.toString()))
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
@@ -269,7 +268,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Miljo.route)
+                            navController.navigate(Screen.Miljo.withArgs(username.toString()))
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
@@ -322,7 +321,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Template.route)
+                            navController.navigate(Screen.Template.withArgs(username.toString()))
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
@@ -340,7 +339,7 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController){
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Dyrevelfærd.route)
+                            navController.navigate(Screen.Dyrevelfærd.withArgs(username.toString()))
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
