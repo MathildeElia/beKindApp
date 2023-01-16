@@ -43,7 +43,7 @@ fun PortføljeNy(navController: NavController) {
             Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                        navController.navigate(Screen.KindStart.route)
                     }
                     .size(width = 50.dp, height = 30.dp)
             )
