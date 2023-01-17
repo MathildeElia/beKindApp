@@ -53,27 +53,29 @@ fun KindStart(username: String?, navController: NavController, id: String?, view
         Column {
             val shape = RoundedCornerShape(12.dp)
             Spacer(modifier = Modifier.height(10.dp))
-            Row{
-            Spacer(modifier = Modifier.height(10.dp))
-            Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
-                modifier = Modifier
-                    .clickable {
-                        navController.navigate(Screen.KindFront.route)
-                    }
-                    .size(width = 50.dp, height = 30.dp)
-            )
+            Row {
+                Spacer(modifier = Modifier.height(10.dp))
+                Image(painter = painterResource(id = R.drawable.backbutton),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .clickable {
+                            navController.navigate(Screen.KindFront.route)
+                        }
+                        .size(width = 50.dp, height = 30.dp)
+                )
 
-            Spacer(modifier = Modifier.width(290.dp))
+                Spacer(modifier = Modifier.width(290.dp))
 
-            Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
-                modifier = Modifier
-                    .padding(20.dp, 5.dp, 0.dp, 10.dp)
-                    .clickable {
-                        navController.navigate(Screen.Menu.withArgs(username.toString()))
-                    }
-                    .size(width = 40.dp, height = 20.dp)
-                    .wrapContentSize(Alignment.TopEnd)
-            )
+                Image(painter = painterResource(id = R.drawable.menuicon),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(20.dp, 5.dp, 0.dp, 10.dp)
+                        .clickable {
+                            navController.navigate(Screen.Menu.withArgs(username.toString()))
+                        }
+                        .size(width = 40.dp, height = 20.dp)
+                        .wrapContentSize(Alignment.TopEnd)
+                )
             }
 
 
@@ -190,21 +192,30 @@ fun KindStart(username: String?, navController: NavController, id: String?, view
                         color = Color(0xFF315C36)
                     )
 
-                    organisation.let {
-                        it.news?.let { it1 ->
-                            Text(
-                                it1,
-                                textAlign = TextAlign.Start,
-                                fontSize = 15.sp,
-                                modifier = Modifier.padding(20.dp, 45.dp, 20.dp, 0.dp)
-                            )
+                    organisation?.name?.let {
+                        Text(
+                            it,
+                            textAlign = TextAlign.Start,
+                            fontSize = 20.sp,
+                            modifier = Modifier.padding(20.dp, 50.dp, 20.dp, 0.dp)
+                                .align(Alignment.TopCenter)
+                        )
+
+
+                        organisation.let {
+                            it.news?.let { it1 ->
+                                Text(
+                                    it1,
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 15.sp,
+                                    modifier = Modifier.padding(20.dp, 80.dp, 20.dp, 0.dp)
+                                )
+                            }
                         }
                     }
                 }
             }
-
         }
-}
     }
-
+}
 
