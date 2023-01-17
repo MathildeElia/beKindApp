@@ -61,6 +61,7 @@ class Viewmodel : ViewModel() {
             .addOnSuccessListener {  }
             .addOnFailureListener {  }
     }
+
     // on below line we are calling method to display UI
     //firebaseUI(LocalContext.current, courseList)
     fun getOgFromDatabase(s: String) {
