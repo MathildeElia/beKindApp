@@ -55,11 +55,30 @@ fun KindStart(username: String?, navController: NavController, id: String?, view
             Spacer(modifier = Modifier.height(10.dp))
             Row {
                 Spacer(modifier = Modifier.height(10.dp))
+
+                /*if (username.toString() == "Gæst"){
+                    navController.navigate(Screen.Template.route)
+                    Image(painter = painterResource(id = R.drawable.backbutton),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .clickable {
+                                navController.navigate(Screen.KindFront.route)
+                            }
+                            .size(width = 50.dp, height = 30.dp)
+                    )
+                }
+
+                 */
+
                 Image(painter = painterResource(id = R.drawable.backbutton),
                     contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            navController.navigate(Screen.KindFront.route)
+                            if (username.equals("Gæst")) {
+                                navController.navigate(Screen.Portfølje.withArgs("Gæst"))
+                            } else {
+                                navController.navigate(Screen.KindFront.route)
+                            }
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )

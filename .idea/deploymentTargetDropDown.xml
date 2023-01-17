@@ -7,11 +7,11 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\sebyn\.android\avd\Copy_2_of_BekindEmulator.avd" />
+            <value value="$USER_HOME$/.android/avd/OG_of_Resizable_API_33.avd" />
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2023-01-16T09:33:47.135682800Z" />
+    <timeTargetWasSelectedWithDropDown value="2023-01-17T13:58:37.586267Z" />
   </component>
 </project>
