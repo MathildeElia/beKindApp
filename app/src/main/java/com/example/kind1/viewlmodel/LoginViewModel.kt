@@ -17,16 +17,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import org.checkerframework.checker.units.qual.s
 import kotlin.system.exitProcess
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel: ViewModel(){
     data class UserUiState(
         var userList: User = User()
     )
-
     val userState = MutableStateFlow(User())
 
     private lateinit var auth: FirebaseAuth
 
-    fun validLogin(email: String, password: String): Boolean {
+    fun validLogin(email: String,password: String): Boolean{
         var validate = true
 
         if (password.length < 6 || !android.util.Patterns.EMAIL_ADDRESS.matcher(email)
@@ -36,11 +35,14 @@ class LoginViewModel : ViewModel() {
         }
 
         return validate
+
+
     }
 
-    fun login(email: String, password: String, navController: NavController): String {
+    fun login(email: String, password: String,navController: NavController): String {
         var validate = 0
         if (!validLogin(email, password)) {
+
             return "Enten email eller password er forkert"
         }
 
@@ -50,18 +52,14 @@ class LoginViewModel : ViewModel() {
             .get()
             .addOnSuccessListener { documents ->
                 val users = documents.map { document ->
-
                     val user = User()
                     user.email = document.get("email") as String
                     user.username = document.get("username") as String
                     user.admin = document.get("admin") as Boolean
                     Log.w(ContentValues.TAG, "LOGIN FAILED")
                     user
-
                 }
-
                 userState.value = users.get(0)
-
             }
             .addOnFailureListener {
                 validate = 1
@@ -85,11 +83,11 @@ class LoginViewModel : ViewModel() {
                     }
                 }
             return ""
-        } else {
-            return "Enten email eller password er forkert"
         }
+        return "Enten email eller password er forkert"
     }
 
+//hej
 
 }
 

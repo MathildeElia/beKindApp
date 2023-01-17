@@ -5,6 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,12 +40,19 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
         var charityName by remember {
             mutableStateOf("")
         }
-        var charitySubtitle by remember {
+        var subheading by remember {
             mutableStateOf("")
         }
         var beskrivelse by remember {
             mutableStateOf("")
         }
+        var link by remember {
+            mutableStateOf("")
+        }
+        var theme by remember{
+            mutableStateOf("")
+        }
+
 
 
         Column {
@@ -98,7 +107,7 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
                 .wrapContentSize()
             ){
 
-                TextField(value = charitySubtitle, onValueChange = {charitySubtitle= it},
+                TextField(value = subheading, onValueChange = {subheading= it},
                 modifier = Modifier,
                     label = {Text("Undertekst")})
             }
@@ -121,7 +130,60 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
             }
             Row(modifier = Modifier
                 .size(width = 900.dp, height = 80.dp)
-                        //.clip(shape = RoundedCornerShape(15.dp))
+                //.clip(shape = RoundedCornerShape(15.dp))
+                .background(Color.White)
+                .padding(horizontal = 1.dp)
+                .fillMaxSize()
+                .wrapContentSize()) {
+
+
+                TextField(
+                    value = link, onValueChange = { link = it },
+                    modifier = Modifier,
+                    label = { Text("Hyperlink") }
+
+                )
+            }
+            Row(modifier = Modifier
+                .size(width = 900.dp, height = 80.dp)
+                //.clip(shape = RoundedCornerShape(15.dp))
+                .background(Color.White)
+                .padding(horizontal = 1.dp)
+                .fillMaxSize()
+                .wrapContentSize()) {
+
+                var expanded by remember{
+                    mutableStateOf(false)
+                }
+                var selectedItem by remember {
+                    mutableStateOf("Tema")
+                }
+                val itemList = listOf("Miljø","Sundhed","Dyrevelfærd","Socialt Udsatte")
+
+                Box { 
+                    TextButton(onClick = { expanded = true}) {
+                        Row {
+                            Text(text = "$selectedItem ")
+                            Icon(Icons.Default.ArrowDropDown, contentDescription = "")
+                        }
+                    }
+                    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                        itemList.forEach{
+                            DropdownMenuItem(onClick = {
+                                expanded = false
+                                selectedItem = it
+                                theme = it
+                            }) {
+                                Text(text = it)
+                            }
+                        }
+                    }
+                }
+            }
+
+            Row(modifier = Modifier
+                .size(width = 900.dp, height = 80.dp)
+                //.clip(shape = RoundedCornerShape(15.dp))
                 .background(Color.White)
                 .padding(horizontal = 1.dp)
                 .fillMaxSize()
@@ -131,7 +193,7 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
                     Button(
                         onClick = {
 
-                            viewmodel.submitCharity(charityName,charitySubtitle,beskrivelse)
+                            viewmodel.submitCharity(charityName,subheading,beskrivelse,theme,link)
                             navController.navigate(Screen.AdminPage.withArgs(username.toString()))
 
                         },
