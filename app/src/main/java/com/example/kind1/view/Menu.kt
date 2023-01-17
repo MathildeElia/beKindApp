@@ -101,7 +101,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController, username: 
         }
         Button(
             onClick = {
-                navController.navigate(Screen.SocialtUdsatte.withArgs(username.toString()))
+                navController.navigate(Screen.Tema.withArgs(username.toString(),"Socialt Udsatte"))
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
@@ -118,7 +118,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController, username: 
         }
         Button(
             onClick = {
-                navController.navigate(Screen.Miljo.withArgs(username.toString()))
+                navController.navigate(Screen.Tema.withArgs(username.toString(),"Miljø"))
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
@@ -135,7 +135,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController, username: 
         }
         Button(
             onClick = {
-               navController.navigate(Screen.Sundhed.withArgs(username.toString()))
+               navController.navigate(Screen.Tema.withArgs(username.toString(),"Sundhed"))
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
@@ -152,7 +152,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController, username: 
         }
         Button(
             onClick = {
-                    navController.navigate(Screen.Dyrevelfærd.withArgs(username.toString()))
+                    navController.navigate(Screen.Tema.withArgs(username.toString(),"Dyrevelfærd"))
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
