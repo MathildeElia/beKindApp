@@ -71,15 +71,23 @@ fun Organisation(navController: NavController, orgName: String?, viewmodel: View
             }
             Button(
                 onClick = {
-                    //naviger til makeDonation side
-                    navController.navigate(Screen.MakeDonation.withArgs(username.toString(),orgName.toString()))
+                    if (username.equals("Gæst")) {
+                        navController.navigate(Screen.KindSignUp.route)
+                    } else {
+                        navController.navigate(Screen.MakeDonation.withArgs(username.toString(),orgName.toString()))
+                    }
+
                 }, modifier = Modifier
                     .fillMaxWidth()
                     .padding(40.dp, 0.dp, 40.dp, 20.dp)
                     .clip(shape),
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow)
             ) {
-                Text("Støt organisationen", color = White, fontSize = 25.sp)
+                if (username.equals("Gæst")) {
+                    Text("Opret bruger for at støtte", color = White, fontSize = 22.sp)
+                } else {
+                    Text("Støt organisationen", color = White, fontSize = 25.sp)
+                }
             }
             Box(
                 modifier = Modifier

@@ -43,7 +43,11 @@ fun Tema(username: String?, theme: String, navController: NavController, vm: VMt
     Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
         modifier = Modifier
             .clickable {
-                navController.navigate(Screen.BygPortfølje.withArgs(username.toString()))
+                if (username.equals("Gæst")) {
+                    navController.navigate(Screen.Gæst.withArgs("Gæst"))
+                } else {
+                    navController.navigate(Screen.BygPortfølje.withArgs(username.toString()))
+                }
             }
             .size(width = 50.dp, height = 30.dp)
     )

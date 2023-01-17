@@ -1,8 +1,6 @@
 package com.example.kind1
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -31,7 +29,7 @@ fun GæstStart(navController: NavController, username: String?) {
             contentDescription = null,
             modifier = Modifier.fillMaxSize()
         )
-        Column {
+        Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
             val shape = RoundedCornerShape(12.dp)
             Spacer(modifier = Modifier.height(10.dp))
             Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
@@ -215,29 +213,11 @@ fun GæstStart(navController: NavController, username: String?) {
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Template.withArgs(username.toString()))
-                        },
-                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
-                        modifier = Modifier
-                            .padding(15.dp, 100.dp, 0.dp, 0.dp)
-                            .wrapContentSize()
-                    )
-                    {
-                        Text(
-                            "Tilføj Tema",
-                            textAlign = TextAlign.Center,
-                            color = Color.White,
-                            fontSize = 12.sp
-                        )
-                    }
-
-                    Button(
-                        onClick = {
                             navController.
                             navigate(Screen.Tema.withArgs(username.toString(),"Miljø"))                        },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
-                            .padding(150.dp, 100.dp, 0.dp, 0.dp)
+                            .padding(15.dp, 100.dp, 0.dp, 0.dp)
                             .wrapContentSize()
                     )
                     {
@@ -286,29 +266,11 @@ fun GæstStart(navController: NavController, username: String?) {
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Template.withArgs(username.toString()))
-                        },
-                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
-                        modifier = Modifier
-                            .padding(15.dp, 100.dp, 0.dp, 0.dp)
-                            .wrapContentSize()
-                    )
-                    {
-                        Text(
-                            "Tilføj Tema",
-                            textAlign = TextAlign.Center,
-                            color = Color.White,
-                            fontSize = 12.sp
-                        )
-                    }
-
-                    Button(
-                        onClick = {
                             navController.
                             navigate(Screen.Tema.withArgs(username.toString(),"Dyrevelfærd"))                        },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
                         modifier = Modifier
-                            .padding(150.dp, 100.dp, 0.dp, 0.dp)
+                            .padding(15.dp, 100.dp, 0.dp, 0.dp)
                             .wrapContentSize()
                     )
                     {
