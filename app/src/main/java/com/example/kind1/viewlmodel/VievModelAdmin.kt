@@ -13,12 +13,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 class VievModelAdmin : ViewModel() {
     private val db = Firebase.firestore
-    fun submitCharity(charityName: String, charitySubtitle: String, beskrivelse: String) {
+    fun submitCharity(charityName: String, subheading: String, beskrivelse: String, theme: String) {
 
         val newCharity = hashMapOf(
             "name" to charityName,
-            "subtitle" to charitySubtitle,
-            "description" to beskrivelse
+            "subheading" to subheading,
+            "description" to beskrivelse,
+            "theme" to theme
         )
         db.collection("Organization").document(charityName).set(newCharity)
             .addOnCompleteListener { task ->

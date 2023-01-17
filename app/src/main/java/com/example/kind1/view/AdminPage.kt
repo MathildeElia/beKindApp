@@ -142,37 +142,8 @@ fun AdminPage(navController: NavController, username: String?
                     )
                 }
             }
-            Box(
-                modifier = Modifier
-                    .size(width = 400.dp, height = 60.dp)
-                    //.clip(shape = RoundedCornerShape(15.dp))
-                    .background(Color.White)
-                    .padding(horizontal = 10.dp)
-            ) {
-                Button(
-                    onClick = {
-                       // navController.navigate(Screen.TekniskProblem.withArgs(username.toString()))
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .wrapContentWidth(Alignment.Start),
-                    elevation = null,
-                    colors = ButtonDefaults.buttonColors
-                        (backgroundColor = Color.Transparent)
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.ikon7),
-                        contentDescription = "ikon7",
-                        modifier = Modifier.size(width = 50.dp, height = 30.dp)
-                    )
-                    Text(
-                        text = "l",
-                        fontSize = 18.sp,
-                        fontFamily = FontFamily.Serif
-                    )
-                }
-            }
-            Spacer(modifier = Modifier.height(35.dp))
+
+            Spacer(modifier = Modifier.height(385.dp))
             Box(
                 modifier = Modifier
                     .size(width = 400.dp, height = 60.dp)

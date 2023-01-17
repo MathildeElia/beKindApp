@@ -38,12 +38,16 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
         var charityName by remember {
             mutableStateOf("")
         }
-        var charitySubtitle by remember {
+        var subheading by remember {
             mutableStateOf("")
         }
         var beskrivelse by remember {
             mutableStateOf("")
         }
+        var theme by remember{
+            mutableStateOf("")
+        }
+
 
 
         Column {
@@ -98,7 +102,7 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
                 .wrapContentSize()
             ){
 
-                TextField(value = charitySubtitle, onValueChange = {charitySubtitle= it},
+                TextField(value = subheading, onValueChange = {subheading= it},
                 modifier = Modifier,
                     label = {Text("Undertekst")})
             }
@@ -121,6 +125,23 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
             }
             Row(modifier = Modifier
                 .size(width = 900.dp, height = 80.dp)
+                //.clip(shape = RoundedCornerShape(15.dp))
+                .background(Color.White)
+                .padding(horizontal = 1.dp)
+                .fillMaxSize()
+                .wrapContentSize()) {
+
+
+                TextField(
+                    value = theme, onValueChange = { theme = it },
+                    modifier = Modifier,
+                    label = { Text("Tema") }
+
+                )
+            }
+
+            Row(modifier = Modifier
+                .size(width = 900.dp, height = 80.dp)
                         //.clip(shape = RoundedCornerShape(15.dp))
                 .background(Color.White)
                 .padding(horizontal = 1.dp)
@@ -131,7 +152,7 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
                     Button(
                         onClick = {
 
-                            viewmodel.submitCharity(charityName,charitySubtitle,beskrivelse)
+                            viewmodel.submitCharity(charityName,subheading,beskrivelse,theme)
                             navController.navigate(Screen.AdminPage.withArgs(username.toString()))
 
                         },
