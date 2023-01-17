@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.kind1.R
 import androidx.navigation.NavHostController
+import com.example.kind1.Screen
 
 @Composable
 fun AdminOversigt(navController: NavHostController, username: String?) {
@@ -40,7 +41,7 @@ fun AdminOversigt(navController: NavHostController, username: String?) {
                 Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            //navController.navigate(Screen.AdminPage.route)
+                            //navController.navigate(Screen.AdminPage.withArgs(userState.value.username))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )

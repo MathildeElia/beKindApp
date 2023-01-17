@@ -20,10 +20,11 @@ import androidx.navigation.NavHostController
 import com.example.kind1.R
 import com.example.kind1.Screen
 import com.example.kind1.Viewmodel
+import com.example.kind1.viewlmodel.VievModelAdmin
 
 @Composable
 fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) {
-    val viewmodel = Viewmodel()
+    val viewmodel = VievModelAdmin()
 
     Card(elevation = 2.dp) {
         Image(
@@ -53,21 +54,12 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
                     contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            //navController.navigate(Screen.AdminPage.withArgs(username.toString()))
+                            //navController.navigate(Screen.AdminPage.withArgs(userState.value.username))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
                 Spacer(modifier = Modifier.width(290.dp))
-                Image(painter = painterResource(id = R.drawable.menuicon),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .padding(20.dp, 5.dp, 0.dp, 10.dp)
-                        .clickable {
-                            //navController.navigate(Screen.Menu.withArgs(username.toString()))
-                        }
-                        .size(width = 40.dp, height = 20.dp)
-                        .wrapContentSize(Alignment.TopEnd)
-                )
+
             }
 
             Spacer(modifier = Modifier.height(36.dp))
@@ -139,8 +131,8 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
                     Button(
                         onClick = {
 
-                            //viewmodel.submitCharity(charityName,charitySubtitle,beskrivelse)
-                            //navController.navigate(Screen.MinKonto.withArgs(username.toString()))
+                            viewmodel.submitCharity(charityName,charitySubtitle,beskrivelse)
+                            //navController.navigate(Screen.AdminPage.withArgs(userState.value.username))
 
                         },
                         modifier = Modifier
