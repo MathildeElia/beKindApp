@@ -52,7 +52,7 @@ class LoginViewModel: ViewModel(){
                     Log.d("Log in status","success")
                     navController.navigate(Screen.KindStart.withArgs(userState.value.username))
                 }else {
-                    Log.d("Log in status","fail")
+                    Log.w("Log in status","fail", task.exception)
                 }
             }
         return "Enten email eller password er forkert"
