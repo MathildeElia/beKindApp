@@ -5,6 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,6 +44,9 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
             mutableStateOf("")
         }
         var beskrivelse by remember {
+            mutableStateOf("")
+        }
+        var link by remember {
             mutableStateOf("")
         }
         var theme by remember{
@@ -133,16 +138,52 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
 
 
                 TextField(
-                    value = theme, onValueChange = { theme = it },
+                    value = link, onValueChange = { link = it },
                     modifier = Modifier,
-                    label = { Text("Tema") }
+                    label = { Text("Hyperlink") }
 
                 )
+            }
+            Row(modifier = Modifier
+                .size(width = 900.dp, height = 80.dp)
+                //.clip(shape = RoundedCornerShape(15.dp))
+                .background(Color.White)
+                .padding(horizontal = 1.dp)
+                .fillMaxSize()
+                .wrapContentSize()) {
+
+                var expanded by remember{
+                    mutableStateOf(false)
+                }
+                var selectedItem by remember {
+                    mutableStateOf("Tema")
+                }
+                val itemList = listOf("Miljø","Sundhed","Dyrevelfærd","Socialt Udsatte")
+
+                Box { 
+                    TextButton(onClick = { expanded = true}) {
+                        Row {
+                            Text(text = "$selectedItem ")
+                            Icon(Icons.Default.ArrowDropDown, contentDescription = "")
+                        }
+                    }
+                    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                        itemList.forEach{
+                            DropdownMenuItem(onClick = {
+                                expanded = false
+                                selectedItem = it
+                                theme = it
+                            }) {
+                                Text(text = it)
+                            }
+                        }
+                    }
+                }
             }
 
             Row(modifier = Modifier
                 .size(width = 900.dp, height = 80.dp)
-                        //.clip(shape = RoundedCornerShape(15.dp))
+                //.clip(shape = RoundedCornerShape(15.dp))
                 .background(Color.White)
                 .padding(horizontal = 1.dp)
                 .fillMaxSize()
@@ -152,7 +193,7 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
                     Button(
                         onClick = {
 
-                            viewmodel.submitCharity(charityName,subheading,beskrivelse,theme)
+                            viewmodel.submitCharity(charityName,subheading,beskrivelse,theme,link)
                             navController.navigate(Screen.AdminPage.withArgs(username.toString()))
 
                         },

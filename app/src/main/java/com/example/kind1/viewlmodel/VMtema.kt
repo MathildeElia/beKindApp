@@ -40,7 +40,7 @@ class VMtema : ViewModel() {
 
                     organisation.description = document.get("description") as String
                     organisation.subheading = document.get("subheading") as String
-                    organisation.link = document.get("link") as String
+                    organisation.link = document.get("link") as? String
                     organisation.name = document.id
 
                     Log.w(TAG, "Organisations $organisation")
