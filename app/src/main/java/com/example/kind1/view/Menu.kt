@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun Menu(modifier: Modifier = Modifier, navController: NavController) {
+fun Menu(modifier: Modifier = Modifier, navController: NavController, username: String?) {
     Image(
         contentScale = ContentScale.FillBounds,
         painter = painterResource(id = R.drawable.bekindbackground2),
@@ -33,7 +33,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         Image(painter = painterResource(id = R.drawable.bekindtitel), contentDescription = null,
             modifier = Modifier
                 .clickable {
-                    navController.navigate(Screen.KindFront.route)
+                    navController.navigate(Screen.KindStart.withArgs(username.toString()))
                 }
                 .size(width = 50.dp, height = 30.dp)
         )
@@ -67,7 +67,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
 
         Button(
             onClick = {
-                navController.navigate(Screen.Portfølje.route)
+                navController.navigate(Screen.Portfølje.withArgs(username.toString()))
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
@@ -84,7 +84,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
             }
         Button(
             onClick = {
-                navController.navigate(Screen.BygPortfølje.route)
+                navController.navigate(Screen.BygPortfølje.withArgs(username.toString()))
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
@@ -101,7 +101,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         }
         Button(
             onClick = {
-                navController.navigate(Screen.SocialtUdsatte.route)
+                navController.navigate(Screen.SocialtUdsatte.withArgs(username.toString()))
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
@@ -118,7 +118,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         }
         Button(
             onClick = {
-                navController.navigate(Screen.Miljo.route)
+                navController.navigate(Screen.Miljo.withArgs(username.toString()))
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
@@ -135,7 +135,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         }
         Button(
             onClick = {
-               navController.navigate(Screen.Sundhed.route)
+               navController.navigate(Screen.Sundhed.withArgs(username.toString()))
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
@@ -152,7 +152,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         }
         Button(
             onClick = {
-                    navController.navigate(Screen.Dyrevelfærd.route)
+                    navController.navigate(Screen.Dyrevelfærd.withArgs(username.toString()))
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)
@@ -169,7 +169,7 @@ fun Menu(modifier: Modifier = Modifier, navController: NavController) {
         }
         Button(
             onClick = {
-                navController.navigate(Screen.MinKonto.withArgs("Gæst"))
+                navController.navigate(Screen.MinKonto.withArgs(username.toString()))
             }, modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.Start), elevation = null,
             colors = ButtonDefaults.buttonColors
                 (backgroundColor = Color.Transparent)

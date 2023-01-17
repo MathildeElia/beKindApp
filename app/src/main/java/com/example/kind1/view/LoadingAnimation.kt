@@ -1,5 +1,6 @@
 package com.example.kind1
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -15,6 +16,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -58,6 +60,7 @@ fun LoadingAnimationScreen(navController: NavController){
     }
 
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun LoadingAnimation(
     alpha: Float,
@@ -115,8 +118,10 @@ fun LoadingAnimation(
     }
 
 }
-/*@Preview
+/*
+@Preview
 @Composable
 fun LoadingAnimationPreview(){
     LoadingAnimationScreen()
-}*/
+}
+ */

@@ -3,39 +3,30 @@ package com.example.kind1
 import android.annotation.SuppressLint
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Cyan
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.kind1.data.Organisation
 
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel) {
+fun Organisation(navController: NavController, orgName: String?, viewmodel: Viewmodel, username: String?) {
 
     DisposableEffect(key1 = viewmodel) {
-        id?.let { viewmodel.getOgFromDatabase(it) }
+        orgName?.let { viewmodel.getOgFromDatabase(it) }
         onDispose { }
     }
     val organisation = viewmodel.organisationState.collectAsState().value.organisation
@@ -53,13 +44,12 @@ fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel
         Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
             modifier = Modifier
                 .clickable {
-                    navController.navigate(Screen.Miljo.route)
+                    navController.navigate(Screen.Tema.withArgs(username.toString(),organisation.theme))
                 }
                 .size(width = 50.dp, height = 30.dp)
         )
         Column(
             modifier = Modifier.fillMaxSize(),
-            //horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             organisation?.name?.let {
@@ -82,7 +72,7 @@ fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel
             Button(
                 onClick = {
                     //naviger til makeDonation side
-                    navController.navigate(Screen.MakeDonation.withArgs("igen", id.toString()))
+                    navController.navigate(Screen.MakeDonation.withArgs(username.toString(),orgName.toString()))
                 }, modifier = Modifier
                     .fillMaxWidth()
                     .padding(40.dp, 0.dp, 40.dp, 20.dp)
@@ -109,10 +99,7 @@ fun Organisation(navController: NavController, id: String?, viewmodel: Viewmodel
                     )
                 }
             }
-
         }
-        //val organisationList = viewmodel.readOrganization()
-        //FirebaseUI(context = LocalContext.current, organisationList = organisationList)
     }
 }
 

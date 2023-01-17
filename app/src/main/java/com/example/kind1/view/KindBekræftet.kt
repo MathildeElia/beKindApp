@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun KindBekræftet(navController: NavController) {
+fun KindBekræftet(username:String?, navController: NavController) {
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -45,7 +45,7 @@ fun KindBekræftet(navController: NavController) {
                     modifier = Modifier
                         .padding(vertical = 5.dp)
                         .clickable {
-                            navController.navigate(Screen.MakeDonation.route)
+                            navController.navigate(Screen.MakeDonation.withArgs("temp"))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
@@ -56,7 +56,7 @@ fun KindBekræftet(navController: NavController) {
                     modifier = Modifier
                         .padding(20.dp, 5.dp, 0.dp, 10.dp)
                         .clickable {
-                            navController.navigate(Screen.Menu.route)
+                            navController.navigate(Screen.Menu.withArgs("Temp"))
                         }
                         .size(width = 40.dp, height = 20.dp)
                         .wrapContentSize(Alignment.Center)
@@ -110,7 +110,7 @@ fun KindBekræftet(navController: NavController) {
 
             Button(
                 onClick = {
-                    navController.navigate(Screen.Portfølje.route)
+                    navController.navigate(Screen.Portfølje.withArgs("temp"))
                 },
                 colors = ButtonDefaults.buttonColors
                     (backgroundColor = Color(0xFF315C36))
