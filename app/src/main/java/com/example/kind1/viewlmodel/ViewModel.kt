@@ -60,6 +60,7 @@ class Viewmodel : ViewModel() {
             .addOnSuccessListener {  }
             .addOnFailureListener {  }
     }
+
     // on below line we are calling method to display UI
     //firebaseUI(LocalContext.current, courseList)
     fun getOgFromDatabase(s: String) {
@@ -74,6 +75,7 @@ class Viewmodel : ViewModel() {
                 organisation.theme = documentSnapshot.get("theme") as String
                 organisation.news = documentSnapshot.get("nyheder") as? String
                 organisation.name = documentSnapshot.id
+                organisation.link = documentSnapshot.get("link") as? String
                 organisationState.value = organisationState.value.copy(organisation)
                 Log.d(TAG, "Organisation $organisation")
             }

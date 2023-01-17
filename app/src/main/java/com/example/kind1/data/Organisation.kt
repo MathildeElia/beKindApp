@@ -7,6 +7,7 @@ data class Organisation(
     var theme: String = "start",
     var name: String = "id",
     var news : String? = "news",
+    var link : String? = "link",
     var donations: List<Donation>? = null
 
 )

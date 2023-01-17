@@ -19,6 +19,9 @@ import com.example.kind1.viewlmodel.SignUpViewModel
 
 @Composable
 fun KindSignUp(navController: NavController) {
+
+
+
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -37,6 +40,10 @@ fun KindSignUp(navController: NavController) {
 
         var email by remember {
             mutableStateOf("")
+        }
+
+        var validationFinished by remember {
+            mutableStateOf(false)
         }
 
         var wrong by remember {
@@ -130,9 +137,6 @@ fun KindSignUp(navController: NavController) {
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
             )
-
-
         }
     }
-
 }
