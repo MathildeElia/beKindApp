@@ -225,6 +225,15 @@ fun Navigation() {
             )
         }
 
+        composable(route = Screen.Gæst.route + "/{username}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Gæst"
+                nullable = true
+            })) { entry ->
+          GæstStart(navController = navController, username = "Gæst")
+        }
+
         composable(route = Screen.Tema.route + "/{username}/{theme}",
             arguments = listOf(navArgument("username") {
                 type = NavType.StringType
