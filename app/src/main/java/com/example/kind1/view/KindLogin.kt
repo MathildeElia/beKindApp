@@ -17,6 +17,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.kind1.viewlmodel.LoginViewModel
+import kotlinx.coroutines.Delay
+import kotlinx.coroutines.delay
 
 
 @Composable
@@ -30,7 +32,7 @@ fun KindLogin(navController: NavController) {
         )
 
         val viewmodel = LoginViewModel()
-        var user by remember {
+        var email by remember {
             mutableStateOf("")
         }
         var pass by remember {
@@ -68,10 +70,10 @@ fun KindLogin(navController: NavController) {
                     .height(20.dp)
             )
             TextField(
-                value = user, onValueChange = { user = it },
+                value = email, onValueChange = { email = it },
                 modifier = Modifier
                     .align(CenterHorizontally),
-                label = { Text("Brugernavn") }
+                label = { Text("Email") }
 
             )
             Spacer(
@@ -88,7 +90,10 @@ fun KindLogin(navController: NavController) {
 
             Button(
                 onClick = {
-                    wrong = viewmodel.login(user,pass,navController)
+                    //viewmodel.IsAdmin(navController,email)
+
+                    wrong = viewmodel.login(email,pass,navController)
+
                 },
                 modifier = Modifier
                     .align(CenterHorizontally)

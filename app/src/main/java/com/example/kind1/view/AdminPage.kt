@@ -25,8 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun AdminPage(
-    //modifier: Modifier = Modifier, navController: NavController, username: String?
+fun AdminPage(navController: NavController, username: String?
     ){
 //id:String
     Card(elevation = 2.dp) {
@@ -46,7 +45,7 @@ fun AdminPage(
                     contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            //navController.navigate(Screen.Menu.withArgs(username.toString()))
+                            navController.navigate(Screen.KindFront.route)
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
@@ -66,7 +65,7 @@ fun AdminPage(
             )
 
             Text(
-                text = "Admin",
+                text = username.toString(),
                 //username.toString(),
                 fontSize = 20.sp,
                 fontFamily = FontFamily.Serif,
@@ -87,7 +86,7 @@ fun AdminPage(
             ){
                 Button(
                     onClick = {
-                        //navController.navigate(Screen.KindSignUp.route)
+                        navController.navigate(Screen.AdminOversigt.withArgs(username.toString()))
                     },
                     modifier = Modifier
                         .fillMaxWidth()
@@ -122,7 +121,7 @@ fun AdminPage(
             ) {
                 Button(
                     onClick = {
-                       // navController.navigate(Screen.Hjælp.withArgs(username.toString()))
+                       navController.navigate(Screen.AdminOpret.withArgs(username.toString()))
                     },
                     modifier = Modifier
                         .fillMaxWidth()
@@ -183,7 +182,7 @@ fun AdminPage(
             ) {
                 Button(
                     onClick = {
-                       // navController.navigate(Screen.KindFront.route)
+                       navController.navigate(Screen.KindFront.route)
                     }, modifier = Modifier.fillMaxWidth(), elevation = null,
                     colors = ButtonDefaults.buttonColors
                         (backgroundColor = Color.Transparent)
@@ -200,9 +199,3 @@ fun AdminPage(
     }
 }
 
-@Preview
-    (showBackground = true)
-@Composable
-fun AdminPagePre(){
-    AdminPage()
-}

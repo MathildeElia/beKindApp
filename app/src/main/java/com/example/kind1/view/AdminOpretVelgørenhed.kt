@@ -22,8 +22,7 @@ import com.example.kind1.Screen
 import com.example.kind1.Viewmodel
 
 @Composable
-fun AdminOpretVelgørenhed(navController: NavHostController
-    ) {
+fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) {
     val viewmodel = Viewmodel()
 
     Card(elevation = 2.dp) {
