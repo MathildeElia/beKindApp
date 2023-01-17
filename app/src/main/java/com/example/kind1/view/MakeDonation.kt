@@ -108,7 +108,7 @@ fun SupportButton(
         onClick = {
             val donation = Donation(amount, org, user, boolean)
             vm.addDonationToDatabase(donation)
-            nav.navigate(Screen.KindBekræftet.withArgs(user))
+            nav.navigate(Screen.LoadingAnimationScreen.withArgs(user))
         },
         colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow),
         modifier = Modifier

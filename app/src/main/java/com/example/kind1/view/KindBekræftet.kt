@@ -40,15 +40,7 @@ fun KindBekræftet(username:String?, navController: NavController) {
         {
             Row(
                 Modifier.align(Alignment.Start)) {
-                Image(painter = painterResource(id = R.drawable.backbutton),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .padding(vertical = 5.dp)
-                        .clickable {
-                            navController.navigate(Screen.MakeDonation.withArgs("temp"))
-                        }
-                        .size(width = 50.dp, height = 30.dp)
-                )
+
                 Spacer(modifier = Modifier.width(280.dp))
                 
                 Image(painter = painterResource(id = R.drawable.menuicon),
@@ -110,7 +102,7 @@ fun KindBekræftet(username:String?, navController: NavController) {
 
             Button(
                 onClick = {
-                    navController.navigate(Screen.Portfølje.withArgs("temp"))
+                    navController.navigate(Screen.Portfølje.withArgs(username.toString()))
                 },
                 colors = ButtonDefaults.buttonColors
                     (backgroundColor = Color(0xFF315C36))

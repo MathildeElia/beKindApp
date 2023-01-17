@@ -23,7 +23,7 @@ import androidx.navigation.NavController
 import kotlinx.coroutines.delay
 
 @Composable
-fun LoadingAnimationScreen(navController: NavController){
+fun LoadingAnimationScreen(username: String?, navController: NavController){
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -46,8 +46,8 @@ fun LoadingAnimationScreen(navController: NavController){
             )
             LaunchedEffect(key1 = true){
                 startAnimation = true
-                delay(6000)
-                navController.navigate(Screen.Confirmation.route)
+                delay(4000)
+                navController.navigate(Screen.KindBekræftet.withArgs(username.toString()))
             }
                 LoadingAnimation(modifier = Modifier, alpha = alphaAnim.value)
 

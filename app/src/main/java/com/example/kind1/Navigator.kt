@@ -229,6 +229,16 @@ fun Navigation() {
                 username = entry.arguments?.getString("username"), navController = navController
             )
         }
+        composable(route = Screen.LoadingAnimationScreen.route + "/{username}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Seby"
+                nullable = true
+            })) { entry ->
+            LoadingAnimationScreen(
+                username = entry.arguments?.getString("username"), navController = navController
+            )
+        }
 
         composable(route = Screen.Tema.route + "/{username}/{theme}",
             arguments = listOf(navArgument("username") {

@@ -11,6 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlin.math.roundToInt
 
 data class portefoljeUiState(
     var portefoljeUi: Portofolio = Portofolio()
@@ -83,7 +84,7 @@ class VMportefolje : ViewModel() {
          */
     }
 
-    fun themeSort(){
+    fun themeSort() {
         val miljø: ArrayList<Donation> = ArrayList()
         val sundhed: ArrayList<Donation> = ArrayList()
         val dyr: ArrayList<Donation> = ArrayList()
@@ -116,13 +117,8 @@ class VMportefolje : ViewModel() {
                 "Dyrevelfærd" -> amounts[2] = (amounts[2] + curDon.amount).toInt()
                 "Socialt Udsatte" -> amounts[3] = (amounts[3] + curDon.amount).toInt()
             }
-            /*
-            curList.forEachIndexed { index2, element2 ->
-                amounts[index] = (amounts[index] + element2.amount).toInt()
-            }
-
-             */
         }
+
         var miljøPercentage = 0
         var sundhedPercentage = 0
         var dyrPercentage = 0
@@ -133,20 +129,20 @@ class VMportefolje : ViewModel() {
             sum += element
         }
 
-        if (sum > 0) {
-            miljøPercentage = (amounts[0] / sum) * 100
-            sundhedPercentage = (amounts[1] / sum) * 100
-            dyrPercentage = (amounts[2] / sum) * 100
-            socialPercentage = (amounts[3] / sum) * 100
+        //Calculates percentage
+        if (amounts.sum()>0) {
+            miljøPercentage = ((amounts[0].toDouble() / amounts.sum()) * 100).roundToInt()
+            sundhedPercentage = ((amounts[1].toDouble() / amounts.sum()) * 100).roundToInt()
+            dyrPercentage = ((amounts[2].toDouble() / amounts.sum()) * 100).roundToInt()
+            socialPercentage = ((amounts[3].toDouble() / amounts.sum()) * 100).roundToInt()
         }
         val portefolje: Portofolio = Portofolio(
             miljøP = miljøPercentage,
             sundhedP = sundhedPercentage, dyrP = dyrPercentage, socialP = socialPercentage
         )
         portefoljeState.value.portefoljeUi = portefoljeState.value.portefoljeUi
-            .copy(portefolje.miljøP,portefolje.sundhedP,portefolje.dyrP,portefolje.socialP)
+            .copy(portefolje.miljøP, portefolje.sundhedP, portefolje.dyrP, portefolje.socialP)
 
-        //println("Hej" + portefolje.miljøP)
     }
 }
 
