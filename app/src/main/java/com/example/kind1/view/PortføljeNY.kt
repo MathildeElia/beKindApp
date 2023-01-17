@@ -25,7 +25,7 @@ import androidx.navigation.NavController
 import com.example.kind1.viewlmodel.VMportefolje
 
 @Composable
-fun PortføljeNy(navController: NavController) {
+fun PortføljeNy(navController: NavController, username: String?) {
     var themes = 4
     var charities = 6
     var percentage = 25
@@ -44,7 +44,7 @@ fun PortføljeNy(navController: NavController) {
             Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate(Screen.KindStart.route)
+                        navController.navigate(Screen.KindStart.withArgs(username.toString()))
                     }
                     .size(width = 50.dp, height = 30.dp)
             )
@@ -55,7 +55,7 @@ fun PortføljeNy(navController: NavController) {
                 modifier = Modifier
                     .padding(20.dp, 5.dp, 0.dp, 10.dp)
                     .clickable {
-                        navController.navigate(Screen.Menu.route)
+                        navController.navigate(Screen.Menu.withArgs(username.toString()))
                     }
                     .size(width = 40.dp, height = 20.dp)
                     .wrapContentSize(Alignment.TopEnd)
@@ -171,7 +171,7 @@ fun PortføljeNy(navController: NavController) {
 
             }
             Spacer(modifier = Modifier.height(20.dp))
-            StøtMereButton(navController)
+            StøtMereButton(navController,username.toString())
 
 
         }
@@ -180,9 +180,9 @@ fun PortføljeNy(navController: NavController) {
 }
 
 @Composable
-fun StøtMereButton(navController:NavController) {
+fun StøtMereButton(navController:NavController,username : String) {
     Button(onClick = {
-        navController.navigate(Screen.BygPortfølje.route)
+        navController.navigate(Screen.BygPortfølje.withArgs(username))
     },
         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
         modifier = Modifier.padding(60.dp)

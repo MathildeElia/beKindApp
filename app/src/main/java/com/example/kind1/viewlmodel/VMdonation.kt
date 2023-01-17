@@ -21,6 +21,10 @@ class VMdonation : ViewModel() {
 
     private val db = Firebase.firestore
 
+    init {
+
+    }
+
     fun isMonthly(s: String): Boolean {
         if (s.equals("Støt månedligt")) {
             return true

@@ -35,7 +35,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 
 @Composable
-fun KindStart(username: String?, navController: NavController) {
+fun KindStart(username: String?, navController: NavController, id: String?, viewmodel: Viewmodel) {
+
+    DisposableEffect(key1 = viewmodel) {
+        id?.let { viewmodel.getOgFromDatabase(it) }
+        onDispose { }
+    }
+    val organisation = viewmodel.organisationState.collectAsState().value.organisation
+
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -62,7 +69,7 @@ fun KindStart(username: String?, navController: NavController) {
                 modifier = Modifier
                     .padding(20.dp, 5.dp, 0.dp, 10.dp)
                     .clickable {
-                        navController.navigate(Screen.Menu.route)
+                        navController.navigate(Screen.Menu.withArgs(username.toString()))
                     }
                     .size(width = 40.dp, height = 20.dp)
                     .wrapContentSize(Alignment.TopEnd)
@@ -145,7 +152,7 @@ fun KindStart(username: String?, navController: NavController) {
                         text = "\t\tDin Portfølje →",
                         modifier = Modifier
                             .padding(10.dp, 55.dp, 0.dp, 0.dp)
-                            .clickable { navController.navigate(Screen.Portfølje.route) },
+                            .clickable { navController.navigate(Screen.Portfølje.withArgs(username.toString())) },
                         fontSize = 17.sp,
                         color = Color(0xFF315C36)
                     )
@@ -179,9 +186,20 @@ fun KindStart(username: String?, navController: NavController) {
                             .align(Alignment.TopCenter)
                             .padding(0.dp, 10.dp, 0.dp, 0.dp),
                         fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp,
+                        fontSize = 23.sp,
                         color = Color(0xFF315C36)
                     )
+
+                    organisation.let {
+                        it.news?.let { it1 ->
+                            Text(
+                                it1,
+                                textAlign = TextAlign.Start,
+                                fontSize = 15.sp,
+                                modifier = Modifier.padding(20.dp, 45.dp, 20.dp, 0.dp)
+                            )
+                        }
+                    }
                 }
             }
 

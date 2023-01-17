@@ -22,7 +22,7 @@ import androidx.navigation.NavController
 //tester om head er resettet....
 //sker der noget...
 @Composable
-fun Sundhed (modifier: Modifier = Modifier, navController: NavController) {
+fun Sundhed (modifier: Modifier = Modifier, navController: NavController, username: String?) {
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -36,7 +36,7 @@ fun Sundhed (modifier: Modifier = Modifier, navController: NavController) {
             Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate(Screen.BygPortfølje.route)
+                        navController.navigate(Screen.BygPortfølje.withArgs(username.toString()))
                     }
                     .size(width = 50.dp, height = 30.dp)
             )

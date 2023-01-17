@@ -39,7 +39,7 @@ fun TekniskProblem(username: String?, navController: NavHostController) {
                     contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            navController.navigate(Screen.MinKonto.withArgs("Gæst"))
+                            navController.navigate(Screen.MinKonto.withArgs(username.toString()))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
@@ -49,7 +49,7 @@ fun TekniskProblem(username: String?, navController: NavHostController) {
                     modifier = Modifier
                         .padding(20.dp, 5.dp, 0.dp, 10.dp)
                         .clickable {
-                            navController.navigate(Screen.Menu.route)
+                            navController.navigate(Screen.Menu.withArgs(username.toString()))
                         }
                         .size(width = 40.dp, height = 20.dp)
                         .wrapContentSize(Alignment.TopEnd)
@@ -99,7 +99,7 @@ fun TekniskProblem(username: String?, navController: NavHostController) {
                 Button(
                     onClick = {
                             viewmodel.submitError(report,username.toString())
-                            navController.navigate(Screen.MinKonto.withArgs("Gæst"))
+                            navController.navigate(Screen.MinKonto.withArgs(username.toString()))
 
                     },
                     modifier = Modifier
