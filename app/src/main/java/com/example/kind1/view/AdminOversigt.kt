@@ -23,9 +23,10 @@ import com.example.kind1.Screen
 
 @Composable
 fun AdminOversigt(navController: NavHostController, username: String?) {
-    var numberOfPeople = 1034
-    var totalMoney = 62300
-    var percentage = 25
+    var numberOfPeople = 134
+    var totalMoney = 6230
+    var percentage = 8
+
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -69,95 +70,22 @@ fun AdminOversigt(navController: NavHostController, username: String?) {
                     fontSize = 18.sp,
                     color = Color(0xFF315C36)
                 )
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(
+                    "\t\tDin organisation.",
+                    fontSize = 18.sp,
+                    color = Color(0xFF315C36)
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(
+                    "\t\tDet svarer til $percentage % af antallet af samlede donationer.",
+                    fontSize = 18.sp,
+                    color = Color(0xFF315C36)
+                )
+
                 Spacer(modifier = Modifier.height(50.dp))
             }
 
-            Column(
-                modifier = Modifier
-                    .padding(horizontal = 40.dp)
-                    .fillMaxWidth()
-
-            ) {
-                Box(
-                    modifier = Modifier
-                        .size(width = 440.dp, height = 60.dp)
-                        .clip(shape = RoundedCornerShape(15.dp))
-                        .background(Color.White)
-                        .padding(horizontal = 10.dp)
-                ) {
-                    Text(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .wrapContentSize(),
-                        text = "Socialt udsatte $percentage %",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFF315C36)
-                    )
-
-
-                }
-                Spacer(modifier = Modifier.height(40.dp))
-                Box(
-                    modifier = Modifier
-                        .size(width = 440.dp, height = 60.dp)
-                        .clip(shape = RoundedCornerShape(15.dp))
-                        .background(Color.White)
-                        .padding(horizontal = 10.dp)
-                ) {
-                    Text(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .wrapContentSize(),
-                        text = "Miljø $percentage %",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFF315C36)
-                    )
-
-
-                }
-                Spacer(modifier = Modifier.height(40.dp))
-                Box(
-                    modifier = Modifier
-                        .size(width = 440.dp, height = 60.dp)
-                        .clip(shape = RoundedCornerShape(15.dp))
-                        .background(Color.White)
-                        .padding(horizontal = 10.dp)
-                ) {
-                    Text(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .wrapContentSize(),
-                        text = "Dyrevelfærd $percentage %",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFF315C36)
-                    )
-
-
-                }
-                Spacer(modifier = Modifier.height(40.dp))
-                Box(
-                    modifier = Modifier
-                        .size(width = 440.dp, height = 60.dp)
-                        .clip(shape = RoundedCornerShape(15.dp))
-                        .background(Color.White)
-                        .padding(horizontal = 10.dp)
-                ) {
-                    Text(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .wrapContentSize(),
-                        text = "Sundhed $percentage %",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFF315C36)
-                    )
-
-
-                }
-                Spacer(modifier = Modifier.height(20.dp))
 
 
 
@@ -165,4 +93,3 @@ fun AdminOversigt(navController: NavHostController, username: String?) {
             }
         }
     }
-}
