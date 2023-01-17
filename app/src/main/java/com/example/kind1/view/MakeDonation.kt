@@ -80,13 +80,6 @@ fun MakeDonationScreen(
             Row(Modifier.align(Alignment.CenterHorizontally)) {
                 choice = RadioButtons()
             }
-            /*
-            Row(Modifier.align(Alignment.CenterHorizontally)) {
-                Text(text = "Støt månedligt")
-                Spacer(modifier = Modifier.width(60.dp))
-                Text("Støt én gang")
-            }
-             */
 
             Spacer(modifier = Modifier.height(40.dp))
             NameTextField()
@@ -96,7 +89,7 @@ fun MakeDonationScreen(
             Spacer(modifier = Modifier.height(40.dp))
             if (username != null) {
                 val bool = vm.isMonthly(choice)
-                SupportButton(amount, username, organisation, bool, vm, navController)
+                SupportButton(amount, username.toString(), organisation, bool, vm, navController)
             }
         }
     }
@@ -115,7 +108,7 @@ fun SupportButton(
         onClick = {
             val donation = Donation(amount, org, user, boolean)
             vm.addDonationToDatabase(donation)
-            nav.navigate(Screen.KindBekræftet.route)
+            nav.navigate(Screen.KindBekræftet.withArgs(user))
         },
         colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow),
         modifier = Modifier

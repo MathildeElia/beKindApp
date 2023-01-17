@@ -203,6 +203,17 @@ fun Navigation() {
                 username = entry.arguments?.getString("username"), navController = navController
             )
         }
+        composable(route = Screen.KindBekræftet.route + "/{username}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Seby"
+                nullable = true
+            })) { entry ->
+            KindBekræftet(
+                username = entry.arguments?.getString("username"), navController = navController
+            )
+        }
+
         composable(route = Screen.TekniskProblem.route + "/{username}",
             arguments = listOf(navArgument("username") {
                 type = NavType.StringType
