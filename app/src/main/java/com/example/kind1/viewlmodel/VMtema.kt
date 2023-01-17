@@ -45,7 +45,6 @@ class VMtema : ViewModel() {
                     Log.w(TAG, "Organisations $organisation")
 
                     organisation
-
                 }
                 temaState.value = temaState.value.copy(list)
             }

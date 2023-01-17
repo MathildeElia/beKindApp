@@ -2,6 +2,7 @@ package com.example.kind1
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.*
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -33,7 +34,6 @@ fun Organisation(navController: NavController, orgName: String?, viewmodel: View
 
     val shape = RoundedCornerShape(15.dp)
 
-    Card(elevation = 2.dp) {
 
         Image(
             contentScale = ContentScale.FillBounds,
@@ -44,20 +44,26 @@ fun Organisation(navController: NavController, orgName: String?, viewmodel: View
         Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
             modifier = Modifier
                 .clickable {
-                    navController.navigate(Screen.Tema.withArgs(username.toString(),organisation.theme))
+                    navController.navigate(
+                        Screen.Tema.withArgs(
+                            username.toString(),
+                            organisation.theme
+                        )
+                    )
                 }
                 .size(width = 50.dp, height = 30.dp)
         )
         Column(
             modifier = Modifier.fillMaxSize(),
         ) {
-
+            Spacer(modifier = Modifier.height(30.dp))
             organisation?.name?.let {
                 Text(
                     it,
                     textAlign = TextAlign.Start,
                     fontSize = 35.sp,
-                    modifier = Modifier.padding(40.dp, 30.dp, 30.dp, 0.dp)
+                    modifier = Modifier.padding(40.dp, 30.dp, 30.dp, 0.dp),
+                    color = Color(0xFF315C36)
                 )
             }
             Spacer(modifier = Modifier.height(10.dp))
@@ -66,7 +72,8 @@ fun Organisation(navController: NavController, orgName: String?, viewmodel: View
                     it,
                     textAlign = TextAlign.Start,
                     fontSize = 25.sp,
-                    modifier = Modifier.padding(40.dp, 10.dp, 30.dp, 20.dp)
+                    modifier = Modifier.padding(40.dp, 10.dp, 30.dp, 20.dp),
+                    color = Color(0xFF315C36)
                 )
             }
             Button(
@@ -77,7 +84,7 @@ fun Organisation(navController: NavController, orgName: String?, viewmodel: View
                     .fillMaxWidth()
                     .padding(40.dp, 0.dp, 40.dp, 20.dp)
                     .clip(shape),
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow)
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color(243, 196, 53))
             ) {
                 Text("Støt organisationen", color = White, fontSize = 25.sp)
             }
@@ -89,17 +96,19 @@ fun Organisation(navController: NavController, orgName: String?, viewmodel: View
                     .align(Alignment.CenterHorizontally)
                     .background(White)
                     .clip(shape)
+                    .verticalScroll(rememberScrollState())
             ) {
 
                 organisation.let {
                     Text(
                         it.description,
                         Modifier.padding(15.dp),
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        color = Color(0xFF315C36)
                     )
                 }
             }
-        }
+
     }
 }
 
