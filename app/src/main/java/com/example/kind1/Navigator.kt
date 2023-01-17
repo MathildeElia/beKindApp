@@ -11,6 +11,7 @@ import com.example.kind1.view.AdminOpretVelgørenhed
 import com.example.kind1.view.AdminOversigt
 import com.example.kind1.view.AdminPage
 import com.example.kind1.viewlmodel.VMdonation
+import com.example.kind1.viewlmodel.VMportefolje
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
@@ -19,6 +20,7 @@ fun Navigation() {
     val orgVM = Viewmodel()
     val temaVM = VMtema()
     val donationVM = VMdonation()
+    val portVM = VMportefolje()
 
     NavHost(
         navController = navController, startDestination = Screen.KindFront.route
@@ -80,7 +82,9 @@ fun Navigation() {
                 nullable = true
             })) { entry ->
             PortføljeNy(
-                username = entry.arguments?.getString("username"), navController = navController
+                navController = navController,
+                username = entry.arguments?.getString("username"),
+                viewmodel = portVM
             )
         }
         composable(route = Screen.BygPortfølje.route + "/{username}",
@@ -90,7 +94,8 @@ fun Navigation() {
                 nullable = true
             })) { entry ->
             BygPortfølje(
-                username = entry.arguments?.getString("username"), navController = navController
+                username = entry.arguments?.getString("username"),
+                navController = navController
             )
         }
         composable(route = Screen.Organisation.route + "/{username}/{organisation}",
@@ -268,6 +273,16 @@ fun Navigation() {
                 nullable = true
             })) { entry ->
           GæstStart(navController = navController, username = "Gæst")
+        }
+        composable(route = Screen.LoadingAnimationScreen.route + "/{username}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Seby"
+                nullable = true
+            })) { entry ->
+            LoadingAnimationScreen(
+                username = entry.arguments?.getString("username"), navController = navController
+            )
         }
 
         composable(route = Screen.Tema.route + "/{username}/{theme}",

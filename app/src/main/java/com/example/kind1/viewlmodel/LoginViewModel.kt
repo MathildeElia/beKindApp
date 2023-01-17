@@ -52,18 +52,14 @@ class LoginViewModel: ViewModel(){
             .get()
             .addOnSuccessListener { documents ->
                 val users = documents.map { document ->
-
                     val user = User()
                     user.email = document.get("email") as String
                     user.username = document.get("username") as String
                     user.admin = document.get("admin") as Boolean
                     Log.w(ContentValues.TAG, "LOGIN FAILED")
                     user
-
                 }
-
                 userState.value = users.get(0)
-
             }
             .addOnFailureListener {
                 validate = 1
@@ -88,10 +84,10 @@ class LoginViewModel: ViewModel(){
                 }
             return ""
         }
-        return "Enten email eller password er forkert"
+        else{return "Enten email eller password er forkert"}
     }
 
-
+//hej
 
 }
 

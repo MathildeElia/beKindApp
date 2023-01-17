@@ -89,7 +89,7 @@ fun MakeDonationScreen(
             Spacer(modifier = Modifier.height(40.dp))
             if (username != null) {
                 val bool = vm.isMonthly(choice)
-                SupportButton(amount, username.toString(), organisation, bool, vm, navController)
+                SupportButton(amount.toLong(), username.toString(), organisation, bool, vm, navController)
             }
         }
     }
@@ -97,7 +97,7 @@ fun MakeDonationScreen(
 
 @Composable
 fun SupportButton(
-    amount: Int,
+    amount: Long,
     user: String,
     org: String,
     boolean: Boolean,
@@ -108,7 +108,7 @@ fun SupportButton(
         onClick = {
             val donation = Donation(amount, org, user, boolean)
             vm.addDonationToDatabase(donation)
-            nav.navigate(Screen.KindBekræftet.withArgs(user))
+            nav.navigate(Screen.LoadingAnimationScreen.withArgs(user))
         },
         colors = ButtonDefaults.buttonColors(backgroundColor = Color(243, 196, 53)),
         modifier = Modifier

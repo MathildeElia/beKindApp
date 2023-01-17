@@ -1,6 +1,7 @@
 package com.example.kind1
 //Nu testes der
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -11,6 +12,8 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,12 +25,24 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.kind1.viewlmodel.VMportefolje
 
+@SuppressLint("StateFlowValueCalledInComposition")
 @Composable
-fun PortføljeNy(navController: NavController, username: String?) {
+fun PortføljeNy(navController: NavController, username: String?, viewmodel: VMportefolje) {
+
+    DisposableEffect(key1 = viewmodel){
+        username?.let { viewmodel.getPortefoljeDon(it) }
+        onDispose {  }
+    }
+    //viewmodel.themeSort()
+
+    val portefølje = viewmodel.portefoljeState.value.portefoljeUi
+
     var themes = 4
     var charities = 6
-    var percentage = 25
+    //var percentage = VMportefolje()
+
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -100,7 +115,26 @@ fun PortføljeNy(navController: NavController, username: String?) {
                     modifier = Modifier
                         .fillMaxSize()
                         .wrapContentSize(),
-                    text = "Socialt udsatte $percentage %",
+                    text = "Socialt udsatte ${portefølje.socialP} %",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF315C36)
+                )
+
+            }
+            Spacer(modifier = Modifier.height(40.dp))
+            Box(
+                modifier = Modifier
+                    .size(width = 440.dp, height = 60.dp)
+                    .clip(shape = RoundedCornerShape(15.dp))
+                    .background(Color.White)
+                    .padding(horizontal = 10.dp)
+            ) {
+                Text(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(),
+                    text = "Miljø ${portefølje.miljøP} %",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF315C36)
@@ -120,7 +154,7 @@ fun PortføljeNy(navController: NavController, username: String?) {
                     modifier = Modifier
                         .fillMaxSize()
                         .wrapContentSize(),
-                    text = "Miljø $percentage %",
+                    text = "Dyrevelfærd ${portefølje.dyrP} %",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF315C36)
@@ -140,27 +174,7 @@ fun PortføljeNy(navController: NavController, username: String?) {
                     modifier = Modifier
                         .fillMaxSize()
                         .wrapContentSize(),
-                    text = "Dyrevelfærd $percentage %",
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF315C36)
-                )
-
-
-            }
-            Spacer(modifier = Modifier.height(40.dp))
-            Box(
-                modifier = Modifier
-                    .size(width = 440.dp, height = 60.dp)
-                    .clip(shape = RoundedCornerShape(15.dp))
-                    .background(Color.White)
-                    .padding(horizontal = 10.dp)
-            ) {
-                Text(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .wrapContentSize(),
-                    text = "Sundhed $percentage %",
+                    text = "Sundhed ${portefølje.sundhedP} %",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF315C36)
@@ -183,7 +197,8 @@ fun StøtMereButton(navController:NavController,username : String) {
         navController.navigate(Screen.BygPortfølje.withArgs(username))
     },
         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
-        modifier = Modifier.padding(60.dp)
+        modifier = Modifier
+            .padding(60.dp)
             .wrapContentSize()
             .height(80.dp)
             .width(200.dp)) {
