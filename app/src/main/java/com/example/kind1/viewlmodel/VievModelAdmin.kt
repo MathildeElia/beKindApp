@@ -20,7 +20,7 @@ class VievModelAdmin : ViewModel() {
             "subtitle" to charitySubtitle,
             "description" to beskrivelse
         )
-        db.collection("charities").document(charityName).set(newCharity)
+        db.collection("Organization").document(charityName).set(newCharity)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d("DATABASE status", "success")

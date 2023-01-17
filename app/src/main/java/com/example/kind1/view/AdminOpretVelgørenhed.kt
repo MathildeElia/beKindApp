@@ -54,7 +54,7 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
                     contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            //navController.navigate(Screen.AdminPage.withArgs(userState.value.username))
+                            navController.navigate(Screen.AdminPage.withArgs(username.toString()))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
@@ -132,7 +132,7 @@ fun AdminOpretVelgørenhed(navController: NavHostController, username: String?) 
                         onClick = {
 
                             viewmodel.submitCharity(charityName,charitySubtitle,beskrivelse)
-                            //navController.navigate(Screen.AdminPage.withArgs(userState.value.username))
+                            navController.navigate(Screen.AdminPage.withArgs(username.toString()))
 
                         },
                         modifier = Modifier

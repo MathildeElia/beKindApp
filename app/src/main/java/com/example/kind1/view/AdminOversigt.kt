@@ -41,7 +41,7 @@ fun AdminOversigt(navController: NavHostController, username: String?) {
                 Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            //navController.navigate(Screen.AdminPage.withArgs(userState.value.username))
+                            navController.navigate(Screen.AdminPage.withArgs(username.toString()))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
