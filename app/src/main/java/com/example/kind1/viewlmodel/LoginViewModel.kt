@@ -84,7 +84,7 @@ class LoginViewModel: ViewModel(){
                 }
             return ""
         }
-        return "Enten email eller password er forkert"
+        else{return "Enten email eller password er forkert"}
     }
 
 //hej
