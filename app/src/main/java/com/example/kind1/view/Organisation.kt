@@ -54,18 +54,34 @@ fun Organisation(
         contentDescription = null,
         modifier = Modifier.fillMaxSize()
     )
-    Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
-        modifier = Modifier
-            .clickable {
-                navController.navigate(
-                    Screen.Tema.withArgs(
-                        username.toString(),
-                        organisation.theme
+
+    Row {
+        Spacer(modifier = Modifier.height(10.dp))
+        Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
+            modifier = Modifier
+                .clickable {
+                    navController.navigate(
+                        Screen.Tema.withArgs(
+                            username.toString(),
+                            organisation.theme
+                        )
                     )
-                )
-            }
-            .size(width = 50.dp, height = 30.dp)
-    )
+                }
+                .size(width = 50.dp, height = 30.dp)
+        )
+
+        Spacer(modifier = Modifier.width(290.dp))
+
+        Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
+            modifier = Modifier
+                .padding(20.dp, 5.dp, 0.dp, 10.dp)
+                .clickable {
+                    navController.navigate(Screen.Menu.withArgs(username.toString()))
+                }
+                .size(width = 40.dp, height = 20.dp)
+                .wrapContentSize(Alignment.TopEnd)
+        )
+    }
     Column(
         modifier = Modifier.fillMaxSize(),
     ) {
