@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.kind1.viewlmodel.VMdonation
+import com.example.kind1.viewlmodel.VMportefolje
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
@@ -16,10 +17,11 @@ fun Navigation() {
     val orgVM = Viewmodel()
     val temaVM = VMtema()
     val donationVM = VMdonation()
+    val portefoljeVM = VMportefolje()
 
         NavHost(
             navController = navController,
-            startDestination = Screen.KindFront.route
+            startDestination = Screen.Portfølje.route
         ) {
             composable(route = Screen.KindFront.route) {
                 KindFront(navController = navController)

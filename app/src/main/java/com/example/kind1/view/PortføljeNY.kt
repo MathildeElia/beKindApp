@@ -22,6 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.kind1.viewlmodel.VMportefolje
 
 @Composable
 fun PortføljeNy(navController: NavController) {
@@ -60,6 +61,7 @@ fun PortføljeNy(navController: NavController) {
                     .wrapContentSize(Alignment.TopEnd)
             )
         }
+        VMportefolje().themeSort()
 
         Spacer(modifier = Modifier.height(10.dp))
         Column(modifier = Modifier.padding(10.dp)) {
