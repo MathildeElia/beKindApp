@@ -62,7 +62,7 @@ fun MakeDonationScreen(
                     contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            navController.navigate(Screen.Organisation.route)
+                            navController.navigate(Screen.Organisation.withArgs(username.toString(),organisation))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
@@ -110,7 +110,7 @@ fun SupportButton(
             vm.addDonationToDatabase(donation)
             nav.navigate(Screen.KindBekræftet.withArgs(user))
         },
-        colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow),
+        colors = ButtonDefaults.buttonColors(backgroundColor = Color(243, 196, 53)),
         modifier = Modifier
             .height(50.dp)
             .width(280.dp)
@@ -211,7 +211,7 @@ fun RadioButtons(): String {
                             .clip(CircleShape)
                             .background(
                                 color = when {
-                                    isSelectedItem(textToEnableState.first) -> Color.Yellow
+                                    isSelectedItem(textToEnableState.first) -> Color(243, 196, 53)
                                     !textToEnableState.second -> Color.LightGray
                                     else -> Color.Transparent
                                 }

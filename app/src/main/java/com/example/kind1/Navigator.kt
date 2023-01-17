@@ -7,6 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.kind1.view.AdminOpretVelgørenhed
+import com.example.kind1.view.AdminOversigt
+import com.example.kind1.view.AdminPage
 import com.example.kind1.viewlmodel.VMdonation
 
 @SuppressLint("SuspiciousIndentation")
@@ -223,6 +226,48 @@ fun Navigation() {
             TekniskProblem(
                 username = entry.arguments?.getString("username"), navController = navController
             )
+        }
+        composable(route = Screen.AdminPage.route + "/{username}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Seby"
+                nullable = true
+            })) { entry ->
+            AdminPage(navController = navController,
+                username = entry.arguments?.getString("username"))
+
+        }
+        composable(route = Screen.AdminOpret.route + "/{username}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Seby"
+                nullable = true
+            })) { entry ->
+            AdminOpretVelgørenhed(
+                navController = navController,
+                username = entry.arguments?.getString("username")
+            )
+
+        }
+        composable(route = Screen.AdminOversigt.route + "/{username}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Seby"
+                nullable = true
+            })) { entry ->
+            AdminOversigt(
+                navController = navController,
+                username = entry.arguments?.getString("username"))
+
+        }
+
+        composable(route = Screen.Gæst.route + "/{username}",
+            arguments = listOf(navArgument("username") {
+                type = NavType.StringType
+                defaultValue = "Gæst"
+                nullable = true
+            })) { entry ->
+          GæstStart(navController = navController, username = "Gæst")
         }
 
         composable(route = Screen.Tema.route + "/{username}/{theme}",

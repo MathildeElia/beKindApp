@@ -72,7 +72,7 @@ fun KindFront(modifier: Modifier = Modifier,navController: NavController) {
             }
             Button(
                 onClick = {
-                    navController.navigate(Screen.KindStart.withArgs("Gæst"))
+                    navController.navigate(Screen.Gæst.withArgs("Gæst"))
                 },
                 colors = ButtonDefaults.buttonColors
                     (backgroundColor = Color(R.color.darkgreen))
