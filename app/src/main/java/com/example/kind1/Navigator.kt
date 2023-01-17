@@ -55,16 +55,6 @@ fun Navigation() {
                 vm = donationVM
             )
         }
-        composable(route = Screen.Confirmation.route + "/{username}",
-            arguments = listOf(navArgument("username") {
-                type = NavType.StringType
-                defaultValue = "Seby"
-                nullable = true
-            })) { entry ->
-            ConfirmationScreen(
-                username = entry.arguments?.getString("username"), navController = navController
-            )
-        }
         composable(route = Screen.Template.route + "/{username}",
             arguments = listOf(navArgument("username") {
                 type = NavType.StringType
@@ -135,46 +125,6 @@ fun Navigation() {
                 nullable = true
             })) { entry ->
             Sikkerhed(
-                username = entry.arguments?.getString("username"), navController = navController
-            )
-        }
-        composable(route = Screen.Miljo.route + "/{username}",
-            arguments = listOf(navArgument("username") {
-                type = NavType.StringType
-                defaultValue = "Seby"
-                nullable = true
-            })) { entry ->
-            Miljø(
-                username = entry.arguments?.getString("username"), navController = navController
-            )
-        }
-        composable(route = Screen.Sundhed.route + "/{username}",
-            arguments = listOf(navArgument("username") {
-                type = NavType.StringType
-                defaultValue = "Seby"
-                nullable = true
-            })) { entry ->
-            Sundhed(
-                username = entry.arguments?.getString("username"), navController = navController
-            )
-        }
-        composable(route = Screen.SocialtUdsatte.route + "/{username}",
-            arguments = listOf(navArgument("username") {
-                type = NavType.StringType
-                defaultValue = "Seby"
-                nullable = true
-            })) { entry ->
-            SocialtUdsatte(
-                username = entry.arguments?.getString("username"), navController = navController
-            )
-        }
-        composable(route = Screen.Dyrevelfærd.route + "/{username}",
-            arguments = listOf(navArgument("username") {
-                type = NavType.StringType
-                defaultValue = "Seby"
-                nullable = true
-            })) { entry ->
-            Dyrevelfærd(
                 username = entry.arguments?.getString("username"), navController = navController
             )
         }
