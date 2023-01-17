@@ -62,7 +62,7 @@ fun MakeDonationScreen(
                     contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            navController.navigate(Screen.Organisation.route)
+                            navController.navigate(Screen.Organisation.withArgs(username.toString(),organisation))
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
