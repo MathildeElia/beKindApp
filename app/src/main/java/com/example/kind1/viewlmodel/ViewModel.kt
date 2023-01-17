@@ -31,35 +31,9 @@ class Viewmodel : ViewModel() {
         return true
     }
 
-    fun validInputSign(user : String, pass : String,email : String): Boolean{
-        if(user == "" || pass == "" || !(email.contains("@") || email.contains("."))){
-           return false
-        }
 
-        return true
-    }
 
     private val db = Firebase.firestore
-
-
-
-    fun addToDatabase(user: String, pass: String, email: String) {
-
-            val newUser = hashMapOf(
-                "username" to user,
-                "password" to pass,
-                "email" to email
-            )
-        db.collection("users").document(user).set(newUser)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-                    Log.d("DATABASE status","success")
-                }else {
-                    Log.d("DATABASE status","fail")
-                }
-            }
-    }
-
 
     fun submitError(error: String, user: String) {
 

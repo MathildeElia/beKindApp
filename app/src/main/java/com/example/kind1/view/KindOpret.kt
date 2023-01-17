@@ -103,13 +103,13 @@ fun KindSignUp(navController: NavController) {
             )
             Button(
                 onClick = {
-                    if (viewmodel.validInputSign(user, pass, email)) {
-                        viewmodel.addToDatabase(user, pass, email)
+                    if (viewmodel2.validInputSign(user,pass, email)) {
+                        viewmodel2.addToDatabase(user, email)
                         viewmodel2.signUp(email,pass)
 
                         navController.navigate(Screen.KindStart.withArgs(user))
                     }
-                    else {
+                    else if(!viewmodel2.validInputSign(user, pass, email)){
                         wrong = "Husk at fylde både Brugernavn, Kodeord og Email korrekt"
                     }
             },
