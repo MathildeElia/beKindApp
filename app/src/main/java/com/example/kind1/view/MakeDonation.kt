@@ -3,25 +3,23 @@ package com.example.kind1
 import androidx.compose.animation.AnimatedContentScope.SlideDirection.Companion.Start
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Arrangement.Start
-
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
-import androidx.compose.ui.Alignment.Companion.Start
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -46,7 +44,7 @@ fun MakeDonationScreen(
         }
 
         Image(
-            contentScale = ContentScale.FillBounds,
+            //contentScale = ContentScale.FillBounds,
             painter = painterResource(id = R.drawable.bekindbackground2),
             contentDescription = null,
             modifier = Modifier.fillMaxSize()
@@ -69,9 +67,13 @@ fun MakeDonationScreen(
             }
             Spacer(modifier = Modifier.height(40.dp))
 
-            Text("Opret donation til $organisation", fontSize = 20.sp, textAlign = TextAlign.Center)
+            Text("Opret donation til \n $organisation", fontSize = 25.sp,
+                textAlign = TextAlign.Center, fontWeight = FontWeight.Bold,
+                color = Color(0xFF315C36))
             Spacer(modifier = Modifier.height(40.dp))
-            Text("Vælg beløb", fontSize = 15.sp, textAlign = TextAlign.Center)
+            Text("Vælg beløb", fontSize = 15.sp, textAlign = TextAlign.Center,
+                color = Color(0xFF315C36),fontFamily = FontFamily.Serif
+            )
 
             amount = amountTextField()
 
@@ -116,8 +118,9 @@ fun SupportButton(
             .width(280.dp)
     ) {
         Text(
-            text = "Støt nu", textAlign = TextAlign.Center,
-            color = Color.White, fontWeight = FontWeight.Bold, fontSize = 25.sp
+            text = "Støt nu", textAlign = TextAlign.Center, fontFamily = FontFamily.Serif,
+            color = Color.White, fontWeight = FontWeight.Bold, fontSize = 25.sp,
+            modifier = Modifier.clip(RoundedCornerShape(12.dp))
         )
     }
 }
@@ -130,6 +133,7 @@ fun amountTextField(): Int {
     TextField(
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         value = value, onValueChange = { value = it },
+        modifier = Modifier.clip(RoundedCornerShape(12.dp)),
         label = { }
     )
     if (value.isNotBlank()) {
@@ -145,6 +149,8 @@ fun NameTextField() {
     }
     TextField(
         value = user, onValueChange = { user = it },
+        modifier = Modifier
+            .clip(RoundedCornerShape(12.dp)),
         label = { Text("Dit fulde navn") }
 
     )
@@ -157,6 +163,8 @@ fun EmailTextField() {
     }
     TextField(
         value = email, onValueChange = { email = it },
+        modifier = Modifier
+            .clip(RoundedCornerShape(12.dp)),
         label = { Text("Din e-mail") }
     )
 }
