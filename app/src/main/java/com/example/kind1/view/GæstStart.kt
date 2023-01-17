@@ -1,19 +1,29 @@
 package com.example.kind1
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun GæstStart(navController: NavController, username: String?){
+fun GæstStart(navController: NavController, username: String?) {
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -31,6 +41,287 @@ fun GæstStart(navController: NavController, username: String?){
                     }
                     .size(width = 50.dp, height = 30.dp)
             )
+
+            Spacer(modifier = Modifier.height(15.dp))
+
+            Text(
+                text = "\t\tUdforsk forskellige",
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier,
+                fontSize = 30.sp,
+                //color = Color(0xFF034A0B),
+                color = Color(0xFF315C36)
+            )
+
+            Text(
+                text = "\t\tvelgørenheder",
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier,
+                fontSize = 30.sp,
+                //color = Color(0xFF034A0B),
+                color = Color(0xFF315C36)
+            )
+
+            Spacer(modifier = Modifier.height(40.dp))
+
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentSize(Alignment.Center)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(275.dp, 165.dp)
+                        .clip(shape)
+                        .background(Color.White)
+                )
+                {
+                    Spacer(modifier = Modifier.requiredHeight(32.dp))
+                    Text(
+                        text = "Socialt Udsatte",
+                        modifier = Modifier
+                            .padding(15.dp, 15.dp, 0.dp, 0.dp),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Text(
+                        text = "Hjælp de hjemløse og",
+                        modifier = Modifier
+                            .padding(15.dp, 50.dp, 0.dp, 0.dp),
+                        fontSize = 15.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Text(
+                        text = "bostederne i København",
+                        modifier = Modifier
+                            .padding(15.dp, 70.dp, 0.dp, 0.dp),
+                        fontSize = 15.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+
+                    Button(
+                        onClick = {
+                            navController.navigate(
+                                Screen.Tema.withArgs(
+                                    username.toString(),
+                                    "Socialt Udsatte"
+                                )
+                            )
+                        },
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
+                        modifier = Modifier
+                            .padding(15.dp, 100.dp, 0.dp, 0.dp)
+                            .wrapContentSize()
+                    )
+                    {
+                        Text(
+                            " Læs mere ",
+                            textAlign = TextAlign.Center,
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                    }
+
+                }
+                Spacer(modifier = Modifier.height(40.dp))
+                //Second White box
+                Box(
+                    modifier = Modifier
+                        .size(275.dp, 165.dp)
+                        .clip(shape)
+                        .background(Color.White)
+                )
+                {
+                    Spacer(modifier = Modifier.requiredHeight(32.dp))
+                    Text(
+                        text = "Sundhed",
+                        modifier = Modifier
+                            .padding(15.dp, 15.dp, 0.dp, 0.dp),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Text(
+                        text = "Hjælp udsatte med",
+                        modifier = Modifier
+                            .padding(15.dp, 50.dp, 0.dp, 0.dp),
+                        fontSize = 15.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Text(
+                        text = "pykiske problemer",
+                        modifier = Modifier
+                            .padding(15.dp, 70.dp, 0.dp, 0.dp),
+                        fontSize = 15.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Button(
+                        onClick = {
+                            navController.
+                            navigate(Screen.Tema.withArgs(username.toString(),"Sundhed"))                        },
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
+                        modifier = Modifier
+                            .padding(15.dp, 100.dp, 0.dp, 0.dp)
+                            .wrapContentSize())
+                    {
+                        Text(" Læs mere ",
+                            textAlign = TextAlign.Center,
+                            color = Color.White,
+                            fontSize = 12.sp)
+                    }
+
+                }
+                Spacer(modifier = Modifier.height(40.dp))
+                //Third White Box
+                Box(
+                    modifier = Modifier
+                        .size(275.dp, 165.dp)
+                        .clip(shape)
+                        .background(Color.White)
+                )
+                {
+                    Spacer(modifier = Modifier.requiredHeight(32.dp))
+                    Text(
+                        text = "Miljø",
+                        modifier = Modifier
+                            .padding(15.dp, 15.dp, 0.dp, 0.dp),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Text(
+                        text = "Hjælp med at give vores",
+                        modifier = Modifier
+                            .padding(15.dp, 50.dp, 0.dp, 0.dp),
+                        fontSize = 15.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Text(
+                        text = "natur en gave",
+                        modifier = Modifier
+                            .padding(15.dp, 70.dp, 0.dp, 0.dp),
+                        fontSize = 15.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Button(
+                        onClick = {
+                            navController.navigate(Screen.Template.withArgs(username.toString()))
+                        },
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
+                        modifier = Modifier
+                            .padding(15.dp, 100.dp, 0.dp, 0.dp)
+                            .wrapContentSize()
+                    )
+                    {
+                        Text(
+                            "Tilføj Tema",
+                            textAlign = TextAlign.Center,
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                    }
+
+                    Button(
+                        onClick = {
+                            navController.
+                            navigate(Screen.Tema.withArgs(username.toString(),"Miljø"))                        },
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
+                        modifier = Modifier
+                            .padding(150.dp, 100.dp, 0.dp, 0.dp)
+                            .wrapContentSize()
+                    )
+                    {
+                        Text(
+                            " Læs mere ",
+                            textAlign = TextAlign.Center,
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.height(40.dp))
+                //Forth White Box
+                Box(
+                    modifier = Modifier
+                        .size(275.dp, 165.dp)
+                        .clip(shape)
+                        .background(Color.White)
+                )
+                {
+                    Spacer(modifier = Modifier.requiredHeight(32.dp))
+                    Text(
+                        text = "Dyrevelfærd",
+                        modifier = Modifier
+                            .padding(15.dp, 15.dp, 0.dp, 0.dp),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Text(
+                        text = "Hjælp med at give vores",
+                        modifier = Modifier
+                            .padding(15.dp, 50.dp, 0.dp, 0.dp),
+                        fontSize = 15.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Text(
+                        text = "natur en gave",
+                        modifier = Modifier
+                            .padding(15.dp, 70.dp, 0.dp, 0.dp),
+                        fontSize = 15.sp,
+                        color = Color(0xFF315C36)
+                    )
+
+                    Button(
+                        onClick = {
+                            navController.navigate(Screen.Template.withArgs(username.toString()))
+                        },
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
+                        modifier = Modifier
+                            .padding(15.dp, 100.dp, 0.dp, 0.dp)
+                            .wrapContentSize()
+                    )
+                    {
+                        Text(
+                            "Tilføj Tema",
+                            textAlign = TextAlign.Center,
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                    }
+
+                    Button(
+                        onClick = {
+                            navController.
+                            navigate(Screen.Tema.withArgs(username.toString(),"Dyrevelfærd"))                        },
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
+                        modifier = Modifier
+                            .padding(150.dp, 100.dp, 0.dp, 0.dp)
+                            .wrapContentSize()
+                    )
+                    {
+                        Text(
+                            " Læs mere ",
+                            textAlign = TextAlign.Center,
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                    }
+                }
+            }
+
         }
     }
 }
