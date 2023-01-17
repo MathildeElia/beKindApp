@@ -46,7 +46,6 @@ class Viewmodel : ViewModel() {
     }
 
 
-
     private val db = Firebase.firestore
 
     fun submitError(error: String, user: String) {

@@ -89,7 +89,7 @@ fun MakeDonationScreen(
             Spacer(modifier = Modifier.height(40.dp))
             if (username != null) {
                 val bool = vm.isMonthly(choice)
-                SupportButton(amount, username.toString(), organisation, bool, vm, navController)
+                SupportButton(amount.toLong(), username.toString(), organisation, bool, vm, navController)
             }
         }
     }
@@ -97,7 +97,7 @@ fun MakeDonationScreen(
 
 @Composable
 fun SupportButton(
-    amount: Int,
+    amount: Long,
     user: String,
     org: String,
     boolean: Boolean,

@@ -30,15 +30,15 @@ class LoginViewModel: ViewModel(){
             .whereEqualTo("email", email)
             .get()
             .addOnSuccessListener{ documents ->
-                    val users = documents.map{ document ->
+                val users = documents.map{ document ->
 
-                        val user = User()
-                        user.email = document.get("email") as String
-                        user.username = document.get("username") as String
-                        user.password = document.get("password") as String
-                        Log.w(ContentValues.TAG, "Organisations $user")
-                        user
-                    }
+                    val user = User()
+                    user.email = document.get("email") as String
+                    user.username = document.get("username") as String
+                    user.password = document.get("password") as String
+                    Log.w(ContentValues.TAG, "Organisations $user")
+                    user
+                }
                 userState.value = users.get(0)
 
             }
@@ -61,5 +61,4 @@ class LoginViewModel: ViewModel(){
 
 
 }
-
 
