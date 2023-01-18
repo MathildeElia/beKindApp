@@ -1,5 +1,6 @@
 package com.example.kind1
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedContentScope.SlideDirection.Companion.Start
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -29,7 +30,9 @@ import com.example.kind1.data.Donation
 import com.example.kind1.data.Organisation
 import com.example.kind1.data.User
 import com.example.kind1.viewlmodel.VMdonation
+import kotlinx.coroutines.flow.MutableStateFlow
 
+@SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun MakeDonationScreen(
     username: String?,
@@ -44,6 +47,7 @@ fun MakeDonationScreen(
         var choice by remember {
             mutableStateOf("")
         }
+        var isGivenAmount = MutableStateFlow(true)
 
         Image(
             contentScale = ContentScale.FillBounds,
@@ -62,7 +66,12 @@ fun MakeDonationScreen(
                     contentDescription = null,
                     modifier = Modifier
                         .clickable {
-                            navController.navigate(Screen.Organisation.withArgs(username.toString(),organisation))
+                            navController.navigate(
+                                Screen.Organisation.withArgs(
+                                    username.toString(),
+                                    organisation
+                                )
+                            )
                         }
                         .size(width = 50.dp, height = 30.dp)
                 )
@@ -75,10 +84,13 @@ fun MakeDonationScreen(
 
             amount = amountTextField()
 
+            if(!isGivenAmount.value){
+                Text(text = "Mangler donations beløb")
+            }
             Spacer(modifier = Modifier.height(40.dp))
 
             Row(Modifier.align(Alignment.CenterHorizontally)) {
-                choice = RadioButtons()
+                choice = radioButtons()
             }
 
             Spacer(modifier = Modifier.height(40.dp))
@@ -89,7 +101,14 @@ fun MakeDonationScreen(
             Spacer(modifier = Modifier.height(40.dp))
             if (username != null) {
                 val bool = vm.isMonthly(choice)
-                SupportButton(amount.toLong(), username.toString(), organisation, bool, vm, navController)
+                isGivenAmount.value = SupportButton(
+                    amount.toLong(),
+                    username.toString(),
+                    organisation,
+                    bool,
+                    vm,
+                    navController
+                )
             }
         }
     }
@@ -103,12 +122,16 @@ fun SupportButton(
     boolean: Boolean,
     vm: VMdonation,
     nav: NavController
-) {
+): Boolean {
+    var bool = true
     Button(
         onClick = {
-            val donation = Donation(amount, org, user, boolean)
-            vm.addDonationToDatabase(donation)
-            nav.navigate(Screen.LoadingAnimationScreen.withArgs(user))
+            if (amount.toInt() > 0) {
+                val donation = Donation(amount, org, user, boolean)
+                vm.addDonationToDatabase(donation)
+                nav.navigate(Screen.LoadingAnimationScreen.withArgs(user))
+            }
+            else{bool = false}
         },
         colors = ButtonDefaults.buttonColors(backgroundColor = Color(243, 196, 53)),
         modifier = Modifier
@@ -120,6 +143,7 @@ fun SupportButton(
             color = Color.White, fontWeight = FontWeight.Bold, fontSize = 25.sp
         )
     }
+    return bool
 }
 
 @Composable
@@ -162,23 +186,8 @@ fun EmailTextField() {
 }
 
 @Composable
-fun CirleButton() {
-    val color = remember { mutableStateOf(Color.Transparent) }
-
-    OutlinedButton(
-        onClick = { color.value = Color.Yellow },
-        modifier = Modifier.size(70.dp),
-        shape = CircleShape,
-        border = BorderStroke(1.dp, Color.Black),
-        contentPadding = PaddingValues(0.dp),  //avoid the little icon
-        colors = ButtonDefaults.outlinedButtonColors(backgroundColor = color.value)
-    ) {
-    }
-}
-
-@Composable
-fun RadioButtons(): String {
-    val selectedValue = remember { mutableStateOf("") }
+fun radioButtons(): String {
+    val selectedValue = remember { mutableStateOf("Støt månedligt") }
     val textToEnableList = listOf(
         "Støt månedligt" to true,
         "Støt én gang" to true
