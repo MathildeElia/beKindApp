@@ -37,11 +37,10 @@ fun PortføljeNy(navController: NavController, username: String?, viewmodel: VMp
     }
     //viewmodel.themeSort()
 
-    val portefølje = viewmodel.portefoljeState.value.portefoljeUi
+    val portefølje = viewmodel.portefoljeState.collectAsState().value.portefoljeUi
 
-    var themes = 4
-    var charities = 6
-    //var percentage = VMportefolje()
+    val themes = viewmodel.numberOfThemeAndOrg()[0]
+    val charities = viewmodel.numberOfThemeAndOrg()[1]
 
     Card(elevation = 2.dp) {
         Image(

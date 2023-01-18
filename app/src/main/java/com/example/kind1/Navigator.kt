@@ -12,6 +12,7 @@ import com.example.kind1.view.AdminOversigt
 import com.example.kind1.view.AdminPage
 import com.example.kind1.viewlmodel.VMdonation
 import com.example.kind1.viewlmodel.VMportefolje
+import com.example.kind1.viewlmodel.VMstart
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
@@ -21,6 +22,7 @@ fun Navigation() {
     val temaVM = VMtema()
     val donationVM = VMdonation()
     val portVM = VMportefolje()
+    val startVM = VMstart()
 
     NavHost(
         navController = navController, startDestination = Screen.KindFront.route
@@ -148,7 +150,7 @@ fun Navigation() {
                 username = entry.arguments?.getString("username"),
                 navController = navController,
                 "World Wildlife Fund",
-                orgVM
+                startVM
             )
         }
         composable(route = Screen.MinKonto.route + "/{username}",

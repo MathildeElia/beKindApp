@@ -33,15 +33,23 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import com.example.kind1.viewlmodel.VMstart
 
 @Composable
-fun KindStart(username: String?, navController: NavController, id: String?, viewmodel: Viewmodel) {
-
+fun KindStart(username: String?, navController: NavController, id: String?, viewmodel: VMstart) {
     DisposableEffect(key1 = viewmodel) {
-        id?.let { viewmodel.getOgFromDatabase(it) }
         onDispose { }
     }
-    val organisation = viewmodel.organisationState.collectAsState().value.organisation
+    DisposableEffect(key1 = viewmodel) {
+        viewmodel.getNews(id.toString())
+        viewmodel.getDonations(username.toString())
+        onDispose { }
+    }
+    val news = viewmodel.newsstate.collectAsState().value.organisation.news
+    val themes = viewmodel.numberOfThemeAndOrg()[0]
+    val charities = viewmodel.numberOfThemeAndOrg()[1]
+    val amount = viewmodel.numberOfThemeAndOrg()[2]
+
 
     Card(elevation = 2.dp) {
         Image(
@@ -100,8 +108,8 @@ fun KindStart(username: String?, navController: NavController, id: String?, view
 
             Spacer(modifier = Modifier.height(10.dp))
             Text(
-                text = "\t\tHej $username!",
-                modifier = Modifier,
+                text = "Hej $username!",
+                modifier = Modifier.padding(40.dp,30.dp,40.dp,0.dp),
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Left,
                 fontSize = 25.sp,
@@ -111,22 +119,17 @@ fun KindStart(username: String?, navController: NavController, id: String?, view
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
-                text = "\t\tDit abonnenement er på plads og ",
-                modifier = Modifier,
+                text = "Dit abonnenement er på plads og " +
+                        "du er on track til at donere $amount kr.",
+                modifier = Modifier.padding(40.dp,15.dp,40.dp,0.dp),
                 fontSize = 25.sp,
                 //color = Color(0xFF034A0B),
                 color = Color(0xFF315C36)
             )
-            Text(
-                text = "\t\tdu er on track til at donere 100 kr.",
-                modifier = Modifier,
-                fontSize = 25.sp,
-                color = Color(0xFF315C36)
-
-            )
 
             Spacer(modifier = Modifier.height(15.dp))
 
+            /*
             Text(
                 text = "\t\tDu er blandt top 1% af donerer denne",
                 modifier = Modifier,
@@ -134,8 +137,6 @@ fun KindStart(username: String?, navController: NavController, id: String?, view
                 fontSize = 20.sp,
                 color = Color.White
             )
-
-
             Text(
                 text = "\t\tmåned. Godt gået!",
                 modifier = Modifier,
@@ -143,6 +144,7 @@ fun KindStart(username: String?, navController: NavController, id: String?, view
                 fontSize = 20.sp,
                 color = Color.White
             )
+             */
 
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -157,31 +159,52 @@ fun KindStart(username: String?, navController: NavController, id: String?, view
                         .size(275.dp, 200.dp)
                         .clip(shape)
                         .background(Color.White)
+                        .wrapContentHeight()
                 )
                 {
-                    Image(
-                        painter = painterResource(id = R.drawable.bekinglogos),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(width = 130.dp, height = 70.dp)
-                            .padding(20.dp, 0.dp, 0.dp, 10.dp)
-                    )
+                    Column {
+                        Image(
+                            painter = painterResource(id = R.drawable.bekinglogos),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(width = 130.dp, height = 70.dp)
+                                .padding(20.dp, 0.dp, 0.dp, 0.dp)
+                        )
 
-                    Spacer(modifier = Modifier.height(50.dp))
-
-                    Text(
-                        text = "\t\tDin Portfølje →",
-                        modifier = Modifier
-                            .padding(10.dp, 55.dp, 0.dp, 0.dp)
-                            .clickable { navController.navigate(Screen.Portfølje.withArgs(username.toString())) },
-                        fontSize = 17.sp,
-                        color = Color(0xFF315C36)
-                    )
-
+                        //Spacer(modifier = Modifier.height(50.dp))
+                        Text(
+                            text = "Hver måned støtter du $themes" +
+                                    " temaer og $charities velgørenheds-" +
+                                    "organisationer",
+                            modifier = Modifier
+                                .padding(20.dp,0.dp,20.dp,5.dp)
+                                .clickable {
+                                    navController.navigate(
+                                        Screen.Portfølje.withArgs(
+                                            username.toString()
+                                        )
+                                    )
+                                },
+                            fontSize = 17.sp,
+                            color = Color(0xFF315C36)
+                        )
+                        Text(
+                            text = "Din portefølje →",
+                            modifier = Modifier
+                                .padding(20.dp,0.dp,20.dp,5.dp)
+                                .clickable {
+                                    navController.navigate(
+                                        Screen.Portfølje.withArgs(
+                                            username.toString()
+                                        )
+                                    )
+                                },
+                            fontSize = 17.sp,
+                            color = Color(0xFF315C36)
+                        )
+                    }
                 }
             }
-
-
 
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -211,27 +234,21 @@ fun KindStart(username: String?, navController: NavController, id: String?, view
                         color = Color(0xFF315C36)
                     )
 
-                    organisation?.name?.let {
-                        Text(
-                            it,
-                            textAlign = TextAlign.Start,
-                            fontSize = 20.sp,
-                            modifier = Modifier.padding(20.dp, 50.dp, 20.dp, 0.dp)
-                                .align(Alignment.TopCenter)
-                        )
+                    Text(
+                        id.toString(),
+                        textAlign = TextAlign.Start,
+                        fontSize = 20.sp,
+                        modifier = Modifier
+                            .padding(20.dp, 50.dp, 20.dp, 0.dp)
+                            .align(Alignment.TopCenter)
+                    )
 
-
-                        organisation.let {
-                            it.news?.let { it1 ->
-                                Text(
-                                    it1,
-                                    textAlign = TextAlign.Start,
-                                    fontSize = 15.sp,
-                                    modifier = Modifier.padding(20.dp, 80.dp, 20.dp, 0.dp)
-                                )
-                            }
-                        }
-                    }
+                    Text(
+                        news.toString(),
+                        textAlign = TextAlign.Start,
+                        fontSize = 15.sp,
+                        modifier = Modifier.padding(20.dp, 80.dp, 20.dp, 0.dp)
+                    )
                 }
             }
         }

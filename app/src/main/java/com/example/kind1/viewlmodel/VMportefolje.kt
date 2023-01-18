@@ -3,15 +3,12 @@ package com.example.kind1.viewlmodel
 import android.content.ContentValues
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.kind1.data.Donation
-import com.example.kind1.data.Organisation
 import com.example.kind1.data.Portofolio
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 import kotlin.math.roundToInt
+
 
 data class portefoljeUiState(
     var portefoljeUi: Portofolio = Portofolio()
@@ -36,12 +33,13 @@ class VMportefolje : ViewModel() {
             .addOnSuccessListener { documents ->
                 val list = documents.map { document ->
                     val donation = Donation()
+
                     donation.amount = document.get("amount") as Long
                     donation.username = document.get("username") as String
                     donation.theme = document.get("theme") as String
+                    donation.orgName = document.get("orgName") as String
 
                     Log.w(ContentValues.TAG, "Organisations $donation")
-
                     donation
                 }
                 listState.value = listState.value.copy(list)
@@ -50,38 +48,6 @@ class VMportefolje : ViewModel() {
             .addOnFailureListener { exception ->
                 Log.w(ContentValues.TAG, "Error getting documents: ", exception)
             }
-
-        //themeSort()
-
-        /*
-        viewModelScope.launch {
-
-            val db = FirebaseFirestore.getInstance()
-            val docRef = db.collection("users").document(s).collection("donations")
-            donation.theme = docRef.get().await().data?.get("theme") as String
-        }
-
-        val db = FirebaseFirestore.getInstance()
-
-        db.collection("users").document(s).collection("donations")
-            .get()
-            .addOnSuccessListener { documents ->
-                val list = documents.map { document ->
-
-                    val donation = Donation()
-                    donation.amount = document.get("amount") as Long
-                    donation.username = document.get("username") as String
-                    donation.theme = document.get("theme") as String
-
-                    Log.w(ContentValues.TAG, "Donations $donation")
-
-                    donation
-
-                }
-                listState.value = listState.value.copy(list)
-            }
-
-         */
     }
 
     fun themeSort() {
@@ -130,7 +96,7 @@ class VMportefolje : ViewModel() {
         }
 
         //Calculates percentage
-        if (amounts.sum()>0) {
+        if (amounts.sum() > 0) {
             miljøPercentage = ((amounts[0].toDouble() / amounts.sum()) * 100).roundToInt()
             sundhedPercentage = ((amounts[1].toDouble() / amounts.sum()) * 100).roundToInt()
             dyrPercentage = ((amounts[2].toDouble() / amounts.sum()) * 100).roundToInt()
@@ -143,6 +109,35 @@ class VMportefolje : ViewModel() {
         portefoljeState.value.portefoljeUi = portefoljeState.value.portefoljeUi
             .copy(portefolje.miljøP, portefolje.sundhedP, portefolje.dyrP, portefolje.socialP)
 
+    }
+
+    fun numberOfThemeAndOrg(): List<Int> {
+        val themeList = mutableListOf<String>()
+        val orgList = mutableListOf<String>()
+
+        //Initializing counters
+        var themeC = 0;
+        var orgC = 0
+
+        val donList = listState.value.donList
+        for (don in donList) {
+
+            //if the donation is not monthly,
+            //it will not be a part of the portfolio
+            if (!don.isMonthly) {
+                continue
+            }
+
+            if (don.theme !in themeList) {
+                themeList.add(don.theme)
+                themeC++
+            }
+            if (don.orgName !in orgList) {
+                orgList.add(don.orgName)
+                orgC++
+            }
+        }
+        return listOf(themeC, orgC)
     }
 }
 
