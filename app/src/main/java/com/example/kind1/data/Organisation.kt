@@ -2,12 +2,12 @@ package com.example.kind1.data
 
 data class Organisation(
     // on below line creating variables.
-    var subheading: String = "start",
-    var description: String = "start",
-    var theme: String = "start",
-    var name: String = "id",
-    var news : String? = "news",
-    var link : String? = "link",
+    var subheading: String = "",
+    var description: String = "",
+    var theme: String = "",
+    var name: String = "",
+    var news : String? = "",
+    var link : String? = "",
     var donations: List<Donation>? = null
 
 )

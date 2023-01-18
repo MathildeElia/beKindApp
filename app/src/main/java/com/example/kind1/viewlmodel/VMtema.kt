@@ -21,9 +21,9 @@ class VMtema : ViewModel() {
         var s: String = ""
         when(theme){
             "Miljø" -> s = "Støt organisationer som gør\nsamfundet mere bæredygtigt."
-            "Sundhed" -> s = "Sundhed tekst."
-            "Dyrevelfærd" -> s = "Dyrevelfærd tekst."
-            "Socialt Udsatte" -> s = "Social udsatte tekst."
+            "Sundhed" -> s = "Støt organisationer som sundheds-\nfremmer og sygdomsforebygger."
+            "Dyrevelfærd" -> s = "Støt organisationer som sikre\n dyrs fysiske og psykiske velbefindende."
+            "Socialt Udsatte" -> s = "Støt organisationer som forbedre\n levevilkår for socialt udsatte personer"
         }
         return s
     }
