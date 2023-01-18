@@ -72,15 +72,19 @@ fun Organisation(
 
         Spacer(modifier = Modifier.width(290.dp))
 
-        Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
-            modifier = Modifier
-                .padding(20.dp, 5.dp, 0.dp, 10.dp)
-                .clickable {
-                    navController.navigate(Screen.Menu.withArgs(username.toString()))
-                }
-                .size(width = 40.dp, height = 20.dp)
-                .wrapContentSize(Alignment.TopEnd)
-        )
+        if (username.equals("Gæst")) {
+
+        } else {
+            Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
+                modifier = Modifier
+                    .padding(20.dp, 5.dp, 0.dp, 10.dp)
+                    .clickable {
+                        navController.navigate(Screen.Menu.withArgs(username.toString()))
+                    }
+                    .size(width = 40.dp, height = 20.dp)
+                    .wrapContentSize(Alignment.TopEnd)
+            )
+        }
     }
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -108,19 +112,28 @@ fun Organisation(
         Button(
             onClick = {
                 //naviger til makeDonation side
-                navController.navigate(
-                    Screen.MakeDonation.withArgs(
-                        username.toString(),
-                        orgName.toString()
+                if (username.equals("Gæst")) {
+                   navController.navigate(Screen.KindSignUp.route)
+                } else {
+                    navController.navigate(
+                        Screen.MakeDonation.withArgs(
+                            username.toString(),
+                            orgName.toString()
+                        )
                     )
-                )
+                }
+
             }, modifier = Modifier
                 .fillMaxWidth()
                 .padding(40.dp, 0.dp, 40.dp, 20.dp)
                 .clip(shape),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(243, 196, 53))
         ) {
-            Text("Støt organisationen", color = White, fontSize = 25.sp)
+            if (username.equals("Gæst")) {
+                Text("Opret bruger for at støtte", color = White, fontSize = 22.sp)
+            } else {
+                Text("Støt organisationen", color = White, fontSize = 25.sp)
+            }
         }
         Box(
             modifier = Modifier

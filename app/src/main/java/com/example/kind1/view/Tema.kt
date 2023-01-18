@@ -27,6 +27,7 @@ import com.example.kind1.data.Organisation
 
 @Composable
 fun Tema(username: String?, theme: String, navController: NavController, vm: VMtema) {
+    Spacer(modifier = Modifier.height(10.dp))
 
     DisposableEffect(key1 = vm) {
         theme?.let { vm.getThemeOrg(it) }
@@ -40,7 +41,7 @@ fun Tema(username: String?, theme: String, navController: NavController, vm: VMt
         contentDescription = null,
         modifier = Modifier.fillMaxSize()
     )
-
+    Spacer(modifier = Modifier.height(10.dp))
     Row{
         Spacer(modifier = Modifier.height(10.dp))
         Image(painter = painterResource(id = R.drawable.backbutton), contentDescription = null,
