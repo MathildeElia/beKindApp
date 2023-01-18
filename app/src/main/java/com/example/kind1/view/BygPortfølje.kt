@@ -22,7 +22,7 @@ import androidx.navigation.NavController
 
 
 @Composable
-fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController, username: String?){
+fun BygPortfølje (navController: NavController, username: String?){
     Card(elevation = 2.dp) {
         Image(
             contentScale = ContentScale.FillBounds,
@@ -118,21 +118,6 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController, 
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Template.route)
-                        },
-                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
-                        modifier = Modifier
-                            .padding(15.dp, 100.dp, 0.dp, 0.dp)
-                            .wrapContentSize())
-                        {
-                            Text("Tilføj Tema",
-                            textAlign = TextAlign.Center,
-                            color = Color.White,
-                            fontSize = 12.sp)
-                    }
-
-                    Button(
-                        onClick = {
                             navController.
                             navigate(Screen.Tema.withArgs(username.toString(),"Socialt Udsatte"))
                         },
@@ -182,21 +167,6 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController, 
                         fontSize = 15.sp,
                         color = Color(0xFF315C36)
                     )
-
-                    Button(
-                        onClick = {
-                            navController.navigate(Screen.Template.withArgs(username.toString()))
-                        },
-                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
-                        modifier = Modifier
-                            .padding(15.dp, 100.dp, 0.dp, 0.dp)
-                            .wrapContentSize())
-                    {
-                        Text("Tilføj Tema",
-                            textAlign = TextAlign.Center,
-                            color = Color.White,
-                            fontSize = 12.sp)
-                    }
 
                     Button(
                         onClick = {
@@ -251,24 +221,6 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController, 
 
                     Button(
                         onClick = {
-                            navController.navigate(Screen.Template.withArgs(username.toString()))
-                        },
-                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
-                        modifier = Modifier
-                            .padding(15.dp, 100.dp, 0.dp, 0.dp)
-                            .wrapContentSize()
-                    )
-                    {
-                        Text(
-                            "Tilføj Tema",
-                            textAlign = TextAlign.Center,
-                            color = Color.White,
-                            fontSize = 12.sp
-                        )
-                    }
-
-                    Button(
-                        onClick = {
                             navController.
                             navigate(Screen.Tema.withArgs(username.toString(),"Miljø"))                        },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
@@ -319,24 +271,6 @@ fun BygPortfølje (modifier: Modifier = Modifier, navController: NavController, 
                         fontSize = 15.sp,
                         color = Color(0xFF315C36)
                     )
-
-                    Button(
-                        onClick = {
-                            navController.navigate(Screen.Template.withArgs(username.toString()))
-                        },
-                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36)),
-                        modifier = Modifier
-                            .padding(15.dp, 100.dp, 0.dp, 0.dp)
-                            .wrapContentSize()
-                    )
-                    {
-                        Text(
-                            "Tilføj Tema",
-                            textAlign = TextAlign.Center,
-                            color = Color.White,
-                            fontSize = 12.sp
-                        )
-                    }
 
                     Button(
                         onClick = {
