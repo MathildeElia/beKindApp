@@ -57,15 +57,20 @@ fun Tema(username: String?, theme: String, navController: NavController, vm: VMt
 
         Spacer(modifier = Modifier.width(290.dp))
 
-        Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
-            modifier = Modifier
-                .padding(20.dp, 5.dp, 0.dp, 10.dp)
-                .clickable {
-                    navController.navigate(Screen.Menu.withArgs(username.toString()))
-                }
-                .size(width = 40.dp, height = 20.dp)
-                .wrapContentSize(Alignment.TopEnd)
-        )
+        if (username.equals("Gæst")) {
+
+        } else {
+            Image(painter = painterResource(id = R.drawable.menuicon), contentDescription = null,
+                modifier = Modifier
+                    .padding(20.dp, 5.dp, 0.dp, 10.dp)
+                    .clickable {
+                        navController.navigate(Screen.Menu.withArgs(username.toString()))
+                    }
+                    .size(width = 40.dp, height = 20.dp)
+                    .wrapContentSize(Alignment.TopEnd)
+            )
+        }
+
     }
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(modifier = Modifier.height(60.dp))

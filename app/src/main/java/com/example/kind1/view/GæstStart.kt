@@ -249,7 +249,7 @@ fun GæstStart(navController: NavController, username: String?) {
                     )
 
                     Text(
-                        text = "Hjælp med at give vores",
+                        text = "Hjælp vores dyr med bedre",
                         modifier = Modifier
                             .padding(15.dp, 50.dp, 0.dp, 0.dp),
                         fontSize = 15.sp,
@@ -257,7 +257,7 @@ fun GæstStart(navController: NavController, username: String?) {
                     )
 
                     Text(
-                        text = "natur en gave",
+                        text = "levevilkår",
                         modifier = Modifier
                             .padding(15.dp, 70.dp, 0.dp, 0.dp),
                         fontSize = 15.sp,
