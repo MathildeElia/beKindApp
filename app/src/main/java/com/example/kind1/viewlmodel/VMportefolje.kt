@@ -10,19 +10,18 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.math.roundToInt
 
 
-data class portefoljeUiState(
+data class PortefoljeUiState(
     var portefoljeUi: Portofolio = Portofolio()
 )
 
-data class listState(
+data class ListState(
     var donList: List<Donation> = listOf<Donation>()
 )
 
-
 class VMportefolje : ViewModel() {
 
-    val listState = MutableStateFlow(listState())
-    val portefoljeState = MutableStateFlow(portefoljeUiState())
+    val listState = MutableStateFlow(ListState())
+    val portefoljeState = MutableStateFlow(PortefoljeUiState())
 
 
     fun getPortefoljeDon(s: String) {

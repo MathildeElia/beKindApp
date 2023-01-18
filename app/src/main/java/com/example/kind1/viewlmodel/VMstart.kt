@@ -10,14 +10,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-data class Liststate(
+data class DonListState(
     var donList: List<Donation> = listOf<Donation>()
 )
 data class NewsUiState(
     var organisation: Organisation = Organisation()
 )
 class VMstart : ViewModel() {
-    val liststate = MutableStateFlow(Liststate())
+    val liststate = MutableStateFlow(DonListState())
     val newsstate = MutableStateFlow(NewsUiState())
 
     fun getDonations(s: String) {
