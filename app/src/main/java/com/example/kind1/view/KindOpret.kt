@@ -3,16 +3,19 @@ package com.example.kind1
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.kind1.viewlmodel.SignUpViewModel
 
@@ -65,14 +68,31 @@ fun KindSignUp(navController: NavController) {
                     }
                     .size(width = 50.dp, height = 30.dp)
             )
+            Text(
+                text = "be Kind",
+                fontFamily = FontFamily.Serif,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF315C36),
+                fontSize = 40.sp,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
             Image(
-                painter = painterResource(id = R.drawable.bekindforside), contentDescription = null,
+                painter = painterResource(id = R.drawable.logindname), contentDescription = null,
                 modifier = Modifier
                     .padding(vertical = 10.dp)
                     .align(Alignment.CenterHorizontally)
             )
             Text(
-                text = "Opret Bruger",
+                text = "Velkommen!",
+                fontFamily = FontFamily.Serif,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF315C36),
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
+            Text(
+                text = "Opret bruger for at fortsætte",
+                fontFamily = FontFamily.Serif,
+                color = Color(0xFF315C36),
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
             Spacer(
@@ -82,7 +102,7 @@ fun KindSignUp(navController: NavController) {
             TextField(
                 value = user, onValueChange = { user = it },
                 modifier = Modifier
-                    .align(Alignment.CenterHorizontally),
+                    .align(Alignment.CenterHorizontally).clip(RoundedCornerShape(12.dp)),
                 label = { Text("Brugernavn") }
 
             )
@@ -94,7 +114,7 @@ fun KindSignUp(navController: NavController) {
             TextField(
                 value = email, onValueChange = { email = it },
                 modifier = Modifier
-                    .align(Alignment.CenterHorizontally),
+                    .align(Alignment.CenterHorizontally).clip(RoundedCornerShape(12.dp)),
                 label = { Text("Email") }
             )
             Spacer(
@@ -105,7 +125,7 @@ fun KindSignUp(navController: NavController) {
             TextField(
                 value = pass, onValueChange = { pass = it },
                 modifier = Modifier
-                    .align(Alignment.CenterHorizontally),
+                    .align(Alignment.CenterHorizontally).clip(RoundedCornerShape(12.dp)),
                 label = { Text("Kodeord") }
             )
             Button(
@@ -123,8 +143,10 @@ fun KindSignUp(navController: NavController) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(vertical = 10.dp),
+                elevation=null
+                ,colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF315C36))
         ) {
-            Text(text = "Opret Bruger")
+            Text(text = "Opret Bruger", color= Color.White)
         }
         Text(
             text = wrong,
