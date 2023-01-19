@@ -28,6 +28,7 @@ class VMportefolje : ViewModel() {
 
         val db = FirebaseFirestore.getInstance()
 
+        //where isMonthly is true!!
         db.collection("users").document(s).collection("donations").get()
             .addOnSuccessListener { documents ->
                 val list = documents.map { document ->
@@ -72,6 +73,10 @@ class VMportefolje : ViewModel() {
         list.add(dyr)
         list.add(social)
 
+        calculatePercentages(donList)
+    }
+
+    fun calculatePercentages(donList: List<Donation>){
         //amount starter på 0
         val amounts = mutableListOf<Int>(0, 0, 0, 0)
         donList.forEachIndexed { index, element ->
@@ -83,7 +88,6 @@ class VMportefolje : ViewModel() {
                 "Socialt Udsatte" -> amounts[3] = (amounts[3] + curDon.amount).toInt()
             }
         }
-
         var miljøPercentage = 0
         var sundhedPercentage = 0
         var dyrPercentage = 0
@@ -107,7 +111,6 @@ class VMportefolje : ViewModel() {
         )
         portefoljeState.value.portefoljeUi = portefoljeState.value.portefoljeUi
             .copy(portefolje.miljøP, portefolje.sundhedP, portefolje.dyrP, portefolje.socialP)
-
     }
 
     fun numberOfThemeAndOrg(): List<Int> {
@@ -126,7 +129,6 @@ class VMportefolje : ViewModel() {
             if (!don.isMonthly) {
                 continue
             }
-
             if (don.theme !in themeList) {
                 themeList.add(don.theme)
                 themeC++
