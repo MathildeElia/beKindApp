@@ -16,10 +16,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.kind1.viewlmodel.VMTekniskProblem
 
 @Composable
 fun TekniskProblem(username: String?, navController: NavHostController) {
-    val viewmodel = Viewmodel()
+    val viewmodel = VMTekniskProblem()
 
     Card(elevation = 2.dp) {
         Image(
@@ -127,24 +128,3 @@ fun TekniskProblem(username: String?, navController: NavHostController) {
         }
     }
 }
-
-@Composable
-fun RepportTextField(): String {
-    var report by remember {
-        mutableStateOf("")
-    }
-    TextField(
-        value = report, onValueChange = { report = it },
-        label = { Text("Forklar kort hvad der skete") }
-
-    )
-    return report
-}
-/*
-@Preview
-    (showBackground = true)
-@Composable
-fun TekniskProblemPreview(){
-    TekniskProblem()
-}
- */

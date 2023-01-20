@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.kind1.R
 import com.example.kind1.Screen
-import com.example.kind1.Viewmodel
 import com.example.kind1.viewlmodel.VievModelAdmin
 
 @Composable

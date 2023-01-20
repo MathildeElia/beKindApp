@@ -2,7 +2,6 @@ package com.example.kind1
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
@@ -21,13 +20,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.kind1.viewlmodel.VMorganisation
 
 
 @SuppressLint("UnrememberedMutableState")
@@ -35,7 +34,7 @@ import androidx.navigation.NavController
 fun Organisation(
     navController: NavController,
     orgName: String?,
-    viewmodel: Viewmodel,
+    viewmodel: VMorganisation,
     username: String?
 ) {
 

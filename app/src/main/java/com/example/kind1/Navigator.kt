@@ -11,6 +11,7 @@ import com.example.kind1.view.AdminOpretVelgørenhed
 import com.example.kind1.view.AdminOversigt
 import com.example.kind1.view.AdminPage
 import com.example.kind1.viewlmodel.VMdonation
+import com.example.kind1.viewlmodel.VMorganisation
 import com.example.kind1.viewlmodel.VMportefolje
 import com.example.kind1.viewlmodel.VMstart
 
@@ -18,7 +19,7 @@ import com.example.kind1.viewlmodel.VMstart
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
-    val orgVM = Viewmodel()
+    val orgVM = VMorganisation()
     val temaVM = VMtema()
     val donationVM = VMdonation()
     val portVM = VMportefolje()
@@ -105,8 +106,8 @@ fun Navigation() {
         { entry ->
             Organisation(
                 navController = navController,
-                orgName= entry.arguments?.getString("organisation"),
-                orgVM,
+                orgName = entry.arguments?.getString("organisation"),
+                viewmodel = orgVM,
                 username = entry.arguments?.getString("username")
             )
         }

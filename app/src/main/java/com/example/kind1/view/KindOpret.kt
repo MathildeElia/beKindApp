@@ -32,7 +32,6 @@ fun KindSignUp(navController: NavController) {
             contentDescription = null,
             modifier = Modifier.fillMaxSize()
         )
-        val viewmodel = Viewmodel()
         val viewmodel2 = SignUpViewModel()
         var user by remember {
             mutableStateOf("")

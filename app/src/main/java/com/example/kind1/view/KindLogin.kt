@@ -40,10 +40,10 @@ fun KindLogin(navController: NavController) {
 
         val viewmodel = LoginViewModel()
         var email by remember {
-            mutableStateOf("")
+            mutableStateOf("mail@gmail.com")
         }
         var pass by remember {
-            mutableStateOf("")
+            mutableStateOf("test123")
         }
 
         var wrong by remember {
