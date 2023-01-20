@@ -45,7 +45,6 @@ fun MakeDonationScreen(
         var choice by remember {
             mutableStateOf("")
         }
-        var isGivenAmount = MutableStateFlow(true)
 
         Image(
             //contentScale = ContentScale.FillBounds,
@@ -76,19 +75,19 @@ fun MakeDonationScreen(
             }
             Spacer(modifier = Modifier.height(40.dp))
 
-            Text("Opret donation til \n $organisation", fontSize = 25.sp,
+            Text(
+                "Opret donation til \n $organisation", fontSize = 25.sp,
                 textAlign = TextAlign.Center, fontWeight = FontWeight.Bold,
-                color = Color(0xFF315C36))
+                color = Color(0xFF315C36)
+            )
             Spacer(modifier = Modifier.height(40.dp))
-            Text("Vælg beløb", fontSize = 15.sp, textAlign = TextAlign.Center,
-                color = Color(0xFF315C36),fontFamily = FontFamily.Serif
+            Text(
+                "Vælg beløb", fontSize = 15.sp, textAlign = TextAlign.Center,
+                color = Color(0xFF315C36), fontFamily = FontFamily.Serif
             )
 
             amount = amountTextField()
 
-            if(!isGivenAmount.value){
-                Text(text = "Mangler donations beløb")
-            }
             Spacer(modifier = Modifier.height(40.dp))
 
             Row(Modifier.align(Alignment.CenterHorizontally)) {
@@ -103,7 +102,7 @@ fun MakeDonationScreen(
             Spacer(modifier = Modifier.height(40.dp))
             if (username != null) {
                 val bool = vm.isMonthly(choice)
-                isGivenAmount.value = SupportButton(
+                SupportButton(
                     amount.toLong(),
                     username.toString(),
                     organisation,
@@ -124,16 +123,19 @@ fun SupportButton(
     boolean: Boolean,
     vm: VMdonation,
     nav: NavController
-): Boolean {
-    var bool = true
+) {
+    var bool by remember {
+        mutableStateOf(false)
+    }
     Button(
         onClick = {
             if (amount.toInt() > 0) {
                 val donation = Donation(amount, org, user, boolean)
                 vm.addDonationToDatabase(donation)
                 nav.navigate(Screen.LoadingAnimationScreen.withArgs(user))
+            } else {
+                bool = true
             }
-            else{bool = false}
         },
         colors = ButtonDefaults.buttonColors(backgroundColor = Color(243, 196, 53)),
         modifier = Modifier
@@ -146,25 +148,34 @@ fun SupportButton(
             modifier = Modifier.clip(RoundedCornerShape(12.dp))
         )
     }
-    return bool
+    if (bool) {
+        Text(text = "Mangler doantions beløb",color = Color.Red)
+    }
 }
+
 
 @Composable
 fun amountTextField(): Int {
     var value by remember {
         mutableStateOf("")
     }
+
     TextField(
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-        value = value, onValueChange = { value = it },
+        value = value, onValueChange = {
+            value = it
+        },
         modifier = Modifier.clip(RoundedCornerShape(12.dp)),
-        label = { }
+        label = { },
+        isError = value.isBlank(),
+        singleLine = true
     )
     if (value.isNotBlank()) {
         return value.toInt()
     }
     return 0
 }
+
 
 @Composable
 fun NameTextField() {

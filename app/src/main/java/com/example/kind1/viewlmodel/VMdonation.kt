@@ -16,11 +16,16 @@ import kotlinx.coroutines.tasks.await
 data class organisationState(
     var organisation: Organisation = Organisation()
 )
+data class errorState(
+    var error: Boolean = false
+)
 class VMdonation : ViewModel() {
     var organisationState = MutableStateFlow(organisationState())
+    var errorState = MutableStateFlow(errorState())
+
 
     private val db = Firebase.firestore
-
+    val hasError = false
     init {
 
     }

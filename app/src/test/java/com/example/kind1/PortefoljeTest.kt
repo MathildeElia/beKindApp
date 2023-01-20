@@ -105,6 +105,8 @@ class PortefoljeTest {
         Assert.assertEquals(emptylist, list[3])
     }
 
+    //Tests if the correct number of themes and organisations
+    //is calculated. Is both used in VMportfolje and VMstart.
     @Test
     fun numberOfThemeAndOrgTest() {
         val themeList = mutableListOf<String>()
